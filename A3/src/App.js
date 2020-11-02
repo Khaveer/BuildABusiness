@@ -12,7 +12,9 @@ function App() {
             <div className="App">
                 {/* <HeaderThing name={"james"} author={"Khaveer"} /> */}
                 <Switch>
-                    <Route path="/" exact component={LandingPage} />
+                    <Route path="/" exact>
+                        <LandingPage />
+                    </Route>
                     <Route path="/Instructions" component={Instructions} />
                 </Switch>
             </div>
