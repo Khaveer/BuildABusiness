@@ -4,6 +4,7 @@ import "./index.css";
 import "semantic-ui-css/semantic.min.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
+import "pure-react-carousel/dist/react-carousel.es.css";
 
 ReactDOM.render(
     <React.StrictMode>

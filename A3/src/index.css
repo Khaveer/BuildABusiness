@@ -17,3 +17,45 @@ code {
     font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
         monospace;
 }
+
+/* to do CSS eden, you can go into the components style thing, 
+and do a commar, or ID the components and do it heree */
+
+.flex-row {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+}
+
+.flex-down {
+    display: flex;
+    flex-direction: column;
+}
+
+.flex-end {
+    margin-left: auto;
+}
+
+.light-blue-btn {
+    background-color: #6e8ca2 !important;
+    color: white !important;
+}
+
+.orange-btn {
+    background-color: #fe8a60 !important;
+    color: white !important;
+}
+
+.dark-blue-btn {
+    background-color: #2d70a2 !important;
+    color: white !important;
+}
+
+.dark-blue-outline-btn {
+    border-color: #2d70a2 !important;
+    color: #2d70a2 !important;
+}
+
+i.circle.icon {
+    color: #2d70a2 !important;
+}

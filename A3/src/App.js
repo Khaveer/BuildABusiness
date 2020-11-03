@@ -2,7 +2,7 @@ import React from "react";
 import "./App.css";
 
 import LandingPage from "./Pages/LandingPage/Landing";
-import Instructions from "./Pages/Instructions/Instructions";
+import Instructions from "./Pages/Instructions";
 
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
@@ -15,7 +15,9 @@ function App() {
                     <Route path="/" exact>
                         <LandingPage />
                     </Route>
-                    <Route path="/Instructions" component={Instructions} />
+                    <Route path="/Instructions">
+                        <Instructions />
+                    </Route>
                 </Switch>
             </div>
         </Router>
