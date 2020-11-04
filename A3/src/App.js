@@ -8,6 +8,8 @@ import GameScreen from "./Pages/Form/GameScreen";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { Header } from "semantic-ui-react";
 
+import { UserProvider } from "./Pages/Form/StepContext";
+
 function App() {
     return (
         <Router>
@@ -20,9 +22,11 @@ function App() {
                     <Route path="/Instructions">
                         <Instructions />
                     </Route>
-                    <Route path="/Step1">
-                        <GameScreen />
-                    </Route>
+                    <UserProvider>
+                        <Route path="/Step1">
+                            <GameScreen />
+                        </Route>
+                    </UserProvider>
                 </Switch>
             </div>
         </Router>
