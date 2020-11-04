@@ -1,68 +1,68 @@
 import React from "react";
 import styled from "styled-components";
 
-import { Grid, Button } from "semantic-ui-react";
+import { Button } from "semantic-ui-react";
 
 import { Link } from "react-router-dom";
 
 import desktopImage from "../../Assets/Background.png";
-import mobileImage from "../../Assets/Mobileimage.png";
 
 const Wrapper = styled.section`
-    padding-top: 8vh;
-    padding-left: 7vh;
+    padding-top: 2em;
+    padding-left: 1em;
     text-align: left;
+    max-width: 90%;
 `;
 
 const ButtonWrapper = styled.section`
-    padding-top: 6vh;
+    text-align: left;
+    padding-left: 10px;
 `;
 
 const HeaderText = styled.h1`
     font-family: "Montserrat", sans-serif;
     font-weight: 600;
-    font-size: 10vh;
+    font-size: 4em;
+    padding: 0px;
+    margin-bottom: 0px;
 `;
 
 const IntroText = styled.p`
     font-family: "Montserrat", sans-serif;
     font-weight: 600;
     font-size: 12px;
+    padding-left: 10px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    margin: 2px;
+    word-wrap: break-word;
 `;
 
 function Landing() {
-    const backgroundImage =
-        window.innerWidth >= 650 ? desktopImage : mobileImage;
-
     return (
         <div
             style={{
-                backgroundImage: `url(${backgroundImage})`,
-                height: "100vh",
-                backgroundSize: "cover",
+                backgroundImage: `url(${desktopImage})`,
+                backgroundPosition: "center center",
                 backgroundRepeat: "no-repeat",
+                backgroundSize: "cover",
+                height: "100vh",
             }}
         >
             <Wrapper>
-                <Grid columns={1}>
-                    <Grid.Row>
-                        <Grid.Column>
-                            <HeaderText>BUILD-A-BUSINESS</HeaderText>
-                        </Grid.Column>
-                    </Grid.Row>
-                </Grid>
-                <Grid columns={4}>
-                    <Grid.Row>
-                        <Grid.Column>
-                            <IntroText>
-                                Welcome to build a business! Find your
-                                resources, deligate your operations, figure out
-                                your shipping logistics and explore marketing!
-                                You have $3,000,000 to spend, spend it wisely.{" "}
-                            </IntroText>
-                        </Grid.Column>
-                    </Grid.Row>
-                </Grid>
+                <HeaderText>BUILD-A-BUSINESS</HeaderText>
+                <br></br>
+                <IntroText>
+                    Welcome to build a business! Find your resources, deligate
+                    your operations,
+                </IntroText>
+                <IntroText>
+                    figure out your shipping logistics and explore marketing!
+                </IntroText>
+                <IntroText>
+                    You have $3,000,000 to spend, spend it wisely.
+                </IntroText>
+                <br></br>
                 <ButtonWrapper>
                     <Link to="/Instructions">
                         <Button content="Im ready to go!" primary />

@@ -19,7 +19,7 @@ const instructions = [
         // These are the props that we pass to Card component
 
         header: "Welcome to your business!",
-        image: "./image/two.png",
+        image: "./image/one.png",
         description: (
             <text>
                 Welcome, you are creating a business model for a fashion
