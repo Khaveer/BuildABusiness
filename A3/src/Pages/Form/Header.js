@@ -89,7 +89,7 @@ const FormHeader = () => {
             <Wrapper>
                 <Grid container columns="equal">
                     <Grid.Column>
-                        {user.steps.step1 === "before" && (
+                        {user.step.current < 1 && (
                             <div>
                                 <ProgressStepBefore>
                                     <ProgressStepCenter>1</ProgressStepCenter>
@@ -97,7 +97,7 @@ const FormHeader = () => {
                                 <BeforeHeader as="h5">Resources</BeforeHeader>
                             </div>
                         )}
-                        {user.steps.step1 === "current" && (
+                        {user.step.current === 1 && (
                             <div>
                                 <ProgressStep>
                                     <ProgressStepCenter>
@@ -107,7 +107,7 @@ const FormHeader = () => {
                                 <AfterHeader as="h5">Resources</AfterHeader>
                             </div>
                         )}
-                        {user.steps.step1 === "after" && (
+                        {user.step.current > 1 && (
                             <div>
                                 <ProgressStep>
                                     <ProgressStepCenter>
@@ -119,7 +119,7 @@ const FormHeader = () => {
                         )}
                     </Grid.Column>
                     <Grid.Column>
-                        {user.steps.step2 === "before" && (
+                        {user.step.current < 2 && (
                             <div>
                                 <ProgressStepBefore>
                                     <ProgressStepCenter>2</ProgressStepCenter>
@@ -127,7 +127,7 @@ const FormHeader = () => {
                                 <BeforeHeader as="h5">Operations</BeforeHeader>
                             </div>
                         )}
-                        {user.steps.step2 === "current" && (
+                        {user.step.current === 2 && (
                             <div>
                                 <ProgressStep>
                                     <ProgressStepCenter>
@@ -137,7 +137,7 @@ const FormHeader = () => {
                                 <AfterHeader as="h5">Operations</AfterHeader>
                             </div>
                         )}
-                        {user.steps.step2 === "after" && (
+                        {user.step.current > 2 && (
                             <div>
                                 <ProgressStep>
                                     <ProgressStepCenter>
@@ -177,7 +177,7 @@ const FormHeader = () => {
                         </ProgressWrapper>
                     </Grid.Column>
                     <Grid.Column>
-                        {user.steps.step3 === "before" && (
+                        {user.step.current < 3 && (
                             <div>
                                 <ProgressStepBefore>
                                     <ProgressStepCenter>3</ProgressStepCenter>
@@ -185,7 +185,7 @@ const FormHeader = () => {
                                 <BeforeHeader as="h5">Logistics</BeforeHeader>
                             </div>
                         )}
-                        {user.steps.step3 === "current" && (
+                        {user.step.current === 3 && (
                             <div>
                                 <ProgressStep>
                                     <ProgressStepCenter>
@@ -195,7 +195,7 @@ const FormHeader = () => {
                                 <AfterHeader as="h5">Logistics</AfterHeader>
                             </div>
                         )}
-                        {user.steps.step3 === "after" && (
+                        {user.step.current > 3 && (
                             <div>
                                 <ProgressStep>
                                     <ProgressStepCenter>
@@ -207,7 +207,7 @@ const FormHeader = () => {
                         )}
                     </Grid.Column>
                     <Grid.Column>
-                        {user.steps.step4 === "before" && (
+                        {user.step.current < 4 && (
                             <div>
                                 <ProgressStepBefore>
                                     <ProgressStepCenter>4</ProgressStepCenter>
@@ -218,7 +218,7 @@ const FormHeader = () => {
                                 </BeforeHeader>
                             </div>
                         )}
-                        {user.steps.step4 === "current" && (
+                        {user.step.current === 4 && (
                             <div>
                                 <ProgressStep>
                                     <ProgressStepCenter>
@@ -229,7 +229,7 @@ const FormHeader = () => {
                                 <AfterHeader as="h5">relationship</AfterHeader>
                             </div>
                         )}
-                        {user.steps.step4 === "after" && (
+                        {user.step.current > 4 && (
                             <div>
                                 <ProgressStep>
                                     <ProgressStepCenter>

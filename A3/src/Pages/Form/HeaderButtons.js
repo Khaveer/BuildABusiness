@@ -20,6 +20,7 @@ function HeaderButtons() {
     return (
         <HeaderWrapper>
             <ButtonWrapper>
+                {/* need to figure out where this links to TODO */}
                 <Link to="/Step1">
                     <Button basic animated compact color="blue">
                         <Button.Content visible>Restart</Button.Content>

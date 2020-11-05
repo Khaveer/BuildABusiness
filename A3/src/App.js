@@ -14,7 +14,6 @@ function App() {
     return (
         <Router>
             <div className="App">
-                {/* <HeaderThing name={"james"} author={"Khaveer"} /> */}
                 <Switch>
                     <Route path="/" exact>
                         <LandingPage />
@@ -23,7 +22,7 @@ function App() {
                         <Instructions />
                     </Route>
                     <UserProvider>
-                        <Route path="/Step1">
+                        <Route path="/Game">
                             <GameScreen />
                         </Route>
                     </UserProvider>
