@@ -10,13 +10,13 @@ import {
 import "react-circular-progressbar/dist/styles.css";
 import NumberFormat from "react-number-format";
 
-import { UserContext } from "./StepContext";
+import { UserContext } from "./UserContext";
 import HeaderButtons from "./HeaderButtons";
 
 const ProgressWrapper = styled.div`
     width: 75%;
     margin: auto;
-    margin-top: -25%;
+    margin-top: -22%;
 `;
 
 const Wrapper = styled.div`

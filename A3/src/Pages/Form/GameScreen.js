@@ -1,14 +1,14 @@
 import React, { useState, useContext } from "react";
 import styled from "styled-components";
 
-import FormHeader from "./Header";
+import FormHeader from "../components/Header";
 import Step1 from "./Steps/Step1";
 import Step2 from "./Steps/Step2";
 import Step3 from "./Steps/Step3";
 import Step4 from "./Steps/Step4";
 import Footer from "./Footer";
 
-import { UserContext } from "./StepContext";
+import { UserContext } from "../components/UserContext";
 
 const GameScreen = () => {
     const [user, setUser] = useContext(UserContext);

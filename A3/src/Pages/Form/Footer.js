@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 import { Progress, Label, Header } from "semantic-ui-react";
 
-import { UserContext } from "./StepContext";
+import { UserContext } from "../components/UserContext";
 
 const FooterPlacer = styled.div`
     position: absolute;

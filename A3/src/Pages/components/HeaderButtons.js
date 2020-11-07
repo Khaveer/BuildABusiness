@@ -16,12 +16,17 @@ const ButtonDivider = styled.div`
     display: inline-block;
 `;
 
+const Divider = styled.hr`
+    color: rgba(137, 137, 137, 0.5);
+    margin-bottom: 0px;
+`;
+
 function HeaderButtons() {
     return (
         <HeaderWrapper>
             <ButtonWrapper>
                 {/* need to figure out where this links to TODO */}
-                <Link to="/Step1">
+                <Link to="/">
                     <Button basic animated compact color="blue">
                         <Button.Content visible>Restart</Button.Content>
                         <Button.Content hidden>
@@ -32,7 +37,7 @@ function HeaderButtons() {
                 <ButtonDivider />
                 <Button circular compact icon="help" />
             </ButtonWrapper>
-            <hr style={{ color: "rgba(137,137,137,0.5)" }} />
+            <Divider />
         </HeaderWrapper>
     );
 }

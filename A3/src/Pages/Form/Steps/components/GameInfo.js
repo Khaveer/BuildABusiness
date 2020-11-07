@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import styled from "styled-components";
 
-import { UserContext } from "../../StepContext";
+import { UserContext } from "../../../components/UserContext";
 
 import { Image } from "semantic-ui-react";
 
@@ -16,6 +16,8 @@ const ImageWrapper = styled.div`
 `;
 
 const InfoHeader = styled.h1`
+    font-family: "Montserrat", sans-serif;
+    font-weight: 600;
     margin-top: 0px;
 `;
 
