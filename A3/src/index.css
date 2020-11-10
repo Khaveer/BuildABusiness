@@ -27,7 +27,19 @@ code {
 }
 
 /* to do CSS eden, you can go into the components style thing, 
-and do a commar, or ID the components and do it heree */
+and do a commar, or ID the components and do it here */
+
+#card-flex {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+}
+
+@media only screen and (max-width: 600px) {
+    #card-flex {
+        flex-direction: column;
+    }
+}
 
 .flex-row {
     display: flex;

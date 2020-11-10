@@ -5,13 +5,13 @@ export const UserContext = createContext();
 export const UserProvider = (props) => {
     const [user, setUser] = useState({
         step: {
-            current: 4,
+            current: 2,
             resultState: 3,
         },
         money: {
             amountSpent: 2000000,
             maxiumValue: 3000000,
-            cost: 0,
+            cost: 20,
         },
     });
 

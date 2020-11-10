@@ -16,7 +16,7 @@ const InfoWrapper = styled.div`
 `;
 
 const FormWrapper = styled.div`
-    width: 70%;
+    width: 75%;
     background-color: blue;
     display: inline-block;
 `;

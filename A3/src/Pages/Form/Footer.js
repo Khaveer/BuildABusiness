@@ -29,9 +29,10 @@ const LabelWrapper = styled.div`
     vertical-align: middle;
 `;
 
-const FooterDivider = styled.div`
-    width: 0.5em;
-    height: auto;
+const FooterDivider = styled.hr`
+    border-width: 0;
+    background-color: #BFBFBF;
+    height: 1px;
 `;
 
 const FooterLabel = styled.p`
@@ -49,7 +50,7 @@ const Footer = () => {
 
     return (
         <FooterPlacer>
-            <hr style={{ color: "rgba(137,137,137,0.5)" }} />
+            <FooterDivider />
             <FooterWrapper>
                 <ProgressWrapper>
                     <FooterLabel>PRODUCT PRICE FOR CONSUMER.</FooterLabel>

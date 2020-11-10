@@ -26,7 +26,9 @@ const instructions = [
                 business. You will have $3,000,000 to spend, the graph will
                 indicate how much you have left. <br /> <br /> If you use up all
                 your money prior to finishing the business model, you wont be
-                able to finish your business, you must use your money wisely!'{" "}
+                able to finish your business, you must use your money wisely! <br/> <br/> For the purposes of 
+                this game we have exagerated the real costs of the business model
+                actions.{" "}
             </text>
         ),
     },
@@ -35,7 +37,7 @@ const instructions = [
         image: "./image/two.png",
         description: (
             <text>
-                'Your goal as a business is the keep the product price low, not
+                Your goal as a business is the keep the product price low, not
                 only because consumers love cheap products, but also so your can
                 mark up the cost in order to get more revenue. <br /> <br />
                 To do this in this game, you want to keep your recources,
@@ -67,22 +69,21 @@ function CardContent({ index }) {
     return (
         <Card fluid>
             <NewCardContent>
-                <div class="flex-row">
+                <div id="card-flex">
+                    <div>
+                        <Image
+                            src={image}
+                            size="big"
+                            style={{ marginRight: 20 }}
+                        />
+                    </div>
                     <Wrapper
                         class="flex-down"
-                        style={{ width: 500, paddingRight: 20 }}
+                        style={{ width: "90%", paddingRight: 20 }}
                     >
                         <Header>{header}</Header>
                         {description}
                     </Wrapper>
-
-                    <div class="flex-end">
-                        <Image
-                            src={image}
-                            size="big"
-                            style={{ marginLeft: 20 }}
-                        />
-                    </div>
                 </div>
                 <Controls final={index === 2} />
             </NewCardContent>

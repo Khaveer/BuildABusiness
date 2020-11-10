@@ -17,7 +17,9 @@ const ButtonDivider = styled.div`
 `;
 
 const Divider = styled.hr`
-    color: rgba(137, 137, 137, 0.5);
+    border-width: 0;
+    background-color: #BFBFBF;
+    height: 1px;
     margin-bottom: 0px;
 `;
 

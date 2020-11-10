@@ -21,6 +21,7 @@ const ProgressWrapper = styled.div`
 
 const Wrapper = styled.div`
     width: 100%;
+    
 `;
 
 const ProgressStep = styled.div`
@@ -31,6 +32,7 @@ const ProgressStep = styled.div`
     background-color: #fe8a60;
     z-index: -1;
     margin: auto;
+    margin-top: 10px;
     padding: 0px;
 `;
 
@@ -41,7 +43,9 @@ const ProgressStepBefore = styled.div`
     display: table;
     background-color: rgba(249, 148, 112, 0.6);
     margin: auto;
+    margin-top: 10px;
     padding: 0px;
+    
 `;
 
 const ProgressStepCenter = styled.div`
@@ -50,6 +54,8 @@ const ProgressStepCenter = styled.div`
     font-family: "Montserrat", sans-serif;
     font-weight: 600;
     color: white;
+    
+    
 `;
 
 const CurrentStepCenter = styled.div`
@@ -59,6 +65,7 @@ const CurrentStepCenter = styled.div`
     display: table-cell;
     background-color: red;
     z-index: 2;
+    
 `;
 
 const CurrentIcon = styled(Icon)`
@@ -71,6 +78,7 @@ const BeforeHeader = styled(Header)`
     margin-top: 0.5em;
     margin-bottom: 0.5em;
     color: rgba(249, 148, 112, 0.6);
+    
 `;
 
 const AfterHeader = styled(Header)`
@@ -79,6 +87,7 @@ const AfterHeader = styled(Header)`
     margin-top: 0.5em;
     margin-bottom: 0.5em;
     color: #fe8a60;
+    
 `;
 
 const FormHeader = () => {
