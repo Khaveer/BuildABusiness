@@ -2,16 +2,35 @@ import React, { useState, createContext } from "react";
 
 export const UserContext = createContext();
 
-export const UserProvider = (props) => {
+export const UserProvider = ({ children }) => {
     const [user, setUser] = useState({
-        step: {
-            current: 2,
-            resultState: 3,
-        },
-        money: {
-            amountSpent: 2000000,
-            maxiumValue: 3000000,
-            cost: 20,
+        //steps
+        current: 1,
+
+        //Money
+        amountSpent: 0,
+        maxiumValue: 3000000,
+        cost: 20,
+
+        //Form data
+
+        //step1
+        cottonValue: 500000,
+        RPETValue: 1000000,
+        animalValue: 1500000,
+        syntheticValue: 2000000,
+        //Step1 choice
+        step1: null,
+
+        resultState: 1,
+
+        step2: "",
+        step3: "",
+        step4: {
+            TV: 0,
+            onlineAd: 0,
+            banners: 0,
+            influencers: 0,
         },
     });
 
@@ -27,10 +46,9 @@ export const UserProvider = (props) => {
     //     },
     // });
 
-    console.log(user);
     return (
         <UserContext.Provider value={[user, setUser]}>
-            {props.children}
+            {children}
         </UserContext.Provider>
     );
 };

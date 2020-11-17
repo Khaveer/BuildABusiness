@@ -15,14 +15,17 @@ const GameScreen = () => {
     console.log(user);
     return (
         <div>
-            <FormHeader />
-            {user.step.current === 1 && <Step1 />}
-            {user.step.current === 2 && <Step2 />}
-            {user.step.current === 3 && <Step3 />}
-            {user.step.current === 4 && <Step4 />}
-            <Footer />
+            {/* <FormHeader /> */}
+            {user.current === 1 && <Step1 />}
+            {user.current === 2 && <Step2 />}
+            {user.current === 3 && <Step3 />}
+            {user.current === 4 && <Step4 />}
+
+            {/* <Footer /> */}
         </div>
     );
 };
 
 export default GameScreen;
+
+// {user.step.current === 4 ? : 0 <Step4 />}

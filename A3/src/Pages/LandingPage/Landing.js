@@ -11,7 +11,7 @@ const Wrapper = styled.section`
     padding-top: 2em;
     padding-left: 1em;
     text-align: left;
-    max-width: 90%;
+    max-width: 1200px;
 `;
 
 const ButtonWrapper = styled.section`
@@ -50,7 +50,7 @@ function Landing() {
             }}
         >
             <Wrapper>
-                <HeaderText>BUILD-A-BUSINESS</HeaderText>
+                <HeaderText>Build a Business</HeaderText>
                 <br></br>
                 <IntroText>
                     Welcome to build a business! Find your resources, deligate

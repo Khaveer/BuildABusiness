@@ -31,7 +31,7 @@ const LabelWrapper = styled.div`
 
 const FooterDivider = styled.hr`
     border-width: 0;
-    background-color: #BFBFBF;
+    background-color: #bfbfbf;
     height: 1px;
 `;
 
@@ -56,20 +56,20 @@ const Footer = () => {
                     <FooterLabel>PRODUCT PRICE FOR CONSUMER.</FooterLabel>
                     <Progress
                         progress="value"
-                        value={user.money.cost}
+                        value={user.cost}
                         color="orange"
                         style={{ margin: "0px" }}
                     />
                 </ProgressWrapper>
                 <LabelWrapper>
-                    {user.money.cost > 0 && (
+                    {user.cost > 0 && (
                         <Label as="a" size={"large"} color={"orange"}>
-                            ${user.money.cost}
+                            ${user.cost}
                         </Label>
                     )}
-                    {user.money.cost === 0 && (
+                    {user.cost === 0 && (
                         <Label as="a" size={"large"}>
-                            ${user.money.cost}
+                            ${user.cost}
                         </Label>
                     )}
                 </LabelWrapper>

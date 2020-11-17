@@ -1,7 +1,7 @@
-import React, { useState, createContext, useContext } from "react";
-import styled, { withTheme } from "styled-components";
+import React, { useContext, useState } from "react";
+import styled from "styled-components";
 
-import { Button, Icon, Grid, Header } from "semantic-ui-react";
+import { Icon, Grid, Header } from "semantic-ui-react";
 
 import {
     CircularProgressbarWithChildren,
@@ -21,7 +21,6 @@ const ProgressWrapper = styled.div`
 
 const Wrapper = styled.div`
     width: 100%;
-    
 `;
 
 const ProgressStep = styled.div`
@@ -45,7 +44,6 @@ const ProgressStepBefore = styled.div`
     margin: auto;
     margin-top: 10px;
     padding: 0px;
-    
 `;
 
 const ProgressStepCenter = styled.div`
@@ -54,22 +52,6 @@ const ProgressStepCenter = styled.div`
     font-family: "Montserrat", sans-serif;
     font-weight: 600;
     color: white;
-    
-    
-`;
-
-const CurrentStepCenter = styled.div`
-    border-radius: 50%;
-    height: 1em;
-    width: 1em;
-    display: table-cell;
-    background-color: red;
-    z-index: 2;
-    
-`;
-
-const CurrentIcon = styled(Icon)`
-    background-color: #ffffff;
 `;
 
 const BeforeHeader = styled(Header)`
@@ -78,7 +60,6 @@ const BeforeHeader = styled(Header)`
     margin-top: 0.5em;
     margin-bottom: 0.5em;
     color: rgba(249, 148, 112, 0.6);
-    
 `;
 
 const AfterHeader = styled(Header)`
@@ -87,18 +68,20 @@ const AfterHeader = styled(Header)`
     margin-top: 0.5em;
     margin-bottom: 0.5em;
     color: #fe8a60;
-    
 `;
 
-const FormHeader = () => {
+const FormHeader = (props) => {
     const [user, setUser] = useContext(UserContext);
+
+    const leftTospend = user.maxiumValue - user.amountSpent;
+
     return (
         <div>
             <HeaderButtons />
             <Wrapper>
                 <Grid container columns="equal">
                     <Grid.Column>
-                        {user.step.current < 1 && (
+                        {props.pageNumber < 1 && (
                             <div>
                                 <ProgressStepBefore>
                                     <ProgressStepCenter>1</ProgressStepCenter>
@@ -106,7 +89,7 @@ const FormHeader = () => {
                                 <BeforeHeader as="h5">Resources</BeforeHeader>
                             </div>
                         )}
-                        {user.step.current === 1 && (
+                        {props.pageNumber === 1 && (
                             <div>
                                 <ProgressStep>
                                     <ProgressStepCenter>
@@ -116,7 +99,7 @@ const FormHeader = () => {
                                 <AfterHeader as="h5">Resources</AfterHeader>
                             </div>
                         )}
-                        {user.step.current > 1 && (
+                        {props.pageNumber > 1 && (
                             <div>
                                 <ProgressStep>
                                     <ProgressStepCenter>
@@ -128,7 +111,7 @@ const FormHeader = () => {
                         )}
                     </Grid.Column>
                     <Grid.Column>
-                        {user.step.current < 2 && (
+                        {props.pageNumber < 2 && (
                             <div>
                                 <ProgressStepBefore>
                                     <ProgressStepCenter>2</ProgressStepCenter>
@@ -136,7 +119,7 @@ const FormHeader = () => {
                                 <BeforeHeader as="h5">Operations</BeforeHeader>
                             </div>
                         )}
-                        {user.step.current === 2 && (
+                        {props.pageNumber === 2 && (
                             <div>
                                 <ProgressStep>
                                     <ProgressStepCenter>
@@ -146,7 +129,7 @@ const FormHeader = () => {
                                 <AfterHeader as="h5">Operations</AfterHeader>
                             </div>
                         )}
-                        {user.step.current > 2 && (
+                        {props.pageNumber > 2 && (
                             <div>
                                 <ProgressStep>
                                     <ProgressStepCenter>
@@ -160,8 +143,8 @@ const FormHeader = () => {
                     <Grid.Column>
                         <ProgressWrapper>
                             <CircularProgressbarWithChildren
-                                value={user.money.amountSpent}
-                                maxValue={user.money.maxiumValue}
+                                value={leftTospend}
+                                maxValue={user.maxiumValue}
                                 background
                                 styles={buildStyles({
                                     pathColor: "#F46734",
@@ -171,7 +154,7 @@ const FormHeader = () => {
                                 <div style={{ fontSize: 20, marginTop: -5 }}>
                                     <strong>
                                         <NumberFormat
-                                            value={user.money.amountSpent}
+                                            value={leftTospend}
                                             displayType={"text"}
                                             thousandSeparator={true}
                                             prefix={"$"}
@@ -186,7 +169,7 @@ const FormHeader = () => {
                         </ProgressWrapper>
                     </Grid.Column>
                     <Grid.Column>
-                        {user.step.current < 3 && (
+                        {props.pageNumber < 3 && (
                             <div>
                                 <ProgressStepBefore>
                                     <ProgressStepCenter>3</ProgressStepCenter>
@@ -194,7 +177,7 @@ const FormHeader = () => {
                                 <BeforeHeader as="h5">Logistics</BeforeHeader>
                             </div>
                         )}
-                        {user.step.current === 3 && (
+                        {props.pageNumber === 3 && (
                             <div>
                                 <ProgressStep>
                                     <ProgressStepCenter>
@@ -204,7 +187,7 @@ const FormHeader = () => {
                                 <AfterHeader as="h5">Logistics</AfterHeader>
                             </div>
                         )}
-                        {user.step.current > 3 && (
+                        {props.pageNumber > 3 && (
                             <div>
                                 <ProgressStep>
                                     <ProgressStepCenter>
@@ -216,7 +199,7 @@ const FormHeader = () => {
                         )}
                     </Grid.Column>
                     <Grid.Column>
-                        {user.step.current < 4 && (
+                        {props.pageNumber < 4 && (
                             <div>
                                 <ProgressStepBefore>
                                     <ProgressStepCenter>4</ProgressStepCenter>
@@ -227,7 +210,7 @@ const FormHeader = () => {
                                 </BeforeHeader>
                             </div>
                         )}
-                        {user.step.current === 4 && (
+                        {props.pageNumber === 4 && (
                             <div>
                                 <ProgressStep>
                                     <ProgressStepCenter>
@@ -238,7 +221,7 @@ const FormHeader = () => {
                                 <AfterHeader as="h5">relationship</AfterHeader>
                             </div>
                         )}
-                        {user.step.current > 4 && (
+                        {props.pageNumber > 4 && (
                             <div>
                                 <ProgressStep>
                                     <ProgressStepCenter>

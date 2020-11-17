@@ -11,7 +11,7 @@ import logisticsImage from "../../../../Assets/FromAssests/Info/Logistics.png";
 import consumerImage from "../../../../Assets/FromAssests/Info/CustomerRealtionship.png";
 
 const ImageWrapper = styled.div`
-    width: 10 0%;
+    width: 100%;
     margin: auto;
 `;
 
@@ -34,20 +34,20 @@ const GameInfo = () => {
     return (
         <div>
             <ImageWrapper>
-                {user.step.current === 1 && (
+                {user.current === 1 && (
                     <Image src={resourceImage} size="medium" />
                 )}
-                {user.step.current === 2 && (
+                {user.current === 2 && (
                     <Image src={operationsImage} size="medium" />
                 )}
-                {user.step.current === 3 && (
+                {user.current === 3 && (
                     <Image src={logisticsImage} size="medium" />
                 )}
-                {user.step.current === 4 && (
+                {user.current === 4 && (
                     <Image src={consumerImage} size="medium" />
                 )}
             </ImageWrapper>
-            {user.step.current === 1 && (
+            {user.current === 1 && (
                 <>
                     <InfoHeader>Resources</InfoHeader>
                     <InfoText>
@@ -58,13 +58,23 @@ const GameInfo = () => {
                     </InfoText>
                 </>
             )}
-            {user.step.current === 2 && (
+            {user.current === 2 && (
                 <>
                     <InfoHeader>Operations</InfoHeader>
-                    <InfoText>Need text</InfoText>
+                    <InfoText>
+                        You need to find somewhere for your clothes to be
+                        created. Each country has a price, some more then
+                        others.
+                    </InfoText>
+                    <br></br>
+                    <InfoText>
+                        If you choose a places like America and Australia, the
+                        cost will be high, as there arent alot of manufacturing
+                        companies there.
+                    </InfoText>
                 </>
             )}
-            {user.step.current === 3 && (
+            {user.current === 3 && (
                 <>
                     <InfoHeader>Logistics</InfoHeader>
                     <InfoText>
@@ -75,7 +85,7 @@ const GameInfo = () => {
                     </InfoText>
                 </>
             )}
-            {user.step.current === 4 && (
+            {user.current === 4 && (
                 <>
                     <InfoHeader>Customer Realtionship</InfoHeader>
                     <InfoText>
@@ -84,7 +94,6 @@ const GameInfo = () => {
                         commericals. Or more modern like influncers and online
                         marketing.
                     </InfoText>
-                    <br></br>
                     <InfoText>
                         You also have the choice to mark up your product! While
                         this will give you more revenue, careful about what your
