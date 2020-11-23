@@ -48,6 +48,9 @@ const FooterLabel = styled.p`
 const Footer = () => {
     const [user, setUser] = useContext(UserContext);
 
+    const totalCost =
+        user.baseCost + user.step1Cost + user.step2Cost + user.step3Cost;
+
     return (
         <FooterPlacer>
             <FooterDivider />
@@ -56,20 +59,20 @@ const Footer = () => {
                     <FooterLabel>PRODUCT PRICE FOR CONSUMER.</FooterLabel>
                     <Progress
                         progress="value"
-                        value={user.cost}
+                        value={totalCost}
                         color="orange"
                         style={{ margin: "0px" }}
                     />
                 </ProgressWrapper>
                 <LabelWrapper>
-                    {user.cost > 0 && (
+                    {totalCost > 0 && (
                         <Label as="a" size={"large"} color={"orange"}>
-                            ${user.cost}
+                            ${totalCost}
                         </Label>
                     )}
-                    {user.cost === 0 && (
+                    {totalCost === 0 && (
                         <Label as="a" size={"large"}>
-                            ${user.cost}
+                            ${totalCost}
                         </Label>
                     )}
                 </LabelWrapper>

@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, { useState, useContext } from "react";
 import { Segment, Grid, Checkbox, Image, Button } from "semantic-ui-react";
 
 import { Link } from "react-router-dom";
@@ -60,58 +60,67 @@ const ChoiceImage = styled.div`
 
 const ButtonWrapper = styled.div`
     display: flex;
+    position: absolute;
+    bottom: 5em;
+    padding-right: 3em;
+    width: 100%;
     justify-content: flex-end;
-    padding-top: 5em;
-    padding-right: 2em;
 `;
 
 const Step1 = () => {
     const [user, setUser] = useContext(UserContext);
-    // console.log(user);
-    const [decsion, setDecsion] = useState(null);
-    const [stepUpdate, setStepUpdate] = useState(2);
-    const [moneySpent, setMoney] = useState();
-    const [message, setMessage] = useState("Hi there, how are you?");
+
+    const [decsion, setDecsion] = useState("null");
+
+    const [stepUpdate] = useState(2);
+    const [result, setResult] = useState();
 
     const updateChoice = (e) => {
         setDecsion(e.target.value);
-        console.log(decsion);
 
-        // switch (decsion) {
-        //     case "Cotton":
-        //         setMoney(user.cottonValue);
-        //         setDecsion(e.target.value);
-        //         break;
-        //     case "RPET":
-        //         setMoney(user.RPETValue);
-        //         setDecsion(e.target.value);
-        //         break;
-        //     case "Animal":
-        //         setMoney(user.animalValue);
-        //         setDecsion(e.target.value);
-        //         break;
-        //     case "Synthetics":
-        //         setMoney(user.syntheticValue);
-        //         setDecsion(e.target.value);
-        //         break;
-        // }
-        // setUser((preState) => ({
-        //     ...preState,
-        //     amountSpent: moneySpent,
-        // }));
+        let money;
+        let addCost;
+
+        switch (e.target.value) {
+            case "Cotton":
+                money = user.cottonValue;
+                addCost = 2;
+                setResult(2);
+                break;
+            case "RPET":
+                money = user.RPETValue;
+                addCost = 3;
+                setResult(3);
+                break;
+            case "Animal":
+                money = user.animalValue;
+                addCost = 1;
+                setResult(1);
+                break;
+            case "Synthetics":
+                money = user.syntheticValue;
+                addCost = 1;
+                setResult(1);
+                break;
+        }
+
+        setUser((preState) => ({
+            ...preState,
+            step1Spent: money,
+            step1Cost: addCost,
+        }));
     };
 
     const submitChoice = (e) => {
         e.preventDefault();
-        console.log(decsion);
+        console.log(result);
 
-        console.log(moneySpent);
-
-        if (decsion != null) {
+        if (decsion != "null") {
             setUser((preState) => ({
                 ...preState,
                 step1: decsion,
                 current: stepUpdate,
+                resultState1: result,
             }));
         }
     };
@@ -147,17 +156,9 @@ const Step1 = () => {
                                             prefix={"$"}
                                         />
                                         <div>
-                                            Lorem ipsum dolor sit amet,
-                                            consectetur adipiscing elit. Donec
-                                            sit amet nisi non ipsum finibus
-                                            molestie. Mauris at porta enim, sed
-                                            malesuada erat. Sed eleifend metus
-                                            sed ipsum tincidunt, eget efficitur
-                                            turpis varius. Ut lacus dolor,
-                                            feugiat a ultrices vitae, mattis a
-                                            purus. Praesent et faucibus orci.
-                                            Donec ornare fringilla elementum.
-                                            Vestibulum sed sagittis dolor.{" "}
+                                            A versatile fabric as itself or
+                                            blended provides a natural comfort,
+                                            visual appeal, durability and value.
                                         </div>
                                     </ChoicetextWrapper>
                                     <ChoiceImage>
@@ -178,18 +179,17 @@ const Step1 = () => {
                                         <ChoiceHeader for="RPET">
                                             Recycled materials
                                         </ChoiceHeader>
+                                        <br></br>
+                                        <NumberFormat
+                                            value={user.RPETValue}
+                                            displayType={"text"}
+                                            thousandSeparator={true}
+                                            prefix={"$"}
+                                        />
                                         <div>
-                                            Lorem ipsum dolor sit amet,
-                                            consectetur adipiscing elit. Donec
-                                            sit amet nisi non ipsum finibus
-                                            molestie. Mauris at porta enim, sed
-                                            malesuada erat. Sed eleifend metus
-                                            sed ipsum tincidunt, eget efficitur
-                                            turpis varius. Ut lacus dolor,
-                                            feugiat a ultrices vitae, mattis a
-                                            purus. Praesent et faucibus orci.
-                                            Donec ornare fringilla elementum.
-                                            Vestibulum sed sagittis dolor.{" "}
+                                            RPET a recycled fabric created from
+                                            polyester and can contain either pre
+                                            or post-consumer waste.
                                         </div>
                                     </ChoicetextWrapper>
                                     <ChoiceImage>
@@ -210,6 +210,13 @@ const Step1 = () => {
                                         <ChoiceHeader for="Animal">
                                             Animal Products
                                         </ChoiceHeader>
+                                        <br></br>
+                                        <NumberFormat
+                                            value={user.animalValue}
+                                            displayType={"text"}
+                                            thousandSeparator={true}
+                                            prefix={"$"}
+                                        />
                                         <div>
                                             Lorem ipsum dolor sit amet,
                                             consectetur adipiscing elit. Donec
@@ -242,6 +249,13 @@ const Step1 = () => {
                                         <ChoiceHeader for="Synthetics">
                                             Synthetics
                                         </ChoiceHeader>
+                                        <br></br>
+                                        <NumberFormat
+                                            value={user.syntheticValue}
+                                            displayType={"text"}
+                                            thousandSeparator={true}
+                                            prefix={"$"}
+                                        />
                                         <div>
                                             Lorem ipsum dolor sit amet,
                                             consectetur adipiscing elit. Donec
@@ -266,13 +280,11 @@ const Step1 = () => {
                 </FormWrapper>
             </GameWrapper>
             <ButtonWrapper>
-                <Link to="step2">
-                    <Button
-                        content="Continue to Operations"
-                        primary
-                        onClick={submitChoice}
-                    />
-                </Link>
+                <Button
+                    content="Continue to Operations"
+                    primary
+                    onClick={submitChoice}
+                />
             </ButtonWrapper>
             <Footer />
         </>

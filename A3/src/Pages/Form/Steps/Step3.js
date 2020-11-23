@@ -1,13 +1,20 @@
-import React, { Component } from "react";
+import React, { useContext, useState } from "react";
 import { Button, Grid, Segment, Image, Form } from "semantic-ui-react";
-
-import { Link } from "react-router-dom";
 
 import styled from "styled-components";
 
+import { UserContext } from "../../components/UserContext";
+
 import GameInfo from "./components/GameInfo";
+import NumberFormat from "react-number-format";
 
 import BaseMap from "./../../../Assets/FromAssests/Step3/BaseWorld.png";
+import CPlanes from "./../../../Assets/FromAssests/Step3/cPlanesSelected.png";
+import CBoats from "./../../../Assets/FromAssests/Step3/cShippingSelected.png";
+import Drones from "./../../../Assets/FromAssests/Step3/droneSelected.png";
+import TA from "./../../../Assets/FromAssests/Step3/tagAlongSelected.png";
+import Train from "./../../../Assets/FromAssests/Step3/trainSelected.png";
+import EV from "./../../../Assets/FromAssests/Step3/EVSelected.png";
 
 import FormHeader from "../../components/Header";
 import Footer from "../Footer";
@@ -35,9 +42,11 @@ const FormWrapper = styled.div`
 
 const ButtonWrapper = styled.div`
     display: flex;
+    position: absolute;
+    bottom: 5em;
+    padding-right: 3em;
+    width: 100%;
     justify-content: flex-end;
-    padding-top: 3em;
-    padding-right: 2em;
 `;
 
 const SegmentWrapper = styled.div`
@@ -46,132 +55,322 @@ const SegmentWrapper = styled.div`
     margin-top: 0px;
     font-size: 1em;
     text-align: left;
-    padding-top: 2em;
+    padding-top: 0.5em;
     color: rgba(0, 0, 0, 56%);
 `;
 
+const ChoiceHeader = styled.label`
+    font-family: "Montserrat", sans-serif;
+    font-weight: 600;
+    margin-top: 0px;
+    font-size: 1em;
+    padding-left: 1em;
+`;
+
 const ChoiceWrapper = styled.div`
-    padding-bottom: 1em;
+    padding-bottom: 0px;
 `;
 const DeliveryWrapper = styled.div`
     font-family: "Montserrat", sans-serif;
     font-weight: 600;
     margin-top: 0px;
-    font-size: 0.9em;
+    font-size: 0.7em;
     text-align: left;
-    padding-left: 2em;
+    padding-left: 2.5em;
+    padding-top: 0.1em;
 `;
 
-class Step3 extends Component {
-    state = {};
+const Step3 = () => {
+    const [user, setUser] = useContext(UserContext);
+    const [decsion, setDecsion] = useState("null");
+    const [stepUpdate] = useState(4);
+    const [result, setResult] = useState();
 
-    handleChange = (e, { value }) => this.setState({ value });
-    render() {
-        const { value } = this.state;
-        console.log(value);
-        return (
-            <>
-                <FormHeader pageNumber={3} />
-                <GameWrapper>
-                    <InfoWrapper>
-                        <GameInfo />
-                    </InfoWrapper>
-                    <FormWrapper>
-                        <Grid>
-                            <Grid.Row columns={2}>
-                                <Grid.Column computer={12} only="computer">
-                                    <Image src={BaseMap} />
-                                </Grid.Column>
-                                <Grid.Column computer={4} mobile={16}>
-                                    <Segment>
-                                        <SegmentWrapper>
-                                            <Form.Group>
-                                                <ChoiceWrapper>
-                                                    <Form.Radio
-                                                        label="Tag along ($1,000,000)"
-                                                        value="TA"
-                                                        checked={value === "TA"}
-                                                        onChange={
-                                                            this.handleChange
-                                                        }
-                                                    />
-                                                    <DeliveryWrapper>
-                                                        7 weeks
-                                                    </DeliveryWrapper>
-                                                </ChoiceWrapper>
-                                                <ChoiceWrapper>
-                                                    <Form.Radio
-                                                        label="Train ($1,500,000)"
-                                                        value="T"
-                                                        checked={value === "T"}
-                                                        onChange={
-                                                            this.handleChange
-                                                        }
-                                                    />
-                                                    <DeliveryWrapper>
-                                                        3 months to arrive
-                                                    </DeliveryWrapper>
-                                                </ChoiceWrapper>
-                                                <ChoiceWrapper>
-                                                    <Form.Radio
-                                                        label="Cargo Planes ($900,000)"
-                                                        value="CP"
-                                                        checked={value === "CP"}
-                                                        onChange={
-                                                            this.handleChange
-                                                        }
-                                                    />
-                                                    <DeliveryWrapper>
-                                                        2 Weeks
-                                                    </DeliveryWrapper>
-                                                </ChoiceWrapper>
-                                                <ChoiceWrapper>
-                                                    <Form.Radio
-                                                        label="Cargo Ships ($800,000)"
-                                                        value="CS"
-                                                        checked={value === "CS"}
-                                                        onChange={
-                                                            this.handleChange
-                                                        }
-                                                    />
-                                                    <DeliveryWrapper>
-                                                        12 Days
-                                                    </DeliveryWrapper>
-                                                </ChoiceWrapper>
-                                                <ChoiceWrapper>
-                                                    <Form.Radio
-                                                        label="Drones ($2,000,000)"
-                                                        value="D"
-                                                        checked={value === "D"}
-                                                        onChange={
-                                                            this.handleChange
-                                                        }
-                                                    />
-                                                    <DeliveryWrapper>
-                                                        6 Months
-                                                    </DeliveryWrapper>
-                                                </ChoiceWrapper>
-                                            </Form.Group>
-                                        </SegmentWrapper>
-                                    </Segment>
-                                </Grid.Column>
-                            </Grid.Row>
-                        </Grid>
-                    </FormWrapper>
-                </GameWrapper>
-                <ButtonWrapper>
-                    <Link to="step4">
-                        <Button
-                            content="Continue to Customer relationship"
-                            primary
-                        />
-                    </Link>
-                </ButtonWrapper>
-                <Footer />
-            </>
-        );
-    }
-}
+    const updateChoice = (e) => {
+        setDecsion(e.target.value);
+
+        let money;
+        let addCost;
+
+        switch (e.target.value) {
+            case "truck":
+                money = user.trucksValue;
+                addCost = 1;
+                setResult(1);
+                break;
+            case "train":
+                money = user.trainValue;
+                addCost = 3;
+                setResult(3);
+                break;
+            case "cPlanes":
+                money = user.cargoPlaneValue;
+                addCost = 1;
+                setResult(1);
+                break;
+            case "cShips":
+                money = user.cargoShipValue;
+                addCost = 2;
+                setResult(2);
+                break;
+            case "drones":
+                money = user.dronesValue;
+                addCost = 3;
+                setResult(3);
+                break;
+            case "electricVehicle":
+                money = user.electricValue;
+                addCost = 3;
+                setResult(3);
+                break;
+        }
+        console.log(money);
+        setUser((preState) => ({
+            ...preState,
+            step3Spent: money,
+            step3Cost: addCost,
+        }));
+    };
+
+    const submitChoice = () => {
+        console.log(decsion);
+
+        if (decsion != "null") {
+            setUser((preState) => ({
+                ...preState,
+                step3: decsion,
+                current: stepUpdate,
+                resultState3: result,
+            }));
+        }
+    };
+
+    return (
+        <>
+            <FormHeader pageNumber={3} />
+            <GameWrapper>
+                <InfoWrapper>
+                    <GameInfo />
+                </InfoWrapper>
+                <FormWrapper>
+                    <Grid>
+                        <Grid.Row columns={2}>
+                            <Grid.Column computer={12} only="computer">
+                                {decsion === "null" && <Image src={BaseMap} />}
+                                {decsion === "cPlanes" && (
+                                    <Image src={CPlanes} />
+                                )}
+                                {decsion === "cShips" && <Image src={CBoats} />}
+                                {decsion === "drones" && <Image src={Drones} />}
+                                {decsion === "truck" && <Image src={TA} />}
+                                {decsion === "train" && <Image src={Train} />}
+                                {decsion === "electricVehicle" && (
+                                    <Image src={EV} />
+                                )}
+                            </Grid.Column>
+                            <Grid.Column computer={4} mobile={16}>
+                                <Segment>
+                                    <SegmentWrapper>
+                                        <form>
+                                            <ChoiceWrapper>
+                                                <input
+                                                    type="radio"
+                                                    id="train"
+                                                    name="Option"
+                                                    value="train"
+                                                    onChange={updateChoice}
+                                                />
+                                                <ChoiceHeader for="train">
+                                                    Train{" ("}
+                                                    {
+                                                        <NumberFormat
+                                                            value={
+                                                                user.trainValue
+                                                            }
+                                                            displayType={"text"}
+                                                            thousandSeparator={
+                                                                true
+                                                            }
+                                                            prefix={"$"}
+                                                        />
+                                                    }
+                                                    {")"}
+                                                </ChoiceHeader>
+                                                <DeliveryWrapper>
+                                                    3 Months / Extended Time
+                                                    <br></br>
+                                                    distance of delivery?
+                                                </DeliveryWrapper>
+                                            </ChoiceWrapper>
+                                            <ChoiceWrapper>
+                                                <input
+                                                    type="radio"
+                                                    id="cPlanes"
+                                                    name="Option"
+                                                    value="cPlanes"
+                                                    onChange={updateChoice}
+                                                />
+                                                <ChoiceHeader for="cPlanes">
+                                                    Cargo planes{" ("}
+                                                    {
+                                                        <NumberFormat
+                                                            value={
+                                                                user.cargoPlaneValue
+                                                            }
+                                                            displayType={"text"}
+                                                            thousandSeparator={
+                                                                true
+                                                            }
+                                                            prefix={"$"}
+                                                        />
+                                                    }
+                                                    {")"}
+                                                </ChoiceHeader>
+                                                <DeliveryWrapper>
+                                                    2 Weeks / Short Time
+                                                    <br></br>
+                                                    distance of delivery?
+                                                </DeliveryWrapper>
+                                            </ChoiceWrapper>
+                                            <ChoiceWrapper>
+                                                <input
+                                                    type="radio"
+                                                    id="cShips"
+                                                    name="Option"
+                                                    value="cShips"
+                                                    onChange={updateChoice}
+                                                />
+                                                <ChoiceHeader for="cShips">
+                                                    Cargo Ships{" ("}
+                                                    {
+                                                        <NumberFormat
+                                                            value={
+                                                                user.cargoShipValue
+                                                            }
+                                                            displayType={"text"}
+                                                            thousandSeparator={
+                                                                true
+                                                            }
+                                                            prefix={"$"}
+                                                        />
+                                                    }
+                                                    {")"}
+                                                </ChoiceHeader>
+                                                <DeliveryWrapper>
+                                                    12 Days / Short Time
+                                                    <br></br>
+                                                    distance of delivery?
+                                                </DeliveryWrapper>
+                                            </ChoiceWrapper>
+                                            <ChoiceWrapper>
+                                                <input
+                                                    type="radio"
+                                                    id="drones"
+                                                    name="Option"
+                                                    value="drones"
+                                                    onChange={updateChoice}
+                                                />
+                                                <ChoiceHeader for="drones">
+                                                    Drones{" ("}
+                                                    {
+                                                        <NumberFormat
+                                                            value={
+                                                                user.dronesValue
+                                                            }
+                                                            displayType={"text"}
+                                                            thousandSeparator={
+                                                                true
+                                                            }
+                                                            prefix={"$"}
+                                                        />
+                                                    }
+                                                    {")"}
+                                                </ChoiceHeader>
+                                                <DeliveryWrapper>
+                                                    Unknown Speed
+                                                    <br></br>
+                                                    Local Delivery
+                                                </DeliveryWrapper>
+                                            </ChoiceWrapper>
+                                            <ChoiceWrapper>
+                                                <input
+                                                    type="radio"
+                                                    id="electricVehicle"
+                                                    name="Option"
+                                                    value="electricVehicle"
+                                                    onChange={updateChoice}
+                                                />
+                                                <ChoiceHeader for="electricVehicle">
+                                                    Electric Vehicles{" ("}
+                                                    {
+                                                        <NumberFormat
+                                                            value={
+                                                                user.electricValue
+                                                            }
+                                                            displayType={"text"}
+                                                            thousandSeparator={
+                                                                true
+                                                            }
+                                                            prefix={"$"}
+                                                        />
+                                                    }
+                                                    {")"}
+                                                </ChoiceHeader>
+                                                <DeliveryWrapper>
+                                                    Unknown Speed
+                                                    <br></br>
+                                                    Local Delivery
+                                                </DeliveryWrapper>
+                                            </ChoiceWrapper>
+                                            <ChoiceWrapper>
+                                                <input
+                                                    type="radio"
+                                                    id="truck"
+                                                    name="Option"
+                                                    value="truck"
+                                                    onChange={updateChoice}
+                                                />
+                                                <ChoiceHeader for="truck">
+                                                    Trucks{" ("}
+                                                    {
+                                                        <NumberFormat
+                                                            value={
+                                                                user.trucksValue
+                                                            }
+                                                            displayType={"text"}
+                                                            thousandSeparator={
+                                                                true
+                                                            }
+                                                            prefix={"$"}
+                                                        />
+                                                    }
+                                                    {")"}
+                                                </ChoiceHeader>
+                                                <DeliveryWrapper>
+                                                    Unknown Speed
+                                                    <br></br>
+                                                    Local Delivery
+                                                </DeliveryWrapper>
+                                            </ChoiceWrapper>
+                                        </form>
+                                    </SegmentWrapper>
+                                </Segment>
+                            </Grid.Column>
+                        </Grid.Row>
+                    </Grid>
+                </FormWrapper>
+            </GameWrapper>
+            <ButtonWrapper>
+                <Button
+                    content="Continue to Customer relationship"
+                    primary
+                    onClick={submitChoice}
+                />
+            </ButtonWrapper>
+            <Footer />
+        </>
+    );
+};
 
 // const Step3 = () => {
 

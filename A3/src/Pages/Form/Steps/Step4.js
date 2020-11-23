@@ -35,7 +35,6 @@ const InfoWrapper = styled.div`
 const FormWrapper = styled.div`
     width: 75%;
     display: inline-block;
-    margin-top: 2em;
 `;
 
 const ChoicetextWrapper = styled.div`
@@ -83,29 +82,93 @@ const LabelWrapper = styled.div`
 
 const ButtonWrapper = styled.div`
     display: flex;
+    position: absolute;
+    bottom: 5em;
+    padding-right: 3em;
+    width: 100%;
     justify-content: flex-end;
-    padding-top: 5em;
-    padding-right: 2em;
+`;
+
+const PercentWrapper = styled.div`
+    width: 75%;
+    padding: 0px;
+    display: inline-block;
+    vertical-align: middle;
+    float: left;
+`;
+
+const PercentLabelWrapper = styled.div`
+    margin: 0px;
+    display: inline-block;
+    padding-left: 2%;
+    vertical-align: middle;
+    float: left;
+`;
+
+const PercentHeader = styled.h2`
+    font-family: "Montserrat", sans-serif;
+    font-weight: 600;
+    margin-top: 0px;
+    font-size: 1em;
+    padding-left: 1em;
+    text-align: left;
 `;
 
 const Step4 = () => {
-    const [TVAmount, setTv] = useState("");
-    const [OnlineAdsAmount, setAds] = useState("");
-    const [BannersAmount, setBanners] = useState("");
-    const [InfluncersAmount, setInfluncers] = useState("");
+    const [TVAmount, setTv] = useState(0);
+    const [OnlineAdsAmount, setAds] = useState(0);
+    const [BannersAmount, setBanners] = useState(0);
+    const [InfluncersAmount, setInfluncers] = useState(0);
+    const [MarkUp, setMarkUp] = useState(0);
     const [user, setUser] = useContext(UserContext);
 
     const updateTV = (e) => {
         setTv(e.target.value);
+        console.log(e.target.value);
+
+        let TVMoney = parseInt(TVAmount);
+
+        // let money = user.tvMoneySpent + TVAmount;
+
+        setUser((preState) => ({
+            ...preState,
+            tvMoneySpent: TVMoney,
+        }));
     };
     const updateAds = (e) => {
         setAds(e.target.value);
+
+        let OnlineMoney = parseInt(OnlineAdsAmount);
+
+        setUser((preState) => ({
+            ...preState,
+            onlineMoneySpent: OnlineMoney,
+        }));
     };
     const updateBanners = (e) => {
         setBanners(e.target.value);
+
+        let BannerMoney = parseInt(BannersAmount);
+
+        setUser((preState) => ({
+            ...preState,
+            bannerMoneySpent: BannerMoney,
+        }));
     };
     const updateInfluncers = (e) => {
         setInfluncers(e.target.value);
+
+        let InfluncerMoney = parseInt(InfluncersAmount);
+
+        setUser((preState) => ({
+            ...preState,
+            influncersMoneySpent: InfluncerMoney,
+        }));
+    };
+
+    const updateMarkup = (e) => {
+        setMarkUp(e.target.value);
+        console.log(e);
     };
 
     const submitChoice = (e) => {
@@ -114,12 +177,14 @@ const Step4 = () => {
     };
 
     console.log(user);
-    console.log("TV " + TVAmount);
-    console.log("OnlineAds " + OnlineAdsAmount);
-    console.log("Banners " + BannersAmount);
-    console.log("Influncers " + InfluncersAmount);
+    // console.log("TV " + TVAmount);
+    // console.log("OnlineAds " + OnlineAdsAmount);
+    // console.log("Banners " + BannersAmount);
+    // console.log("Influncers " + InfluncersAmount);
 
-    let balance = user.money.maxiumValue - user.money.amountSpent;
+    const amountSpent = user.step1Spent + user.step2Spent + user.step3Spent;
+
+    let balance = user.maxiumValue - amountSpent;
 
     return (
         <>
@@ -154,25 +219,29 @@ const Step4 = () => {
                                                     type="range"
                                                     min="0"
                                                     max={balance}
+                                                    step="10000"
                                                     onChange={updateTV}
+                                                    onClick={updateTV}
                                                 />
                                             </SliderWrapper>
                                             <LabelWrapper>
-                                                {TVAmount > 0 && (
+                                                {user.tvMoneySpent > 0 && (
                                                     <Label
+                                                        pointing="left"
                                                         as="a"
                                                         size={"large"}
                                                         color={"orange"}
                                                     >
-                                                        ${TVAmount}
+                                                        ${user.tvMoneySpent}
                                                     </Label>
                                                 )}
-                                                {TVAmount === 0 && (
+                                                {user.tvMoneySpent === 0 && (
                                                     <Label
+                                                        pointing="left"
                                                         as="a"
                                                         size={"large"}
                                                     >
-                                                        ${TVAmount}
+                                                        ${user.tvMoneySpent}
                                                     </Label>
                                                 )}
                                             </LabelWrapper>
@@ -203,25 +272,30 @@ const Step4 = () => {
                                                     type="range"
                                                     min="0"
                                                     max={balance}
+                                                    step="10000"
                                                     onChange={updateAds}
+                                                    onClick={updateAds}
                                                 />
                                             </SliderWrapper>
                                             <LabelWrapper>
-                                                {OnlineAdsAmount > 0 && (
+                                                {user.onlineMoneySpent > 0 && (
                                                     <Label
+                                                        pointing="left"
                                                         as="a"
                                                         size={"large"}
                                                         color={"orange"}
                                                     >
-                                                        ${OnlineAdsAmount}
+                                                        ${user.onlineMoneySpent}
                                                     </Label>
                                                 )}
-                                                {OnlineAdsAmount === 0 && (
+                                                {user.onlineMoneySpent ===
+                                                    0 && (
                                                     <Label
+                                                        pointing="left"
                                                         as="a"
                                                         size={"large"}
                                                     >
-                                                        ${OnlineAdsAmount}
+                                                        ${user.onlineMoneySpent}
                                                     </Label>
                                                 )}
                                             </LabelWrapper>
@@ -250,25 +324,30 @@ const Step4 = () => {
                                                     type="range"
                                                     min="0"
                                                     max={balance}
+                                                    step="10000"
                                                     onChange={updateBanners}
+                                                    onClick={updateBanners}
                                                 />
                                             </SliderWrapper>
                                             <LabelWrapper>
-                                                {BannersAmount > 0 && (
+                                                {user.bannerMoneySpent > 0 && (
                                                     <Label
+                                                        pointing="left"
                                                         as="a"
                                                         size={"large"}
                                                         color={"orange"}
                                                     >
-                                                        ${BannersAmount}
+                                                        ${user.bannerMoneySpent}
                                                     </Label>
                                                 )}
-                                                {BannersAmount === 0 && (
+                                                {user.bannerMoneySpent ===
+                                                    0 && (
                                                     <Label
+                                                        pointing="left"
                                                         as="a"
                                                         size={"large"}
                                                     >
-                                                        ${BannersAmount}
+                                                        ${user.bannerMoneySpent}
                                                     </Label>
                                                 )}
                                             </LabelWrapper>
@@ -299,31 +378,69 @@ const Step4 = () => {
                                                     type="range"
                                                     min="0"
                                                     max={balance}
+                                                    step="10000"
                                                     onChange={updateInfluncers}
+                                                    onClick={updateInfluncers}
                                                 />
                                             </SliderWrapper>
                                             <LabelWrapper>
-                                                {InfluncersAmount > 0 && (
+                                                {user.influncersMoneySpent >
+                                                    0 && (
                                                     <Label
+                                                        pointing="left"
                                                         as="a"
                                                         size={"large"}
                                                         color={"orange"}
                                                     >
-                                                        ${InfluncersAmount}
+                                                        $
+                                                        {
+                                                            user.influncersMoneySpent
+                                                        }
                                                     </Label>
                                                 )}
-                                                {InfluncersAmount === 0 && (
+                                                {user.influncersMoneySpent ===
+                                                    0 && (
                                                     <Label
+                                                        pointing="left"
                                                         as="a"
                                                         size={"large"}
                                                     >
-                                                        ${InfluncersAmount}
+                                                        $
+                                                        {
+                                                            user.influncersMoneySpent
+                                                        }
                                                     </Label>
                                                 )}
                                             </LabelWrapper>
                                         </div>
                                     </Segment>
                                 </Segment.Group>
+                            </Grid.Column>
+                            <Grid.Column computer={16}>
+                                <PercentHeader>
+                                    Mark up your product
+                                </PercentHeader>
+                                <div>
+                                    <PercentWrapper>
+                                        <Slider
+                                            type="range"
+                                            min="0"
+                                            max="100"
+                                            step="10"
+                                            onChange={updateMarkup}
+                                            onClick={updateMarkup}
+                                        />
+                                    </PercentWrapper>
+                                    <PercentLabelWrapper>
+                                        <Label
+                                            pointing="left"
+                                            as="a"
+                                            size={"large"}
+                                        >
+                                            {user.step4Markup}%
+                                        </Label>
+                                    </PercentLabelWrapper>
+                                </div>
                             </Grid.Column>
                         </Grid>
                     </form>

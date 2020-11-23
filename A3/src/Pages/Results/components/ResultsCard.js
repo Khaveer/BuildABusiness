@@ -2,8 +2,6 @@ import React, { useContext } from "react";
 
 import styled from "styled-components";
 
-import { Segment } from "semantic-ui-react";
-
 import { UserContext } from "../../components/UserContext";
 
 const CardContainer = styled.div`
@@ -41,31 +39,31 @@ const TimerWrapper = styled.div`
 `;
 
 const ResultsCard = () => {
-    const [user, setUser] = useContext(UserContext);
+    const [user] = useContext(UserContext);
+
+    //let State = user.resultState1 + user.resultState2 + user.resultState3;
+    let State = 7;
+    console.log(State);
 
     return (
         <div>
             <CardContainer>
-                {user.step.resultState <= 2 && (
-                    <CardHeader>Your Dystopia</CardHeader>
-                )}
-                {user.step.resultState === 3 && (
-                    <CardHeader>Your Utopia</CardHeader>
-                )}
-                {user.step.resultState === 1 && (
+                {State <= 7 && <CardHeader>Your Dystopia</CardHeader>}
+                {State >= 8 && <CardHeader>Your Utopia</CardHeader>}
+                {State <= 5 && (
                     <CardText>
-                        Your business was successful in the sense you have a lot
-                        of revenue. Your use of cost-effective business model
-                        actions has led to your business being well off in the
-                        short term. However, your use of environmentally
+                        D Your business was successful in the sense you have a
+                        lot of revenue. Your use of cost-effective business
+                        model actions has led to your business being well off in
+                        the short term. However, your use of environmentally
                         unfriendly actions has affected your business long term.
                         Your business (and ones like yours) have led to this
                         dystopia. Check your results below to find out why.
                     </CardText>
                 )}
-                {user.step.resultState === 2 && (
+                {State <= 7 && (
                     <CardText>
-                        Your business was successful in the sense you have
+                        M Your business was successful in the sense you have
                         revenue, due to your use of cost-effective business
                         model actions. You used some environmentally friendly
                         actions, but while you haven’t negatively impacted the
@@ -75,18 +73,18 @@ const ResultsCard = () => {
                         your results below to find out why.
                     </CardText>
                 )}
-                {user.step.resultState === 3 && (
+                {State >= 8 && (
                     <CardText>
-                        Your business might have taken a little while to become
-                        successful, however due to your use of environmentally
-                        friendly actions, you (and businesses like yours) have
-                        led to this utopia. Your business will flourish in the
-                        long term as you will be known as a leader in positive
-                        change towards the issue of climate change. Your
-                        consumers will grow as there will be push towards
-                        sustainable businesses and boycotting non sustainable
-                        companies. Well done and thank you! Check out your
-                        results below.
+                        U Your business might have taken a little while to
+                        become successful, however due to your use of
+                        environmentally friendly actions, you (and businesses
+                        like yours) have led to this utopia. Your business will
+                        flourish in the long term as you will be known as a
+                        leader in positive change towards the issue of climate
+                        change. Your consumers will grow as there will be push
+                        towards sustainable businesses and boycotting non
+                        sustainable companies. Well done and thank you! Check
+                        out your results below.
                     </CardText>
                 )}
                 <TimerWrapper>Deadline in: 12 years, 17 days</TimerWrapper>

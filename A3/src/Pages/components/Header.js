@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import styled from "styled-components";
 
 import { Icon, Grid, Header } from "semantic-ui-react";
@@ -29,7 +29,6 @@ const ProgressStep = styled.div`
     width: 3em;
     display: table;
     background-color: #fe8a60;
-    z-index: -1;
     margin: auto;
     margin-top: 10px;
     padding: 0px;
@@ -71,9 +70,18 @@ const AfterHeader = styled(Header)`
 `;
 
 const FormHeader = (props) => {
-    const [user, setUser] = useContext(UserContext);
+    const [user] = useContext(UserContext);
 
-    const leftTospend = user.maxiumValue - user.amountSpent;
+    const amountSpent =
+        user.step1Spent +
+        user.step2Spent +
+        user.step3Spent +
+        user.tvMoneySpent +
+        user.onlineMoneySpent +
+        user.bannerMoneySpent +
+        user.influncersMoneySpent;
+
+    const leftTospend = user.maxiumValue - amountSpent;
 
     return (
         <div>

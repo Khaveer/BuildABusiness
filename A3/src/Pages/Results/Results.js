@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import styled from "styled-components";
+import { Grid } from "semantic-ui-react";
 
 import HeaderButtons from "../components/HeaderButtons";
 import ResultsCard from "./components/ResultsCard";
@@ -9,6 +10,8 @@ import { UserContext } from "../components/UserContext";
 
 import Dystopia from "../../Assets/Dystopia.png";
 import Utopia from "../../Assets/Utopia.png";
+
+import { Link } from "react-router-dom";
 
 const ResultWrapper = styled.div`
     padding: 4em;
@@ -23,12 +26,18 @@ const ResultsButtonWrapper = styled.div`
     width: 100%;
 `;
 
+const ResultSpacer = styled.div`
+    min-height: 10%;
+`;
+
 const Results = () => {
-    const [user, setUser] = useContext(UserContext);
+    const [user] = useContext(UserContext);
 
     var BackgroundImage = Dystopia;
 
-    if (user.step.resultState === 3) {
+    let State = user.resultState1 + user.resultState2 + user.resultState3;
+
+    if (State >= 8) {
         BackgroundImage = Utopia;
     }
 
@@ -48,7 +57,9 @@ const Results = () => {
                     <ResultsCard />
                 </ResultWrapper>
                 <ResultsButtonWrapper>
-                    <ResultsButtons />
+                    <Link to="/ResultsInfo">
+                        <ResultsButtons />
+                    </Link>
                 </ResultsButtonWrapper>
             </div>
         </div>

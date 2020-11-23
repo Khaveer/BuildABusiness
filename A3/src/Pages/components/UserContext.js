@@ -8,30 +8,56 @@ export const UserProvider = ({ children }) => {
         current: 1,
 
         //Money
-        amountSpent: 0,
-        maxiumValue: 3000000,
-        cost: 20,
+        step1Spent: 0,
+        step2Spent: 0,
+        step3Spent: 0,
+        //Step4 money spent
+        tvMoneySpent: 0,
+        onlineMoneySpent: 0,
+        bannerMoneySpent: 0,
+        influncersMoneySpent: 0,
+
+        maxiumValue: 2000000,
+        baseCost: 15,
+        step1Cost: 0,
+        step2Cost: 0,
+        step3Cost: 0,
+        step4Markup: 0,
 
         //Form data
-
-        //step1
-        cottonValue: 500000,
-        RPETValue: 1000000,
-        animalValue: 1500000,
-        syntheticValue: 2000000,
+        resultState1: 1,
+        resultState2: 1,
+        resultState3: 1,
+        //step10
+        cottonValue: 1000000,
+        RPETValue: 750000,
+        animalValue: 800000,
+        syntheticValue: 500000,
         //Step1 choice
         step1: null,
 
-        resultState: 1,
+        //Step2
+        europeNAValue: 900000,
+        LatinAmericValue: 500000,
+        eastEuropeValue: 200000,
+        midEastValue: 500000,
+        asiaValue: 300000,
+        pacficValue: 1000000,
+        africaValue: 150000,
+        //Step2 choice
+        step2: null,
 
-        step2: "",
-        step3: "",
-        step4: {
-            TV: 0,
-            onlineAd: 0,
-            banners: 0,
-            influencers: 0,
-        },
+        //Step3
+        trainValue: 250000,
+        cargoPlaneValue: 300000,
+        cargoShipValue: 200000,
+        dronesValue: 800000,
+        electricValue: 600000,
+        trucksValue: 250000,
+        //step3 choice
+        step3: null,
+
+        //Step4 choices
     });
 
     // const [user, setUser] = useState({
