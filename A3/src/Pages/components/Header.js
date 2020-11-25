@@ -85,7 +85,7 @@ const FormHeader = (props) => {
 
     return (
         <div>
-            <HeaderButtons />
+            <HeaderButtons resultsInfo={false} />
             <Wrapper>
                 <Grid container columns="equal">
                     <Grid.Column>

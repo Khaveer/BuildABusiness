@@ -18,29 +18,45 @@ const ButtonDivider = styled.div`
 
 const Divider = styled.hr`
     border-width: 0;
-    background-color: #BFBFBF;
+    background-color: #bfbfbf;
     height: 1px;
     margin-bottom: 0px;
 `;
 
-function HeaderButtons() {
+const HeaderButtons = (props) => {
     return (
         <HeaderWrapper>
             <ButtonWrapper>
-                {/* need to figure out where this links to TODO */}
-                <Link to="/">
-                    <Button basic animated compact color="blue">
-                        <Button.Content visible>Restart</Button.Content>
-                        <Button.Content hidden>
-                            <Icon name="redo" />
-                        </Button.Content>
-                    </Button>
-                </Link>
+                {props.resultsInfo === false && (
+                    <Link to="/">
+                        <Button basic animated compact color="blue">
+                            <Button.Content visible>Restart</Button.Content>
+                            <Button.Content hidden>
+                                <Icon name="redo" />
+                            </Button.Content>
+                        </Button>
+                    </Link>
+                )}
+                {props.resultsInfo === true && (
+                    <Link to="/results">
+                        <Button basic animated compact color="blue">
+                            <Button.Content visible>Back</Button.Content>
+                            <Button.Content hidden>
+                                <Icon name="angle left" />
+                            </Button.Content>
+                        </Button>
+                    </Link>
+                )}
                 <ButtonDivider />
-                <Button circular compact icon="help" />
+                {props.resultsInfo === false && (
+                    <Link to="Instructions">
+                        <Button circular compact icon="help" />
+                    </Link>
+                )}
             </ButtonWrapper>
             <Divider />
         </HeaderWrapper>
     );
-}
+};
+
 export default HeaderButtons;

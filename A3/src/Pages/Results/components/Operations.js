@@ -6,7 +6,8 @@ import { Segment, Grid, Image } from "semantic-ui-react";
 import styled from "styled-components";
 
 //import graphs
-import ResultsGraph1 from "../../../Assets/Results/Resources/BlueGraph.jpg";
+import ResultsGraph1 from "../../../Assets/Results/Operations/teeshirt.jpg";
+import ResultsGraph2 from "../../../Assets/Results/Operations/twotone.jpg";
 
 const InfoHeader = styled.h1`
     font-family: "Montserrat", sans-serif;
@@ -42,6 +43,26 @@ const StrongText = styled.b`
     text-align: left;
 `;
 
+const References = styled.div`
+    margin-top: 1em;
+    text-align: left;
+    word-wrap: break-word;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 600;
+    font-size: 1em;
+`;
+
+const ReferenceLinks = styled.a`
+    font-family: "Montserrat", sans-serif;
+    font-weight: 600;
+    font-size: 1em;
+    margin-top: 0px;
+    text-align: left;
+    float: left;
+    color: black;
+    word-wrap: break-word;
+`;
+
 const SegmentWrapper = styled.div`
     padding: 1em;
 `;
@@ -49,10 +70,35 @@ const SegmentWrapper = styled.div`
 const ResourceCard = () => {
     const [user, setUser] = useContext(UserContext);
 
+    const imageRandom = Math.floor(Math.random() * (3 - 1) + 1);
+
     return (
         <Grid>
             <Grid.Column computer={4}>
-                <Image src={ResultsGraph1} size="medium" />
+                {imageRandom === 1 && (
+                    <>
+                        <Image src={ResultsGraph1} size="medium" centered />
+                        <ReferenceLinks
+                            href=" https://sustainingcommunity.wordpress.com/2019/01/24/we-need-to-rethink-fast-fashion/"
+                            target="_blank"
+                        >
+                            [Image]
+                            https://sustainingcommunity.wordpress.com/2019/01/24/we-need-to-rethink-fast-fashion/
+                        </ReferenceLinks>
+                    </>
+                )}
+                {imageRandom === 2 && (
+                    <>
+                        <Image src={ResultsGraph2} size="medium" centered />
+                        <ReferenceLinks
+                            href="https://sanvt.com/journal/environmental-impact-of-fast-fashion-infographic/"
+                            target="_blank"
+                        >
+                            [Image]
+                            https://sanvt.com/journal/environmental-impact-of-fast-fashion-infographic/
+                        </ReferenceLinks>
+                    </>
+                )}
             </Grid.Column>
             <Grid.Column computer={12}>
                 <InfoHeader>Operations</InfoHeader>
@@ -77,7 +123,25 @@ const ResourceCard = () => {
                             friendly (75% environmentally friendly), with
                             Australia getting a 74% rating for environmentally
                             friendly.
-                        </InfoText>{" "}
+                            <References>
+                                References:<br></br>
+                                <ReferenceLinks
+                                    href="https://www.payscale.com/research/AU/Industry=Textile_Manufacturing/Hourly_Rate"
+                                    target="_blank"
+                                >
+                                    [1]
+                                    https://www.payscale.com/research/AU/Industry=Textile_Manufacturing/Hourly_Rate
+                                </ReferenceLinks>
+                                <br></br>
+                                <ReferenceLinks
+                                    href="https://www.careers.govt.nz/jobs-database/manufacturing/manufacturing/textile-process-operator/job-opportunities#:~:text=Pay%20for%20textile%20process%20operators,govt.nz%20research%2C%202018"
+                                    target="_blank"
+                                >
+                                    [2]
+                                    https://www.careers.govt.nz/jobs-database/manufacturing/manufacturing/textile-process-operator/job-opportunities#:~:text=Pay%20for%20textile%20process%20operators,govt.nz%20research%2C%202018
+                                </ReferenceLinks>
+                            </References>
+                        </InfoText>
                     </>
                 )}
                 {user.step2 === "europeNA" && (
@@ -104,7 +168,41 @@ const ResourceCard = () => {
                             [4], so while you might have invested properly you
                             need to push others like you to invest, or your hard
                             work won’t matter.
-                        </InfoText>{" "}
+                            <References>
+                                References:<br></br>
+                                <ReferenceLinks
+                                    href="https://sewport.com/countries-with-best-clothing-manufacturers"
+                                    target="_blank"
+                                >
+                                    [1]
+                                    https://sewport.com/countries-with-best-clothing-manufacturers
+                                </ReferenceLinks>
+                                <br></br>
+                                <ReferenceLinks
+                                    href="https://www.ic.gc.ca/app/scr/app/cis/salaries-salaires/313;jsessionid=0001EiypjN2nwYPmxigkuxqBLiJ:-219PGL"
+                                    target="_blank"
+                                >
+                                    [2]
+                                    https://www.ic.gc.ca/app/scr/app/cis/salaries-salaires/313;jsessionid=0001EiypjN2nwYPmxigkuxqBLiJ:-219PGL
+                                </ReferenceLinks>
+                                <br></br>
+                                <ReferenceLinks
+                                    href="https://shenglufashion.com/2018/03/04/wage-level-for-garment-workers-in-the-world-updated-in-2017/"
+                                    target="_blank"
+                                >
+                                    [3]
+                                    https://shenglufashion.com/2018/03/04/wage-level-for-garment-workers-in-the-world-updated-in-2017/
+                                </ReferenceLinks>
+                                <br></br>
+                                <ReferenceLinks
+                                    href="https://www.nature.com/articles/s41558-018-0282-y"
+                                    target="_blank"
+                                >
+                                    [4]
+                                    https://www.nature.com/articles/s41558-018-0282-y
+                                </ReferenceLinks>
+                            </References>
+                        </InfoText>
                     </>
                 )}
                 {user.step2 === "latinAmerica" && (
@@ -146,6 +244,40 @@ const ResourceCard = () => {
                             highest country was Costa Rica (67% environmentally
                             friendly) and lowest being Guyana (47%
                             environmentally friendly) [2].
+                            <References>
+                                References:<br></br>
+                                <ReferenceLinks
+                                    href="https://shenglufashion.com/2018/03/04/wage-level-for-garment-workers-in-the-world-updated-in-2017/"
+                                    target="_blank"
+                                >
+                                    [1]
+                                    https://shenglufashion.com/2018/03/04/wage-level-for-garment-workers-in-the-world-updated-in-2017/
+                                </ReferenceLinks>
+                                <br></br>
+                                <ReferenceLinks
+                                    href="https://sewport.com/countries-with-best-clothing-manufacturers"
+                                    target="_blank"
+                                >
+                                    [2]
+                                    https://sewport.com/countries-with-best-clothing-manufacturers
+                                </ReferenceLinks>
+                                <br></br>
+                                <ReferenceLinks
+                                    href="https://tradingeconomics.com/mexico/living-wage-individual#:~:text=Living%20Wage%20Individual%20in%20Mexico%20averaged%204232.50%20MXN%2FMonth%20from,4130%20MXN%2FMonth%20in%202017"
+                                    target="_blank"
+                                >
+                                    [3]
+                                    https://tradingeconomics.com/mexico/living-wage-individual#:~:text=Living%20Wage%20Individual%20in%20Mexico%20averaged%204232.50%20MXN%2FMonth%20from,4130%20MXN%2FMonth%20in%202017
+                                </ReferenceLinks>
+                                <br></br>
+                                <ReferenceLinks
+                                    href="https://phys.org/news/2019-01-wage-social-environmental-sustainability.html"
+                                    target="_blank"
+                                >
+                                    [4]
+                                    https://phys.org/news/2019-01-wage-social-environmental-sustainability.html
+                                </ReferenceLinks>
+                            </References>
                         </InfoText>
                     </>
                 )}
@@ -187,7 +319,41 @@ const ResourceCard = () => {
                             low cost of manufacturing, leading to a higher
                             output, more buying and thus more waste [3]. Until
                             the workers get granted an eu wide minimum wage,
-                            this problem will not be solved [4].{" "}
+                            this problem will not be solved [4].
+                            <References>
+                                References:<br></br>
+                                <ReferenceLinks
+                                    href="https://sewport.com/countries-with-best-clothing-manufacturers"
+                                    target="_blank"
+                                >
+                                    [1]
+                                    https://sewport.com/countries-with-best-clothing-manufacturers
+                                </ReferenceLinks>
+                                <br></br>
+                                <ReferenceLinks
+                                    href="https://www.euractiv.com/section/social-europe-jobs/news/textile-workers-paid-lower-in-eastern-europe-than-in-china-report-finds/"
+                                    target="_blank"
+                                >
+                                    [2]
+                                    https://www.euractiv.com/section/social-europe-jobs/news/textile-workers-paid-lower-in-eastern-europe-than-in-china-report-finds/
+                                </ReferenceLinks>
+                                <br></br>
+                                <ReferenceLinks
+                                    href="https://phys.org/news/2019-01-wage-social-environmental-sustainability.html"
+                                    target="_blank"
+                                >
+                                    [3]
+                                    https://phys.org/news/2019-01-wage-social-environmental-sustainability.html
+                                </ReferenceLinks>
+                                <br></br>
+                                <ReferenceLinks
+                                    href="https://www.euronews.com/2019/02/12/bulgarian-textile-workers-in-bulgaria-demand-eu-wide-minimum-wage"
+                                    target="_blank"
+                                >
+                                    [4]
+                                    https://www.euronews.com/2019/02/12/bulgarian-textile-workers-in-bulgaria-demand-eu-wide-minimum-wage
+                                </ReferenceLinks>
+                            </References>
                         </InfoText>
                     </>
                 )}
@@ -228,6 +394,56 @@ const ResourceCard = () => {
                             as of 2030 [6]. So not only will your workers be
                             treated less ethically, but when climate change
                             impacts, there will be more deaths.
+                            <References>
+                                References:<br></br>
+                                <ReferenceLinks
+                                    href="https://sewport.com/countries-with-best-clothing-manufacturers"
+                                    target="_blank"
+                                >
+                                    [1]
+                                    https://sewport.com/countries-with-best-clothing-manufacturers
+                                </ReferenceLinks>
+                                <br></br>
+                                <ReferenceLinks
+                                    href="https://shenglufashion.com/2018/03/04/wage-level-for-garment-workers-in-the-world-updated-in-2017/"
+                                    target="_blank"
+                                >
+                                    [2]
+                                    https://shenglufashion.com/2018/03/04/wage-level-for-garment-workers-in-the-world-updated-in-2017/
+                                </ReferenceLinks>
+                                <br></br>
+                                <ReferenceLinks
+                                    href="http://www.industriall-union.org/living-wages-a-major-demand-in-africa"
+                                    target="_blank"
+                                >
+                                    [3]
+                                    http://www.industriall-union.org/living-wages-a-major-demand-in-africa
+                                </ReferenceLinks>
+                                <br></br>
+                                <ReferenceLinks
+                                    href="https://phys.org/news/2019-01-wage-social-environmental-sustainability.html"
+                                    target="_blank"
+                                >
+                                    [4]
+                                    https://phys.org/news/2019-01-wage-social-environmental-sustainability.html
+                                </ReferenceLinks>
+                                <br></br>
+                                <ReferenceLinks
+                                    href="https://www.imf.org/external/pubs/ft/mena/04econ.htm"
+                                    target="_blank"
+                                >
+                                    [5]
+                                    https://www.imf.org/external/pubs/ft/mena/04econ.htm
+                                </ReferenceLinks>
+                                <br></br>
+                                <ReferenceLinks
+                                    href="https://www.international.gc.ca/world-monde/issues_development-enjeux_developpement/environmental_protection-protection_environnement/climate-climatiques.aspx?lang=eng"
+                                    target="_blank"
+                                >
+                                    [6]
+                                    https://www.international.gc.ca/world-monde/issues_development-enjeux_developpement/environmental_protection-protection_environnement/climate-climatiques.aspx?lang=eng
+                                </ReferenceLinks>
+                            </References>
                         </InfoText>
                     </>
                 )}
@@ -266,6 +482,48 @@ const ResourceCard = () => {
                             <StrongText>250,000 additional deaths</StrongText>{" "}
                             per year, from malnutrition, malaria, diarrhea and
                             heat stress” [5].
+                            <References>
+                                References:<br></br>
+                                <ReferenceLinks
+                                    href="https://academic.oup.com/wbro/article/32/1/21/2797759"
+                                    target="_blank"
+                                >
+                                    [1]
+                                    https://academic.oup.com/wbro/article/32/1/21/2797759
+                                </ReferenceLinks>
+                                <br></br>
+                                <ReferenceLinks
+                                    href="https://shenglufashion.com/2018/03/04/wage-level-for-garment-workers-in-the-world-updated-in-2017/"
+                                    target="_blank"
+                                >
+                                    [2]
+                                    https://shenglufashion.com/2018/03/04/wage-level-for-garment-workers-in-the-world-updated-in-2017/
+                                </ReferenceLinks>
+                                <br></br>
+                                <ReferenceLinks
+                                    href="https://sewport.com/countries-with-best-clothing-manufacturers"
+                                    target="_blank"
+                                >
+                                    [3]
+                                    https://sewport.com/countries-with-best-clothing-manufacturers
+                                </ReferenceLinks>
+                                <br></br>
+                                <ReferenceLinks
+                                    href="https://www.un.org/africarenewal/magazine/august-2011/africas-least-developed-lands-opportunity#:~:text=Since%201971%20when%20the%20least,countries%20have%20dominated%20the%20list.&text=Africa's%20LDCs%20are%20highly%20diverse,per%20cent%20in%20recent%20years."
+                                    target="_blank"
+                                >
+                                    [4]
+                                    https://www.un.org/africarenewal/magazine/august-2011/africas-least-developed-lands-opportunity#:~:text=Since%201971%20when%20the%20least,countries%20have%20dominated%20the%20list.&text=Africa's%20LDCs%20are%20highly%20diverse,per%20cent%20in%20recent%20years.
+                                </ReferenceLinks>
+                                <br></br>
+                                <ReferenceLinks
+                                    href="https://www.international.gc.ca/world-monde/issues_development-enjeux_developpement/environmental_protection-protection_environnement/climate-climatiques.aspx?lang=eng"
+                                    target="_blank"
+                                >
+                                    [5]
+                                    https://www.international.gc.ca/world-monde/issues_development-enjeux_developpement/environmental_protection-protection_environnement/climate-climatiques.aspx?lang=eng
+                                </ReferenceLinks>
+                            </References>
                         </InfoText>
                     </>
                 )}
@@ -317,6 +575,72 @@ const ResourceCard = () => {
                             [7] Over all Asia scores very low for environmental
                             friendliness, with the lowest country being Taiwan
                             (27% environmentally friendly) [4]
+                            <References>
+                                References:<br></br>
+                                <ReferenceLinks
+                                    href="https://www.usnews.com/news/best-countries/slideshows/countries-seen-to-have-the-lowest-manufacturing-costs"
+                                    target="_blank"
+                                >
+                                    [1]
+                                    https://www.usnews.com/news/best-countries/slideshows/countries-seen-to-have-the-lowest-manufacturing-costs
+                                </ReferenceLinks>
+                                <br></br>
+                                <ReferenceLinks
+                                    href="https://www.entrepreneur.com/article/269783"
+                                    target="_blank"
+                                >
+                                    [2]
+                                    https://www.entrepreneur.com/article/269783
+                                </ReferenceLinks>
+                                <br></br>
+                                <ReferenceLinks
+                                    href="https://phys.org/news/2019-01-wage-social-environmental-sustainability.html"
+                                    target="_blank"
+                                >
+                                    [3]
+                                    https://phys.org/news/2019-01-wage-social-environmental-sustainability.html
+                                </ReferenceLinks>
+                                <br></br>
+                                <ReferenceLinks
+                                    href="https://sewport.com/countries-with-best-clothing-manufacturers"
+                                    target="_blank"
+                                >
+                                    [4]
+                                    https://sewport.com/countries-with-best-clothing-manufacturers
+                                </ReferenceLinks>
+                                <br></br>
+                                <ReferenceLinks
+                                    href="https://upfront.scholastic.com/issues/2017-18/090417/the-real-cost-of-cheap-fashion.html#1070L"
+                                    target="_blank"
+                                >
+                                    [5]
+                                    https://upfront.scholastic.com/issues/2017-18/090417/the-real-cost-of-cheap-fashion.html#1070L
+                                </ReferenceLinks>
+                                <br></br>
+                                <ReferenceLinks
+                                    href="https://www.globenewswire.com/news-release/2020/03/10/1997918/0/en/Global-Textile-Market-Outlook-2020-2027-Manufacturers-Expected-to-Increase-Expenditure-Toward-Establishing-Strategic-Partnerships-with-E-Commerce-Portals.html#:~:text=The%20global%20textile%20market%20size,to%20drive%20the%20market%20growth"
+                                    target="_blank"
+                                >
+                                    [6]
+                                    https://www.globenewswire.com/news-release/2020/03/10/1997918/0/en/Global-Textile-Market-Outlook-2020-2027-Manufacturers-Expected-to-Increase-Expenditure-Toward-Establishing-Strategic-Partnerships-with-E-Commerce-Portals.html#:~:text=The%20global%20textile%20market%20size,to%20drive%20the%20market%20growth
+                                </ReferenceLinks>
+                                <br></br>
+                                <ReferenceLinks
+                                    href="https://www.nature.com/articles/s41558-018-0282-y"
+                                    target="_blank"
+                                >
+                                    [7]
+                                    https://www.nature.com/articles/s41558-018-0282-y
+                                </ReferenceLinks>
+                                <br></br>
+                                <ReferenceLinks
+                                    href="https://shenglufashion.com/2018/03/04/wage-level-for-garment-workers-in-the-world-updated-in-2017/"
+                                    target="_blank"
+                                >
+                                    [8]
+                                    https://shenglufashion.com/2018/03/04/wage-level-for-garment-workers-in-the-world-updated-in-2017/
+                                </ReferenceLinks>
+                            </References>
                         </InfoText>
                     </>
                 )}

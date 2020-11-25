@@ -5,7 +5,8 @@ import { Segment, Grid, Image } from "semantic-ui-react";
 
 import styled from "styled-components";
 
-import ResultsGraph1 from "../../../Assets/Results/Resources/BlueGraph.jpg";
+import ResultsGraph1 from "../../../Assets/Results/Logistics/Feature_Shipping_inlineGraph.jpg";
+import ResultsGraph2 from "../../../Assets/Results/Logistics/graph.png";
 
 const InfoHeader = styled.h1`
     font-family: "Montserrat", sans-serif;
@@ -41,6 +42,26 @@ const StrongText = styled.b`
     text-align: left;
 `;
 
+const References = styled.div`
+    margin-top: 1em;
+    text-align: left;
+    word-wrap: break-word;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 600;
+    font-size: 1em;
+`;
+
+const ReferenceLinks = styled.a`
+    font-family: "Montserrat", sans-serif;
+    font-weight: 600;
+    font-size: 1em;
+    margin-top: 0px;
+    text-align: left;
+    float: left;
+    color: black;
+    word-wrap: break-word;
+`;
+
 const SegmentWrapper = styled.div`
     padding: 1em;
 `;
@@ -48,10 +69,12 @@ const SegmentWrapper = styled.div`
 const LogisticsCard = () => {
     const [user, setUser] = useContext(UserContext);
 
+    const imageRandom = Math.floor(Math.random() * (3 - 1) + 1);
+
     return (
         <Grid>
             <Grid.Column computer={12}>
-                <InfoHeader>Resources</InfoHeader>
+                <InfoHeader>Logistics</InfoHeader>
                 {user.step3 === "drones" && (
                     <>
                         <HeaderInfoText>
@@ -81,7 +104,41 @@ const LogisticsCard = () => {
                             future its projected that it will cost a business
                             only $70 to transport your products 2260km [1]
                             saving you a lot of logistics cost for the future.
-                        </InfoText>{" "}
+                            <References>
+                                References:<br></br>
+                                <ReferenceLinks
+                                    href="https://www.fehrandpeers.com/drone-delivery/#:~:text=Delivery%20drones%20could%20greatly%20reduce,delivery%20in%20about%2030%20minutes"
+                                    target="_blank"
+                                >
+                                    [1]
+                                    https://www.fehrandpeers.com/drone-delivery/#:~:text=Delivery%20drones%20could%20greatly%20reduce,delivery%20in%20about%2030%20minutes
+                                </ReferenceLinks>
+                                <br></br>
+                                <ReferenceLinks
+                                    href="https://www.airspacemag.com/flight-today/delivery-by-drone-180955988/#:~:text=Eight%20drones%2C%20at%20a%20cost,platform%20also%20designed%20by%20Infinium"
+                                    target="_blank"
+                                >
+                                    [2]
+                                    hhttps://www.airspacemag.com/flight-today/delivery-by-drone-180955988/#:~:text=Eight%20drones%2C%20at%20a%20cost,platform%20also%20designed%20by%20Infinium
+                                </ReferenceLinks>
+                                <br></br>
+                                <ReferenceLinks
+                                    href="https://www.airspacemag.com/flight-today/delivery-by-drone-180955988/"
+                                    target="_blank"
+                                >
+                                    [3]
+                                    https://www.airspacemag.com/flight-today/delivery-by-drone-180955988/
+                                </ReferenceLinks>
+                                <br></br>
+                                <ReferenceLinks
+                                    href="https://energysavingtrust.org.uk/how-sustainable-are-drones/#:~:text=Drones%20are%20very%20environmentally%20friendly,up%20to%204.5kg%2F10lb"
+                                    target="_blank"
+                                >
+                                    [4]
+                                    https://energysavingtrust.org.uk/how-sustainable-are-drones/#:~:text=Drones%20are%20very%20environmentally%20friendly,up%20to%204.5kg%2F10lb
+                                </ReferenceLinks>
+                            </References>
+                        </InfoText>
                     </>
                 )}
                 {user.step3 === "electricVehicle" && (
@@ -109,6 +166,32 @@ const LogisticsCard = () => {
                             if you want to increase your revenue (due to
                             entering a global market) electric cars/trunks are
                             not for you.
+                            <References>
+                                References:<br></br>
+                                <ReferenceLinks
+                                    href="https://www.swissairroadcargo.com/electric-vehicles-for-transport-of-goods/"
+                                    target="_blank"
+                                >
+                                    [1]
+                                    https://www.swissairroadcargo.com/electric-vehicles-for-transport-of-goods/
+                                </ReferenceLinks>
+                                <br></br>
+                                <ReferenceLinks
+                                    href="https://www.mynrma.com.au/cars-and-driving/electric-vehicles/guide/electric-cars-in-australia#:~:text=How%20much%20does%20an%20EV,are%20powered%20exclusively%20by%20electricity"
+                                    target="_blank"
+                                >
+                                    [2]
+                                    https://www.mynrma.com.au/cars-and-driving/electric-vehicles/guide/electric-cars-in-australia#:~:text=How%20much%20does%20an%20EV,are%20powered%20exclusively%20by%20electricity
+                                </ReferenceLinks>
+                                <br></br>
+                                <ReferenceLinks
+                                    href="https://www.afar.com/magazine/the-most-and-least-eco-friendly-ways-to-travel"
+                                    target="_blank"
+                                >
+                                    [3]
+                                    https://www.afar.com/magazine/the-most-and-least-eco-friendly-ways-to-travel
+                                </ReferenceLinks>
+                            </References>
                         </InfoText>
                     </>
                 )}
@@ -138,6 +221,32 @@ const LogisticsCard = () => {
                             due to not accessing the global markets. It is the
                             2nd fastest mode of transportation [2] , and costs
                             less than other modes like trucks ($13,560) [1].
+                            <References>
+                                References:<br></br>
+                                <ReferenceLinks
+                                    href="https://www.allianceexperts.com/en/knowledge/transportation-for-international-trade/"
+                                    target="_blank"
+                                >
+                                    [1]
+                                    https://www.allianceexperts.com/en/knowledge/transportation-for-international-trade/
+                                </ReferenceLinks>
+                                <br></br>
+                                <ReferenceLinks
+                                    href="https://www.shiprocket.in/blog/best-shipping-mode-for-ecommerce-business/#:~:text=Shipping%20Through%20Air,-In%20this%20mode&text=Air%20transport%20is%20undoubtedly%20the%20fastest%20mode%20of%20transport"
+                                    target="_blank"
+                                >
+                                    [2]
+                                    https://www.shiprocket.in/blog/best-shipping-mode-for-ecommerce-business/#:~:text=Shipping%20Through%20Air,-In%20this%20mode&text=Air%20transport%20is%20undoubtedly%20the%20fastest%20mode%20of%20transport
+                                </ReferenceLinks>
+                                <br></br>
+                                <ReferenceLinks
+                                    href="https://www.naturvardsverket.se/Documents/publikationer/91-620-9962-0.pdf?pid=4363"
+                                    target="_blank"
+                                >
+                                    [3]
+                                    https://www.naturvardsverket.se/Documents/publikationer/91-620-9962-0.pdf?pid=4363
+                                </ReferenceLinks>
+                            </References>
                         </InfoText>
                     </>
                 )}
@@ -160,7 +269,41 @@ const LogisticsCard = () => {
                             around $600 for a 30ft container [1] (1.8 tones)
                             [2]. However, shipping using this method is
                             incredibly slow [3].
-                        </InfoText>{" "}
+                            <References>
+                                References:<br></br>
+                                <ReferenceLinks
+                                    href="https://www.allianceexperts.com/en/knowledge/transportation-for-international-trade/"
+                                    target="_blank"
+                                >
+                                    [1]
+                                    https://www.allianceexperts.com/en/knowledge/transportation-for-international-trade/
+                                </ReferenceLinks>
+                                <br></br>
+                                <ReferenceLinks
+                                    href="https://www.bison-jacks.com/resources/lp/how-much-does-a-shipping-container-weigh/#:~:text=Typically%20an%20empty%2020%20foot,containers%20tend%20to%20be%20heavier"
+                                    target="_blank"
+                                >
+                                    [2]
+                                    https://www.bison-jacks.com/resources/lp/how-much-does-a-shipping-container-weigh/#:~:text=Typically%20an%20empty%2020%20foot,containers%20tend%20to%20be%20heavier
+                                </ReferenceLinks>
+                                <br></br>
+                                <ReferenceLinks
+                                    href="https://www.shiprocket.in/blog/best-shipping-mode-for-ecommerce-business/#:~:text=Shipping%20Through%20Air,-In%20this%20mode&text=Air%20transport%20is%20undoubtedly%20the%20fastest%20mode%20of%20transport"
+                                    target="_blank"
+                                >
+                                    [3]
+                                    https://www.shiprocket.in/blog/best-shipping-mode-for-ecommerce-business/#:~:text=Shipping%20Through%20Air,-In%20this%20mode&text=Air%20transport%20is%20undoubtedly%20the%20fastest%20mode%20of%20transport
+                                </ReferenceLinks>
+                                <br></br>
+                                <ReferenceLinks
+                                    href="https://www.naturvardsverket.se/Documents/publikationer/91-620-9962-0.pdf?pid=4363"
+                                    target="_blank"
+                                >
+                                    [4]
+                                    https://www.naturvardsverket.se/Documents/publikationer/91-620-9962-0.pdf?pid=4363
+                                </ReferenceLinks>
+                            </References>
+                        </InfoText>
                     </>
                 )}
                 {user.step3 === "truck" && (
@@ -183,6 +326,24 @@ const LogisticsCard = () => {
                             [2]. The continual rate for trucks is 15,820,
                             however, this is always dependent on access to roads
                             and conditions [1].
+                            <References>
+                                References:<br></br>
+                                <ReferenceLinks
+                                    href="https://www.allianceexperts.com/en/knowledge/transportation-for-international-trade/"
+                                    target="_blank"
+                                >
+                                    [1]
+                                    https://www.allianceexperts.com/en/knowledge/transportation-for-international-trade/
+                                </ReferenceLinks>
+                                <br></br>
+                                <ReferenceLinks
+                                    href="https://www.naturvardsverket.se/Documents/publikationer/91-620-9962-0.pdf?pid=4363"
+                                    target="_blank"
+                                >
+                                    [2]
+                                    https://www.naturvardsverket.se/Documents/publikationer/91-620-9962-0.pdf?pid=4363
+                                </ReferenceLinks>
+                            </References>
                         </InfoText>
                     </>
                 )}
@@ -213,12 +374,68 @@ const LogisticsCard = () => {
                             relationship will be challenged, as society has
                             begun a fight shame movement, gaining momentum
                             around the world [4].
+                            <References>
+                                References:<br></br>
+                                <ReferenceLinks
+                                    href="https://www.allianceexperts.com/en/knowledge/transportation-for-international-trade/"
+                                    target="_blank"
+                                >
+                                    [1]
+                                    https://www.allianceexperts.com/en/knowledge/transportation-for-international-trade/
+                                </ReferenceLinks>
+                                <br></br>
+                                <ReferenceLinks
+                                    href="https://www.shiprocket.in/blog/best-shipping-mode-for-ecommerce-business/#:~:text=Shipping%20Through%20Air,-In%20this%20mode&text=Air%20transport%20is%20undoubtedly%20the%20fastest%20mode%20of%20transport"
+                                    target="_blank"
+                                >
+                                    [2]
+                                    https://www.shiprocket.in/blog/best-shipping-mode-for-ecommerce-business/#:~:text=Shipping%20Through%20Air,-In%20this%20mode&text=Air%20transport%20is%20undoubtedly%20the%20fastest%20mode%20of%20transport{" "}
+                                </ReferenceLinks>
+                                <br></br>
+                                <ReferenceLinks
+                                    href="https://www.naturvardsverket.se/Documents/publikationer/91-620-9962-0.pdf?pid=4363"
+                                    target="_blank"
+                                >
+                                    [3]
+                                    https://www.naturvardsverket.se/Documents/publikationer/91-620-9962-0.pdf?pid=4363
+                                </ReferenceLinks>
+                                <br></br>
+                                <ReferenceLinks
+                                    href="https://www.afar.com/magazine/how-flygskam-or-flight-shame-could-change-the-way-we-all-travel"
+                                    target="_blank"
+                                >
+                                    [4]
+                                    https://www.afar.com/magazine/how-flygskam-or-flight-shame-could-change-the-way-we-all-travel
+                                </ReferenceLinks>
+                            </References>
                         </InfoText>
                     </>
                 )}
             </Grid.Column>
             <Grid.Column computer={4}>
-                <Image src={ResultsGraph1} size="medium" />
+                {imageRandom === 1 && (
+                    <>
+                        <Image src={ResultsGraph1} size="medium" centered />
+                        <ReferenceLinks
+                            href="https://ensia.com/features/ship-carbon/"
+                            target="_blank"
+                        >
+                            [Image] https://ensia.com/features/ship-carbon/
+                        </ReferenceLinks>
+                    </>
+                )}
+                {imageRandom === 2 && (
+                    <>
+                        <Image src={ResultsGraph2} size="medium" centered />
+                        <ReferenceLinks
+                            href="https://ec.europa.eu/clima/policies/transport_en"
+                            target="_blank"
+                        >
+                            [Image]
+                            https://ec.europa.eu/clima/policies/transport_en
+                        </ReferenceLinks>
+                    </>
+                )}
             </Grid.Column>
         </Grid>
     );

@@ -23,12 +23,12 @@ const instructions = [
         description: (
             <text>
                 Welcome, you are creating a business model for a fashion
-                business. You will have $3,000,000 to spend, the graph will
+                business. You will have $2,000,000 to spend, the graph will
                 indicate how much you have left. <br /> <br /> If you use up all
                 your money prior to finishing the business model, you wont be
-                able to finish your business, you must use your money wisely! <br/> <br/> For the purposes of 
-                this game we have exagerated the real costs of the business model
-                actions.{" "}
+                able to finish your business, you must use your money wisely!{" "}
+                <br /> <br /> For the purposes of this game we have exagerated
+                the real costs of the business model actions.{" "}
             </text>
         ),
     },

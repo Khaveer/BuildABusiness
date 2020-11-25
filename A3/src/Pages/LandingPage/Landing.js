@@ -8,8 +8,8 @@ import { Link } from "react-router-dom";
 import desktopImage from "../../Assets/Background.png";
 
 const Wrapper = styled.section`
-    padding-top: 2em;
-    padding-left: 1em;
+    padding-top: 5em;
+    padding-left: 5em;
     text-align: left;
     max-width: 1200px;
 `;
@@ -60,7 +60,7 @@ function Landing() {
                     figure out your shipping logistics and explore marketing!
                 </IntroText>
                 <IntroText>
-                    You have $3,000,000 to spend, spend it wisely.
+                    You have $2,000,000 to spend, spend it wisely.
                 </IntroText>
                 <br></br>
                 <ButtonWrapper>

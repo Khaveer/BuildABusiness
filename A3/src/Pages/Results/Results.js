@@ -43,14 +43,14 @@ const Results = () => {
 
     return (
         <div>
-            <HeaderButtons />
+            <HeaderButtons resultsInfo={false} />
             <div
                 style={{
                     backgroundImage: `url(${BackgroundImage})`,
                     backgroundPosition: "center center",
                     backgroundRepeat: "no-repeat",
                     backgroundSize: "cover",
-                    height: "93.5vh",
+                    height: "95vh",
                 }}
             >
                 <ResultWrapper>

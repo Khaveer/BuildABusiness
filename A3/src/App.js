@@ -19,10 +19,10 @@ function App() {
                     <Route path="/" exact>
                         <LandingPage />
                     </Route>
-                    <Route path="/Instructions">
-                        <Instructions />
-                    </Route>
                     <UserProvider>
+                        <Route path="/Instructions">
+                            <Instructions />
+                        </Route>
                         <Route path="/Game">
                             <GameScreen />
                         </Route>

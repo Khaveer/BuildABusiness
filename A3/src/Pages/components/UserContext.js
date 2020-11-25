@@ -16,6 +16,8 @@ export const UserProvider = ({ children }) => {
         onlineMoneySpent: 0,
         bannerMoneySpent: 0,
         influncersMoneySpent: 0,
+        //
+        difference: 0,
 
         maxiumValue: 2000000,
         baseCost: 15,

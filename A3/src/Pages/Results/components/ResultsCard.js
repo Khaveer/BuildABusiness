@@ -25,6 +25,7 @@ const CardText = styled.p`
     line-height: 2em;
     word-wrap: break-word;
     padding-left: 2em;
+    padding-right: 2em;
 `;
 
 const TimerWrapper = styled.div`
@@ -52,18 +53,18 @@ const ResultsCard = () => {
                 {State >= 8 && <CardHeader>Your Utopia</CardHeader>}
                 {State <= 5 && (
                     <CardText>
-                        D Your business was successful in the sense you have a
-                        lot of revenue. Your use of cost-effective business
-                        model actions has led to your business being well off in
-                        the short term. However, your use of environmentally
+                        Your business was successful in the sense you have a lot
+                        of revenue. Your use of cost-effective business model
+                        actions has led to your business being well off in the
+                        short term. However, your use of environmentally
                         unfriendly actions has affected your business long term.
                         Your business (and ones like yours) have led to this
                         dystopia. Check your results below to find out why.
                     </CardText>
                 )}
-                {State <= 7 && (
+                {State >= 6 && State <= 7 && (
                     <CardText>
-                        M Your business was successful in the sense you have
+                        Your business was successful in the sense you have
                         revenue, due to your use of cost-effective business
                         model actions. You used some environmentally friendly
                         actions, but while you haven’t negatively impacted the
@@ -75,19 +76,21 @@ const ResultsCard = () => {
                 )}
                 {State >= 8 && (
                     <CardText>
-                        U Your business might have taken a little while to
-                        become successful, however due to your use of
-                        environmentally friendly actions, you (and businesses
-                        like yours) have led to this utopia. Your business will
-                        flourish in the long term as you will be known as a
-                        leader in positive change towards the issue of climate
-                        change. Your consumers will grow as there will be push
-                        towards sustainable businesses and boycotting non
-                        sustainable companies. Well done and thank you! Check
-                        out your results below.
+                        Your business might have taken a little while to become
+                        successful, however due to your use of environmentally
+                        friendly actions, you (and businesses like yours) have
+                        led to this utopia. Your business will flourish in the
+                        long term as you will be known as a leader in positive
+                        change towards the issue of climate change. Your
+                        consumers will grow as there will be push towards
+                        sustainable businesses and boycotting non sustainable
+                        companies. Well done and thank you! Check out your
+                        results below.
                     </CardText>
                 )}
-                <TimerWrapper>Deadline in: 12 years, 17 days</TimerWrapper>
+                <TimerWrapper>
+                    Estimated date we will reach 1.5°C is 24 November 2032
+                </TimerWrapper>
             </CardContainer>
         </div>
     );

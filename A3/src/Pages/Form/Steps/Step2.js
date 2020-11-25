@@ -21,7 +21,9 @@ import asia from "../../../Assets/FromAssests/Step2/Asia.svg";
 import pacfic from "../../../Assets/FromAssests/Step2/Pacific.svg";
 import africa from "../../../Assets/FromAssests/Step2/Sub-SaharanAfrica.svg";
 
-const GameWrapper = styled.div``;
+const GameWrapper = styled.div`
+    padding-top: 5em;
+`;
 
 const InfoWrapper = styled.div`
     width: 15%;
@@ -58,6 +60,15 @@ const ImageHover = styled.img`
 
 const SelectedImage = styled.img`
     width: 70%;
+`;
+
+const StrongText = styled.b`
+    font-family: "Montserrat", sans-serif;
+    font-weight: 600;
+    font-size: 1em;
+    line-height: 2em;
+    word-wrap: break-word;
+    text-align: left;
 `;
 
 const Step2 = () => {
@@ -140,12 +151,16 @@ const Step2 = () => {
                             <Popup
                                 content="Office in Europe with High standards"
                                 header={
-                                    <NumberFormat
-                                        value={user.europeNAValue}
-                                        displayType={"text"}
-                                        thousandSeparator={true}
-                                        prefix={"$"}
-                                    />
+                                    <>
+                                        <StrongText>
+                                            <NumberFormat
+                                                value={user.europeNAValue}
+                                                displayType={"text"}
+                                                thousandSeparator={true}
+                                                prefix={"$"}
+                                            />
+                                        </StrongText>
+                                    </>
                                 }
                                 trigger={
                                     decsion === "europeNA" ? (
@@ -170,12 +185,16 @@ const Step2 = () => {
                             <Popup
                                 content="Cost effective option located in central or south america"
                                 header={
-                                    <NumberFormat
-                                        value={user.LatinAmericValue}
-                                        displayType={"text"}
-                                        thousandSeparator={true}
-                                        prefix={"$"}
-                                    />
+                                    <>
+                                        <StrongText>
+                                            <NumberFormat
+                                                value={user.LatinAmericValue}
+                                                displayType={"text"}
+                                                thousandSeparator={true}
+                                                prefix={"$"}
+                                            />
+                                        </StrongText>
+                                    </>
                                 }
                                 trigger={
                                     decsion === "latinAmerica" ? (
@@ -200,12 +219,16 @@ const Step2 = () => {
                             <Popup
                                 content="Located in Eastern Europe, standards are unknown"
                                 header={
-                                    <NumberFormat
-                                        value={user.eastEuropeValue}
-                                        displayType={"text"}
-                                        thousandSeparator={true}
-                                        prefix={"$"}
-                                    />
+                                    <>
+                                        <StrongText>
+                                            <NumberFormat
+                                                value={user.eastEuropeValue}
+                                                displayType={"text"}
+                                                thousandSeparator={true}
+                                                prefix={"$"}
+                                            />
+                                        </StrongText>
+                                    </>
                                 }
                                 trigger={
                                     decsion === "eastEurope" ? (
@@ -230,12 +253,16 @@ const Step2 = () => {
                             <Popup
                                 content="Manufacturing in the Middle East or North Africa. Facility standards are unknown"
                                 header={
-                                    <NumberFormat
-                                        value={user.midEastValue}
-                                        displayType={"text"}
-                                        thousandSeparator={true}
-                                        prefix={"$"}
-                                    />
+                                    <>
+                                        <StrongText>
+                                            <NumberFormat
+                                                value={user.midEastValue}
+                                                displayType={"text"}
+                                                thousandSeparator={true}
+                                                prefix={"$"}
+                                            />
+                                        </StrongText>
+                                    </>
                                 }
                                 trigger={
                                     decsion === "midEast" ? (
@@ -260,12 +287,16 @@ const Step2 = () => {
                             <Popup
                                 content="Operations located in Asia. Has a high output but location standards are unknown."
                                 header={
-                                    <NumberFormat
-                                        value={user.asiaValue}
-                                        displayType={"text"}
-                                        thousandSeparator={true}
-                                        prefix={"$"}
-                                    />
+                                    <>
+                                        <StrongText>
+                                            <NumberFormat
+                                                value={user.asiaValue}
+                                                displayType={"text"}
+                                                thousandSeparator={true}
+                                                prefix={"$"}
+                                            />
+                                        </StrongText>
+                                    </>
                                 }
                                 trigger={
                                     decsion === "asia" ? (
@@ -289,7 +320,18 @@ const Step2 = () => {
                         <Grid.Column mobile={16} computer={4}>
                             <Popup
                                 content="Located in the Pacific. Location holds a high standard. "
-                                header="Pacific"
+                                header={
+                                    <>
+                                        <StrongText>
+                                            <NumberFormat
+                                                value={user.pacficValue}
+                                                displayType={"text"}
+                                                thousandSeparator={true}
+                                                prefix={"$"}
+                                            />
+                                        </StrongText>
+                                    </>
+                                }
                                 trigger={
                                     decsion === "pacfic" ? (
                                         <SelectedImage
@@ -312,7 +354,18 @@ const Step2 = () => {
                         <Grid.Column mobile={16} computer={4}>
                             <Popup
                                 content="Facility located in Central or South Africa. Standards are unknown."
-                                header="Africa"
+                                header={
+                                    <>
+                                        <StrongText>
+                                            <NumberFormat
+                                                value={user.asiaValue}
+                                                displayType={"text"}
+                                                thousandSeparator={true}
+                                                prefix={"$"}
+                                            />
+                                        </StrongText>
+                                    </>
+                                }
                                 trigger={
                                     decsion === "africa" ? (
                                         <SelectedImage

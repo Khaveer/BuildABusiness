@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Button, Icon } from "semantic-ui-react";
 import {
     ButtonNext,
@@ -7,11 +7,14 @@ import {
     WithStore,
 } from "pure-react-carousel";
 
+import { UserContext } from "../components/UserContext";
+
 // do we really want a skip button? we only have like 2 screens?
 
 import { Link } from "react-router-dom";
 
 export default function Controls({ final }) {
+    const [user, setUser] = useContext(UserContext);
     let buttons = (
         <>
             <ButtonLast class="ui blue basic button">Skip</ButtonLast>
@@ -37,12 +40,22 @@ export default function Controls({ final }) {
                     icon="chevron left"
                 />
                 <Link to="/Game">
-                    <Button
-                        class="ui orange-btn button"
-                        style={{ marginRight: 20 }}
-                    >
-                        Ready to play!
-                    </Button>
+                    {user.current > 1 && (
+                        <Button
+                            class="ui orange-btn button"
+                            style={{ marginRight: 20 }}
+                        >
+                            Return to game!
+                        </Button>
+                    )}
+                    {user.current === 1 && (
+                        <Button
+                            class="ui orange-btn button"
+                            style={{ marginRight: 20 }}
+                        >
+                            Ready to play!
+                        </Button>
+                    )}
                 </Link>
             </>
         );

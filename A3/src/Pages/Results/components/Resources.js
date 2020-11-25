@@ -6,6 +6,7 @@ import { Grid, Image } from "semantic-ui-react";
 import styled from "styled-components";
 
 import ResultsGraph1 from "../../../Assets/Results/Resources/BlueGraph.jpg";
+import ResultsGraph2 from "../../../Assets/Results/Resources/Coloured.png";
 
 const InfoHeader = styled.h1`
     font-family: "Montserrat", sans-serif;
@@ -32,6 +33,26 @@ const HeaderInfoText = styled.h1`
     text-align: left;
 `;
 
+const References = styled.div`
+    margin-top: 1em;
+    text-align: left;
+    word-wrap: break-word;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 600;
+    font-size: 1em;
+`;
+
+const ReferenceLinks = styled.a`
+    font-family: "Montserrat", sans-serif;
+    font-weight: 600;
+    font-size: 1em;
+    margin-top: 0px;
+    text-align: left;
+    float: left;
+    color: black;
+    word-wrap: break-word;
+`;
+
 const StrongText = styled.b`
     font-family: "Montserrat", sans-serif;
     font-weight: 600;
@@ -43,6 +64,8 @@ const StrongText = styled.b`
 
 const ResourceCard = () => {
     const [user, setUser] = useContext(UserContext);
+
+    const imageRandom = Math.floor(Math.random() * (3 - 1) + 1);
 
     return (
         <Grid>
@@ -73,7 +96,25 @@ const ResourceCard = () => {
                                 one extra large T shirt.
                             </StrongText>{" "}
                             [1]
-                        </InfoText>{" "}
+                            <References>
+                                References:<br></br>
+                                <ReferenceLinks
+                                    href="https://fashionunited.com/news/fashion/how-sustainable-is-recycled-polyester/2018111524577"
+                                    target="_blank"
+                                >
+                                    [1]
+                                    https://fashionunited.com/news/fashion/how-sustainable-is-recycled-polyester/2018111524577
+                                </ReferenceLinks>
+                                <br></br>
+                                <ReferenceLinks
+                                    href="https://www.theguardian.com/environment/2016/jun/20/microfibers-plastic-pollution-oceans-patagonia-synthetic-clothes-microbeads"
+                                    target="_blank"
+                                >
+                                    [2]
+                                    https://www.theguardian.com/environment/2016/jun/20/microfibers-plastic-pollution-oceans-patagonia-synthetic-clothes-microbeads
+                                </ReferenceLinks>
+                            </References>
+                        </InfoText>
                     </>
                 )}
                 {user.step1 === "Cotton" && (
@@ -102,6 +143,24 @@ const ResourceCard = () => {
                                 labour or forced labour.
                             </StrongText>{" "}
                             [2]
+                            <References>
+                                References:<br></br>
+                                <ReferenceLinks
+                                    href="https://goodonyou.eco/how-ethical-is-cotton/"
+                                    target="_blank"
+                                >
+                                    [1]
+                                    https://goodonyou.eco/how-ethical-is-cotton/
+                                </ReferenceLinks>
+                                <br></br>
+                                <ReferenceLinks
+                                    href="http://cottonupguide.org/why-source-sustainable-cotton/challenges-for-cotton/#1518784832966-88dad5a9-3507"
+                                    target="_blank"
+                                >
+                                    [2]
+                                    http://cottonupguide.org/why-source-sustainable-cotton/challenges-for-cotton/#1518784832966-88dad5a9-3507
+                                </ReferenceLinks>
+                            </References>
                         </InfoText>
                     </>
                 )}
@@ -140,6 +199,32 @@ const ResourceCard = () => {
                             and expose workers to toxic chemicals that cause
                             neurological damage, cancer and other potentially
                             fatal conditions. [3]
+                            <References>
+                                References:<br></br>
+                                <ReferenceLinks
+                                    href="https://goodonyou.eco/material-guide-polyester-2/"
+                                    target="_blank"
+                                >
+                                    [1]
+                                    https://goodonyou.eco/material-guide-polyester-2/
+                                </ReferenceLinks>
+                                <br></br>
+                                <ReferenceLinks
+                                    href="https://www.forbes.com/sites/jamesconca/2015/12/03/making-climate-change-fashionable-the-garment-industry-takes-on-global-warming/#3de386d779e4"
+                                    target="_blank"
+                                >
+                                    [2]
+                                    https://www.forbes.com/sites/jamesconca/2015/12/03/making-climate-change-fashionable-the-garment-industry-takes-on-global-warming/#3de386d779e4
+                                </ReferenceLinks>
+                                <br></br>
+                                <ReferenceLinks
+                                    href="https://sewport.com/fabrics-directory/polyester-fabric"
+                                    target="_blank"
+                                >
+                                    [3]
+                                    https://sewport.com/fabrics-directory/polyester-fabric
+                                </ReferenceLinks>
+                            </References>
                         </InfoText>
                     </>
                 )}
@@ -168,12 +253,61 @@ const ResourceCard = () => {
                             80 cubic meters of wastewater containing dangerous
                             chemicals like Chromium and other dangerous
                             compounds.
-                        </InfoText>{" "}
+                            <References>
+                                References:<br></br>
+                                <ReferenceLinks
+                                    href="https://goodonyou.eco/the-hidden-costs-of-leather/"
+                                    target="_blank"
+                                >
+                                    [1]
+                                    https://goodonyou.eco/the-hidden-costs-of-leather/
+                                </ReferenceLinks>
+                                <br></br>
+                                <ReferenceLinks
+                                    href="https://www.pbs.org/newshour/show/bangladeshs-leather-industry-exposes-workers-and-children-to-toxic-hazards"
+                                    target="_blank"
+                                >
+                                    [2]
+                                    https://www.pbs.org/newshour/show/bangladeshs-leather-industry-exposes-workers-and-children-to-toxic-hazards
+                                </ReferenceLinks>
+                                <br></br>
+                                <ReferenceLinks
+                                    href="https://www.gizmodo.com.au/2014/06/how-leather-is-slowly-killing-the-people-and-places-that-make-it/"
+                                    target="_blank"
+                                >
+                                    [3]
+                                    https://www.gizmodo.com.au/2014/06/how-leather-is-slowly-killing-the-people-and-places-that-make-it/
+                                </ReferenceLinks>
+                            </References>
+                        </InfoText>
                     </>
                 )}
             </Grid.Column>
             <Grid.Column computer={4}>
-                <Image src={ResultsGraph1} size="medium" />
+                {imageRandom === 1 && (
+                    <>
+                        <Image src={ResultsGraph1} size="medium" centered />
+                        <ReferenceLinks
+                            href="https://www.hawthornintl.com/impact-of-fast-fashion"
+                            target="_blank"
+                        >
+                            [Image]
+                            https://www.hawthornintl.com/impact-of-fast-fashion
+                        </ReferenceLinks>
+                    </>
+                )}
+                {imageRandom === 2 && (
+                    <>
+                        <Image src={ResultsGraph2} size="medium" centered />
+                        <ReferenceLinks
+                            href="https://www.nature.com/articles/s43017-020-0039-9"
+                            target="_blank"
+                        >
+                            [Image]
+                            https://www.nature.com/articles/s43017-020-0039-9
+                        </ReferenceLinks>
+                    </>
+                )}
             </Grid.Column>
         </Grid>
     );

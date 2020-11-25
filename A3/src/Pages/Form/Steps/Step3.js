@@ -22,6 +22,7 @@ import Footer from "../Footer";
 const GameWrapper = styled.div`
     width: 100%;
     overflow: hidden;
+    padding-top: 3em;
 `;
 
 const InfoWrapper = styled.div`
@@ -56,7 +57,6 @@ const SegmentWrapper = styled.div`
     font-size: 1em;
     text-align: left;
     padding-top: 0.5em;
-    color: rgba(0, 0, 0, 56%);
 `;
 
 const ChoiceHeader = styled.label`
@@ -68,8 +68,13 @@ const ChoiceHeader = styled.label`
 `;
 
 const ChoiceWrapper = styled.div`
-    padding-bottom: 0px;
+    padding-bottom: 2em;
 `;
+
+const LastChoiceWrapper = styled.div`
+    padding-bottom: 0em;
+`;
+
 const DeliveryWrapper = styled.div`
     font-family: "Montserrat", sans-serif;
     font-weight: 600;
@@ -199,7 +204,7 @@ const Step3 = () => {
                                                 <DeliveryWrapper>
                                                     3 Months / Extended Time
                                                     <br></br>
-                                                    distance of delivery?
+                                                    Local delivery
                                                 </DeliveryWrapper>
                                             </ChoiceWrapper>
                                             <ChoiceWrapper>
@@ -229,7 +234,7 @@ const Step3 = () => {
                                                 <DeliveryWrapper>
                                                     2 Weeks / Short Time
                                                     <br></br>
-                                                    distance of delivery?
+                                                    International delivery
                                                 </DeliveryWrapper>
                                             </ChoiceWrapper>
                                             <ChoiceWrapper>
@@ -259,7 +264,7 @@ const Step3 = () => {
                                                 <DeliveryWrapper>
                                                     12 Days / Short Time
                                                     <br></br>
-                                                    distance of delivery?
+                                                    International delivery
                                                 </DeliveryWrapper>
                                             </ChoiceWrapper>
                                             <ChoiceWrapper>
@@ -317,12 +322,12 @@ const Step3 = () => {
                                                     {")"}
                                                 </ChoiceHeader>
                                                 <DeliveryWrapper>
-                                                    Unknown Speed
+                                                    1 Week
                                                     <br></br>
                                                     Local Delivery
                                                 </DeliveryWrapper>
                                             </ChoiceWrapper>
-                                            <ChoiceWrapper>
+                                            <LastChoiceWrapper>
                                                 <input
                                                     type="radio"
                                                     id="truck"
@@ -347,11 +352,11 @@ const Step3 = () => {
                                                     {")"}
                                                 </ChoiceHeader>
                                                 <DeliveryWrapper>
-                                                    Unknown Speed
+                                                    1 Week
                                                     <br></br>
                                                     Local Delivery
                                                 </DeliveryWrapper>
-                                            </ChoiceWrapper>
+                                            </LastChoiceWrapper>
                                         </form>
                                     </SegmentWrapper>
                                 </Segment>

@@ -19,6 +19,7 @@ import Influncers from "../../../Assets/FromAssests/Step4/Influencers.png";
 const GameWrapper = styled.div`
     width: 100%;
     overflow: hidden;
+    padding-top: 3em;
 `;
 
 const InfoWrapper = styled.div`
@@ -29,7 +30,6 @@ const InfoWrapper = styled.div`
     text-align: left;
     float: left;
     margin-left: 5%;
-    color: rgba(0, 0, 0, 0.56);
 `;
 
 const FormWrapper = styled.div`
@@ -114,6 +114,14 @@ const PercentHeader = styled.h2`
     text-align: left;
 `;
 
+const SegmentWrapper = styled.div`
+    padding: 2em;
+`;
+
+const LastSegmentWrapper = styled.div`
+    padding-bottom: 2em;
+`;
+
 const Step4 = () => {
     const [TVAmount, setTv] = useState(0);
     const [OnlineAdsAmount, setAds] = useState(0);
@@ -122,65 +130,167 @@ const Step4 = () => {
     const [MarkUp, setMarkUp] = useState(0);
     const [user, setUser] = useContext(UserContext);
 
-    const updateTV = (e) => {
-        setTv(e.target.value);
-        console.log(e.target.value);
+    const updateValues = (e) => {
+        let Spent =
+            user.step1Spent +
+            user.step2Spent +
+            user.step3Spent +
+            user.tvMoneySpent +
+            user.onlineMoneySpent +
+            user.bannerMoneySpent +
+            user.influncersMoneySpent;
 
-        let TVMoney = parseInt(TVAmount);
+        let difference;
 
-        // let money = user.tvMoneySpent + TVAmount;
+        if (user.difference < 0) {
+            switch (e.target.name) {
+                case "TV":
+                    difference =
+                        user.maxiumValue -
+                        Spent -
+                        (user.tvMoneySpent - parseInt(e.target.value));
+                    break;
+                case "ADS":
+                    difference =
+                        user.maxiumValue -
+                        Spent -
+                        (user.onlineMoneySpent - parseInt(e.target.value));
+                    break;
+                case "Banners":
+                    difference =
+                        user.maxiumValue -
+                        Spent -
+                        (user.bannerMoneySpent - parseInt(e.target.value));
+                    break;
+                case "Influncers":
+                    difference =
+                        user.maxiumValue -
+                        Spent -
+                        (user.influncersMoneySpent - parseInt(e.target.value));
+                    break;
+                default:
+                    break;
+            }
+        } else {
+            switch (e.target.name) {
+                case "TV":
+                    difference =
+                        user.maxiumValue -
+                        Spent -
+                        (parseInt(e.target.value) - user.tvMoneySpent);
+                    break;
+                case "ADS":
+                    difference =
+                        user.maxiumValue -
+                        Spent -
+                        (parseInt(e.target.value) - user.onlineMoneySpent);
+                    break;
+                case "Banners":
+                    difference =
+                        user.maxiumValue -
+                        Spent -
+                        (parseInt(e.target.value) - user.bannerMoneySpent);
+                    break;
+                case "Influncers":
+                    difference =
+                        user.maxiumValue -
+                        Spent -
+                        (parseInt(e.target.value) - user.influncersMoneySpent);
+                    break;
+                default:
+                    break;
+            }
+        }
 
         setUser((preState) => ({
             ...preState,
-            tvMoneySpent: TVMoney,
+            difference: difference,
         }));
+
+        console.log(difference);
+
+        //let difference = user.maxiumValue - Spent - parseInt(e.target.value);
+
+        let sliderValue = parseInt(e.target.value);
+
+        if (user.difference > 0) {
+            switch (e.target.name) {
+                case "TV":
+                    setUser((preState) => ({
+                        ...preState,
+                        tvMoneySpent: sliderValue,
+                    }));
+                    break;
+                case "ADS":
+                    setUser((preState) => ({
+                        ...preState,
+                        onlineMoneySpent: sliderValue,
+                    }));
+                    break;
+                case "Banners":
+                    setUser((preState) => ({
+                        ...preState,
+                        bannerMoneySpent: sliderValue,
+                    }));
+                    break;
+                case "Influncers":
+                    setUser((preState) => ({
+                        ...preState,
+                        influncersMoneySpent: sliderValue,
+                    }));
+                    break;
+                default:
+                    break;
+            }
+        } else if (user.difference < 0) {
+            switch (e.target.name) {
+                case "TV":
+                    setUser((preState) => ({
+                        ...preState,
+                        tvMoneySpent: 0,
+                    }));
+                    break;
+                case "ADS":
+                    setUser((preState) => ({
+                        ...preState,
+                        onlineMoneySpent: 0,
+                    }));
+                    break;
+                case "Banners":
+                    setUser((preState) => ({
+                        ...preState,
+                        bannerMoneySpent: 0,
+                    }));
+                    break;
+                case "Influncers":
+                    setUser((preState) => ({
+                        ...preState,
+                        influncersMoneySpent: 0,
+                    }));
+                    break;
+                default:
+                    break;
+            }
+        }
     };
-    const updateAds = (e) => {
-        setAds(e.target.value);
 
-        let OnlineMoney = parseInt(OnlineAdsAmount);
+    // const updateTV = (e) => {
+    //     //if new amount spent would equal to 0 or less than dont make change
+    //     let difference = user.maxiumValue - -parseInt(e.target.value);
+    //     console.log(difference);
+    //     if (difference <= 0) {
+    //         alert("noob");
+    //     }
 
-        setUser((preState) => ({
-            ...preState,
-            onlineMoneySpent: OnlineMoney,
-        }));
-    };
-    const updateBanners = (e) => {
-        setBanners(e.target.value);
+    //     let TVMoney = parseInt(TVAmount);
+    //     setTv(e.target.value);
+    //     // let money = user.tvMoneySpent + TVAmount;
 
-        let BannerMoney = parseInt(BannersAmount);
-
-        setUser((preState) => ({
-            ...preState,
-            bannerMoneySpent: BannerMoney,
-        }));
-    };
-    const updateInfluncers = (e) => {
-        setInfluncers(e.target.value);
-
-        let InfluncerMoney = parseInt(InfluncersAmount);
-
-        setUser((preState) => ({
-            ...preState,
-            influncersMoneySpent: InfluncerMoney,
-        }));
-    };
-
-    const updateMarkup = (e) => {
-        setMarkUp(e.target.value);
-        console.log(e);
-    };
-
-    const submitChoice = (e) => {
-        e.preventDefault();
-        //setUser((preState) => [...preState, { step1: decsion }]);
-    };
-
-    console.log(user);
-    // console.log("TV " + TVAmount);
-    // console.log("OnlineAds " + OnlineAdsAmount);
-    // console.log("Banners " + BannersAmount);
-    // console.log("Influncers " + InfluncersAmount);
+    //     setUser((preState) => ({
+    //         ...preState,
+    //         tvMoneySpent: TVMoney,
+    //     }));
+    // };
 
     const amountSpent = user.step1Spent + user.step2Spent + user.step3Spent;
 
@@ -197,250 +307,289 @@ const Step4 = () => {
                     <form>
                         <Grid>
                             <Grid.Column mobile={16} computer={8}>
-                                <Segment.Group>
-                                    <Segment>
-                                        <ChoicetextWrapper>
-                                            <ChoiceHeader>
-                                                TV Commericals
-                                            </ChoiceHeader>
-                                            <InfoText>
-                                                Your commpaines ads will show on
-                                                local tv stations.
-                                            </InfoText>
-                                        </ChoicetextWrapper>
-                                        <ChoiceImage>
-                                            <Image src={TV} />
-                                        </ChoiceImage>
-                                    </Segment>
-                                    <Segment>
-                                        <div>
-                                            <SliderWrapper>
-                                                <Slider
-                                                    type="range"
-                                                    min="0"
-                                                    max={balance}
-                                                    step="10000"
-                                                    onChange={updateTV}
-                                                    onClick={updateTV}
-                                                />
-                                            </SliderWrapper>
-                                            <LabelWrapper>
-                                                {user.tvMoneySpent > 0 && (
-                                                    <Label
-                                                        pointing="left"
-                                                        as="a"
-                                                        size={"large"}
-                                                        color={"orange"}
-                                                    >
-                                                        ${user.tvMoneySpent}
-                                                    </Label>
-                                                )}
-                                                {user.tvMoneySpent === 0 && (
-                                                    <Label
-                                                        pointing="left"
-                                                        as="a"
-                                                        size={"large"}
-                                                    >
-                                                        ${user.tvMoneySpent}
-                                                    </Label>
-                                                )}
-                                            </LabelWrapper>
-                                        </div>
-                                    </Segment>
-                                </Segment.Group>
+                                <SegmentWrapper>
+                                    <Segment.Group>
+                                        <Segment>
+                                            <ChoicetextWrapper>
+                                                <ChoiceHeader>
+                                                    TV Commericals
+                                                </ChoiceHeader>
+                                                <InfoText>
+                                                    Your companies ads will show
+                                                    on local tv stations. You
+                                                    will not have control over
+                                                    the demographic or when the
+                                                    commercial is shown. This
+                                                    method grants you access to
+                                                    a large audience.
+                                                </InfoText>
+                                            </ChoicetextWrapper>
+                                            <ChoiceImage>
+                                                <Image src={TV} />
+                                            </ChoiceImage>
+                                        </Segment>
+                                        <Segment>
+                                            <div>
+                                                <SliderWrapper>
+                                                    <Slider
+                                                        name="TV"
+                                                        type="range"
+                                                        min="0"
+                                                        max={balance}
+                                                        value={
+                                                            user.tvMoneySpent
+                                                        }
+                                                        step="10000"
+                                                        onChange={updateValues}
+                                                        onClick={updateValues}
+                                                    />
+                                                </SliderWrapper>
+                                                <LabelWrapper>
+                                                    {user.tvMoneySpent > 0 && (
+                                                        <Label
+                                                            pointing="left"
+                                                            as="a"
+                                                            size={"large"}
+                                                            color={"orange"}
+                                                        >
+                                                            ${user.tvMoneySpent}
+                                                        </Label>
+                                                    )}
+                                                    {user.tvMoneySpent ===
+                                                        0 && (
+                                                        <Label
+                                                            pointing="left"
+                                                            as="a"
+                                                            size={"large"}
+                                                        >
+                                                            ${user.tvMoneySpent}
+                                                        </Label>
+                                                    )}
+                                                </LabelWrapper>
+                                            </div>
+                                        </Segment>
+                                    </Segment.Group>
+                                </SegmentWrapper>
                             </Grid.Column>
                             <Grid.Column mobile={16} computer={8}>
-                                <Segment.Group>
-                                    <Segment>
-                                        <ChoicetextWrapper>
-                                            <ChoiceHeader>
-                                                Online Ads
-                                            </ChoiceHeader>
-                                            <InfoText>
-                                                Your commpaines ads will show on
-                                                Facebook and google.
-                                            </InfoText>
-                                        </ChoicetextWrapper>
-                                        <ChoiceImage>
-                                            <Image src={OnlineAds} />
-                                        </ChoiceImage>
-                                    </Segment>
-                                    <Segment>
-                                        <div>
-                                            <SliderWrapper>
-                                                <Slider
-                                                    type="range"
-                                                    min="0"
-                                                    max={balance}
-                                                    step="10000"
-                                                    onChange={updateAds}
-                                                    onClick={updateAds}
-                                                />
-                                            </SliderWrapper>
-                                            <LabelWrapper>
-                                                {user.onlineMoneySpent > 0 && (
-                                                    <Label
-                                                        pointing="left"
-                                                        as="a"
-                                                        size={"large"}
-                                                        color={"orange"}
-                                                    >
-                                                        ${user.onlineMoneySpent}
-                                                    </Label>
-                                                )}
-                                                {user.onlineMoneySpent ===
-                                                    0 && (
-                                                    <Label
-                                                        pointing="left"
-                                                        as="a"
-                                                        size={"large"}
-                                                    >
-                                                        ${user.onlineMoneySpent}
-                                                    </Label>
-                                                )}
-                                            </LabelWrapper>
-                                        </div>
-                                    </Segment>
-                                </Segment.Group>
+                                <SegmentWrapper>
+                                    <Segment.Group>
+                                        <Segment>
+                                            <ChoicetextWrapper>
+                                                <ChoiceHeader>
+                                                    Online Ads
+                                                </ChoiceHeader>
+                                                <InfoText>
+                                                    Your companies ads will show
+                                                    on Facebook and google. You
+                                                    will have control over the
+                                                    demographic, when and where
+                                                    they will be shown. This is
+                                                    a more modern approach to
+                                                    marketing
+                                                </InfoText>
+                                            </ChoicetextWrapper>
+                                            <ChoiceImage>
+                                                <Image src={OnlineAds} />
+                                            </ChoiceImage>
+                                        </Segment>
+                                        <Segment>
+                                            <div>
+                                                <SliderWrapper>
+                                                    <Slider
+                                                        name="ADS"
+                                                        type="range"
+                                                        min="0"
+                                                        max={balance}
+                                                        value={
+                                                            user.onlineMoneySpent
+                                                        }
+                                                        step="10000"
+                                                        onChange={updateValues}
+                                                        onClick={updateValues}
+                                                    />
+                                                </SliderWrapper>
+                                                <LabelWrapper>
+                                                    {user.onlineMoneySpent >
+                                                        0 && (
+                                                        <Label
+                                                            pointing="left"
+                                                            as="a"
+                                                            size={"large"}
+                                                            color={"orange"}
+                                                        >
+                                                            $
+                                                            {
+                                                                user.onlineMoneySpent
+                                                            }
+                                                        </Label>
+                                                    )}
+                                                    {user.onlineMoneySpent ===
+                                                        0 && (
+                                                        <Label
+                                                            pointing="left"
+                                                            as="a"
+                                                            size={"large"}
+                                                        >
+                                                            $
+                                                            {
+                                                                user.onlineMoneySpent
+                                                            }
+                                                        </Label>
+                                                    )}
+                                                </LabelWrapper>
+                                            </div>
+                                        </Segment>
+                                    </Segment.Group>
+                                </SegmentWrapper>
                             </Grid.Column>
                             <Grid.Column mobile={16} computer={8}>
-                                <Segment.Group>
-                                    <Segment>
-                                        <ChoicetextWrapper>
-                                            <ChoiceHeader>Banners</ChoiceHeader>
-                                            <InfoText>
-                                                Your commpaines ads will show on
-                                                roads within your state.
-                                            </InfoText>
-                                        </ChoicetextWrapper>
-                                        <ChoiceImage>
-                                            <Image src={Banners} />
-                                        </ChoiceImage>
-                                    </Segment>
-                                    <Segment>
-                                        <div>
-                                            <SliderWrapper>
-                                                <Slider
-                                                    type="range"
-                                                    min="0"
-                                                    max={balance}
-                                                    step="10000"
-                                                    onChange={updateBanners}
-                                                    onClick={updateBanners}
-                                                />
-                                            </SliderWrapper>
-                                            <LabelWrapper>
-                                                {user.bannerMoneySpent > 0 && (
-                                                    <Label
-                                                        pointing="left"
-                                                        as="a"
-                                                        size={"large"}
-                                                        color={"orange"}
-                                                    >
-                                                        ${user.bannerMoneySpent}
-                                                    </Label>
-                                                )}
-                                                {user.bannerMoneySpent ===
-                                                    0 && (
-                                                    <Label
-                                                        pointing="left"
-                                                        as="a"
-                                                        size={"large"}
-                                                    >
-                                                        ${user.bannerMoneySpent}
-                                                    </Label>
-                                                )}
-                                            </LabelWrapper>
-                                        </div>
-                                    </Segment>
-                                </Segment.Group>
+                                <SegmentWrapper>
+                                    <Segment.Group>
+                                        <Segment>
+                                            <ChoicetextWrapper>
+                                                <ChoiceHeader>
+                                                    Banners
+                                                </ChoiceHeader>
+                                                <InfoText>
+                                                    Your companies ads will show
+                                                    on roads within your state.
+                                                    This approach enable
+                                                    indirect marketing you will
+                                                    place your marketing in high
+                                                    traffic areas that will
+                                                    place the idea of your brand
+                                                    in their thoughts.
+                                                </InfoText>
+                                            </ChoicetextWrapper>
+                                            <ChoiceImage>
+                                                <Image src={Banners} />
+                                            </ChoiceImage>
+                                        </Segment>
+                                        <Segment>
+                                            <div>
+                                                <SliderWrapper>
+                                                    <Slider
+                                                        name="Banners"
+                                                        type="range"
+                                                        min="0"
+                                                        max={balance}
+                                                        step="10000"
+                                                        value={
+                                                            user.bannerMoneySpent
+                                                        }
+                                                        onChange={updateValues}
+                                                        onClick={updateValues}
+                                                    />
+                                                </SliderWrapper>
+                                                <LabelWrapper>
+                                                    {user.bannerMoneySpent >
+                                                        0 && (
+                                                        <Label
+                                                            pointing="left"
+                                                            as="a"
+                                                            size={"large"}
+                                                            color={"orange"}
+                                                        >
+                                                            $
+                                                            {
+                                                                user.bannerMoneySpent
+                                                            }
+                                                        </Label>
+                                                    )}
+                                                    {user.bannerMoneySpent ===
+                                                        0 && (
+                                                        <Label
+                                                            pointing="left"
+                                                            as="a"
+                                                            size={"large"}
+                                                        >
+                                                            $
+                                                            {
+                                                                user.bannerMoneySpent
+                                                            }
+                                                        </Label>
+                                                    )}
+                                                </LabelWrapper>
+                                            </div>
+                                        </Segment>
+                                    </Segment.Group>
+                                </SegmentWrapper>
                             </Grid.Column>
                             <Grid.Column mobile={16} computer={8}>
-                                <Segment.Group>
-                                    <Segment>
-                                        <ChoicetextWrapper>
-                                            <ChoiceHeader>
-                                                Influncers
-                                            </ChoiceHeader>
-                                            <InfoText>
-                                                Your commpany will be promoted
-                                                by influncers online.
-                                            </InfoText>
-                                        </ChoicetextWrapper>
-                                        <ChoiceImage>
-                                            <Image src={Influncers} />
-                                        </ChoiceImage>
-                                    </Segment>
-                                    <Segment>
-                                        <div>
-                                            <SliderWrapper>
-                                                <Slider
-                                                    type="range"
-                                                    min="0"
-                                                    max={balance}
-                                                    step="10000"
-                                                    onChange={updateInfluncers}
-                                                    onClick={updateInfluncers}
-                                                />
-                                            </SliderWrapper>
-                                            <LabelWrapper>
-                                                {user.influncersMoneySpent >
-                                                    0 && (
-                                                    <Label
-                                                        pointing="left"
-                                                        as="a"
-                                                        size={"large"}
-                                                        color={"orange"}
-                                                    >
-                                                        $
-                                                        {
+                                <SegmentWrapper>
+                                    <Segment.Group>
+                                        <Segment>
+                                            <ChoicetextWrapper>
+                                                <ChoiceHeader>
+                                                    Influncers
+                                                </ChoiceHeader>
+                                                <InfoText>
+                                                    Your company will be
+                                                    promoted by influencers
+                                                    online. This is the most
+                                                    modern from of marketing.
+                                                    While it has a larger
+                                                    learning curve you utilize
+                                                    influencers your demographic
+                                                    trusts enabling a high
+                                                    success rate when done
+                                                    correctly.
+                                                </InfoText>
+                                            </ChoicetextWrapper>
+                                            <ChoiceImage>
+                                                <Image src={Influncers} />
+                                            </ChoiceImage>
+                                        </Segment>
+                                        <Segment>
+                                            <div>
+                                                <SliderWrapper>
+                                                    <Slider
+                                                        name="Influncers"
+                                                        type="range"
+                                                        min="0"
+                                                        max={balance}
+                                                        step="10000"
+                                                        value={
                                                             user.influncersMoneySpent
                                                         }
-                                                    </Label>
-                                                )}
-                                                {user.influncersMoneySpent ===
-                                                    0 && (
-                                                    <Label
-                                                        pointing="left"
-                                                        as="a"
-                                                        size={"large"}
-                                                    >
-                                                        $
-                                                        {
-                                                            user.influncersMoneySpent
-                                                        }
-                                                    </Label>
-                                                )}
-                                            </LabelWrapper>
-                                        </div>
-                                    </Segment>
-                                </Segment.Group>
-                            </Grid.Column>
-                            <Grid.Column computer={16}>
-                                <PercentHeader>
-                                    Mark up your product
-                                </PercentHeader>
-                                <div>
-                                    <PercentWrapper>
-                                        <Slider
-                                            type="range"
-                                            min="0"
-                                            max="100"
-                                            step="10"
-                                            onChange={updateMarkup}
-                                            onClick={updateMarkup}
-                                        />
-                                    </PercentWrapper>
-                                    <PercentLabelWrapper>
-                                        <Label
-                                            pointing="left"
-                                            as="a"
-                                            size={"large"}
-                                        >
-                                            {user.step4Markup}%
-                                        </Label>
-                                    </PercentLabelWrapper>
-                                </div>
+                                                        onChange={updateValues}
+                                                        onClick={updateValues}
+                                                    />
+                                                </SliderWrapper>
+                                                <LabelWrapper>
+                                                    {user.influncersMoneySpent >
+                                                        0 && (
+                                                        <Label
+                                                            pointing="left"
+                                                            as="a"
+                                                            size={"large"}
+                                                            color={"orange"}
+                                                        >
+                                                            $
+                                                            {
+                                                                user.influncersMoneySpent
+                                                            }
+                                                        </Label>
+                                                    )}
+                                                    {user.influncersMoneySpent ===
+                                                        0 && (
+                                                        <Label
+                                                            pointing="left"
+                                                            as="a"
+                                                            size={"large"}
+                                                        >
+                                                            $
+                                                            {
+                                                                user.influncersMoneySpent
+                                                            }
+                                                        </Label>
+                                                    )}
+                                                </LabelWrapper>
+                                            </div>
+                                        </Segment>
+                                    </Segment.Group>
+                                </SegmentWrapper>
                             </Grid.Column>
                         </Grid>
                     </form>
