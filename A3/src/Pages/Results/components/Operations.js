@@ -60,7 +60,7 @@ const ReferenceLinks = styled.a`
     text-align: left;
     float: left;
     color: black;
-    word-wrap: break-word;
+    word-break: break-all;
 `;
 
 const SegmentWrapper = styled.div`
@@ -122,7 +122,7 @@ const ResourceCard = () => {
                             manufactures New Zealand is the most environmentally
                             friendly (75% environmentally friendly), with
                             Australia getting a 74% rating for environmentally
-                            friendly.
+                            friendly.s
                             <References>
                                 References:<br></br>
                                 <ReferenceLinks

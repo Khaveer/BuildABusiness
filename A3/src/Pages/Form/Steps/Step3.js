@@ -22,7 +22,9 @@ import Footer from "../Footer";
 const GameWrapper = styled.div`
     width: 100%;
     overflow: hidden;
-    padding-top: 3em;
+`;
+const ImageWrapper = styled.div`
+    padding-top: 2em;
 `;
 
 const InfoWrapper = styled.div`
@@ -68,6 +70,7 @@ const ChoiceHeader = styled.label`
 `;
 
 const ChoiceWrapper = styled.div`
+    padding-top: -2em;
     padding-bottom: 2em;
 `;
 
@@ -161,17 +164,27 @@ const Step3 = () => {
                     <Grid>
                         <Grid.Row columns={2}>
                             <Grid.Column computer={12} only="computer">
-                                {decsion === "null" && <Image src={BaseMap} />}
-                                {decsion === "cPlanes" && (
-                                    <Image src={CPlanes} />
-                                )}
-                                {decsion === "cShips" && <Image src={CBoats} />}
-                                {decsion === "drones" && <Image src={Drones} />}
-                                {decsion === "truck" && <Image src={TA} />}
-                                {decsion === "train" && <Image src={Train} />}
-                                {decsion === "electricVehicle" && (
-                                    <Image src={EV} />
-                                )}
+                                <ImageWrapper>
+                                    {decsion === "null" && (
+                                        <Image src={BaseMap} />
+                                    )}
+                                    {decsion === "cPlanes" && (
+                                        <Image src={CPlanes} />
+                                    )}
+                                    {decsion === "cShips" && (
+                                        <Image src={CBoats} />
+                                    )}
+                                    {decsion === "drones" && (
+                                        <Image src={Drones} />
+                                    )}
+                                    {decsion === "truck" && <Image src={TA} />}
+                                    {decsion === "train" && (
+                                        <Image src={Train} />
+                                    )}
+                                    {decsion === "electricVehicle" && (
+                                        <Image src={EV} />
+                                    )}
+                                </ImageWrapper>
                             </Grid.Column>
                             <Grid.Column computer={4} mobile={16}>
                                 <Segment>
