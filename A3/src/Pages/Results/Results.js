@@ -11,11 +11,11 @@ import Dystopia from "../../Assets/Dystopia.png";
 import Utopia from "../../Assets/Utopia.png";
 
 import { Link } from "react-router-dom";
+import { Grid } from "semantic-ui-react";
 
 const ResultWrapper = styled.div`
     padding: 4em;
     padding-top: 2em;
-    width: 40%;
 `;
 
 const ResultsButtonWrapper = styled.div`
@@ -49,7 +49,11 @@ const Results = () => {
                 }}
             >
                 <ResultWrapper>
-                    <ResultsCard />
+                    <Grid>
+                        <Grid.Column computer={5} mobile={16}>
+                            <ResultsCard />
+                        </Grid.Column>
+                    </Grid>
                 </ResultWrapper>
                 <ResultsButtonWrapper>
                     <Link to="/ResultsInfo">

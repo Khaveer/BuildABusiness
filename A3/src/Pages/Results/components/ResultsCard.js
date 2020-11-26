@@ -40,7 +40,6 @@ const TimerWrapper = styled.div`
 const ResultsCard = () => {
     //let State = user.resultState1 + user.resultState2 + user.resultState3;
     let State = 7;
-    console.log(State);
 
     return (
         <div>

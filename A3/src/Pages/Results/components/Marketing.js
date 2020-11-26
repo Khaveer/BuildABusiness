@@ -59,7 +59,7 @@ const ReferenceLinks = styled.a`
     text-align: left;
     float: left;
     color: black;
-    word-wrap: break-word;
+    word-break: break-all;
 `;
 
 const MarketingCard = () => {
@@ -78,7 +78,7 @@ const MarketingCard = () => {
 
     return (
         <Grid>
-            <Grid.Column computer={4}>
+            <Grid.Column computer={4} mobile={16}>
                 <Image src={ResultsGraph1} size="medium" centered />
                 <ReferenceLinks
                     href="https://www.lyfemarketing.com/blog/types-of-marketing-strategies/"
@@ -88,7 +88,7 @@ const MarketingCard = () => {
                     https://www.lyfemarketing.com/blog/types-of-marketing-strategies/
                 </ReferenceLinks>
             </Grid.Column>
-            <Grid.Column computer={12}>
+            <Grid.Column computer={12} mobile={16}>
                 {user.influncersMoneySpent === maxValue && (
                     <InfoHeader>Influencer Marketing</InfoHeader>
                 )}

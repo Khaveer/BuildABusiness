@@ -50,7 +50,7 @@ const ReferenceLinks = styled.a`
     text-align: left;
     float: left;
     color: black;
-    word-wrap: break-word;
+    word-break: break-all;
 `;
 
 const StrongText = styled.b`
@@ -69,7 +69,7 @@ const ResourceCard = () => {
 
     return (
         <Grid>
-            <Grid.Column computer={12}>
+            <Grid.Column computer={12} mobile={16}>
                 <InfoHeader>Resources</InfoHeader>
                 {user.step1 === "RPET" && (
                     <>
@@ -283,7 +283,7 @@ const ResourceCard = () => {
                     </>
                 )}
             </Grid.Column>
-            <Grid.Column computer={4}>
+            <Grid.Column computer={4} mobile={16}>
                 {imageRandom === 1 && (
                     <>
                         <Image src={ResultsGraph1} size="medium" centered />

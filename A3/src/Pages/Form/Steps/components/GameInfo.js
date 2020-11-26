@@ -35,16 +35,16 @@ const GameInfo = () => {
         <div>
             <ImageWrapper>
                 {user.current === 1 && (
-                    <Image src={resourceImage} size="medium" />
+                    <Image src={resourceImage} size="medium" centered />
                 )}
                 {user.current === 2 && (
-                    <Image src={operationsImage} size="medium" />
+                    <Image src={operationsImage} size="medium" centered />
                 )}
                 {user.current === 3 && (
-                    <Image src={logisticsImage} size="medium" />
+                    <Image src={logisticsImage} size="medium" centered />
                 )}
                 {user.current === 4 && (
-                    <Image src={consumerImage} size="medium" />
+                    <Image src={consumerImage} size="medium" centered />
                 )}
             </ImageWrapper>
             {user.current === 1 && (

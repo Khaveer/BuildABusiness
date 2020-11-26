@@ -70,7 +70,7 @@ const ResourceCard = () => {
 
     return (
         <Grid>
-            <Grid.Column computer={4}>
+            <Grid.Column computer={4} mobile={16}>
                 {imageRandom === 1 && (
                     <>
                         <Image src={ResultsGraph1} size="medium" centered />
@@ -96,7 +96,7 @@ const ResourceCard = () => {
                     </>
                 )}
             </Grid.Column>
-            <Grid.Column computer={12}>
+            <Grid.Column computer={12} mobile={16}>
                 <InfoHeader>Operations</InfoHeader>
                 {user.step2 === "pacfic" && (
                     <>

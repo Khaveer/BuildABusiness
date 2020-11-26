@@ -19,36 +19,36 @@ const ResultsInfo = () => {
     return (
         <>
             <HeaderButtons resultsInfo={true} />
-            <Grid>
-                <Grid.Column computer={16}>
+            <Grid centered>
+                <Grid.Column computer={12} mobile={15}>
                     <SegmentWrapper>
                         <Segment>
                             <ResourceCard />
                         </Segment>
                     </SegmentWrapper>
                 </Grid.Column>
-                <Grid.Column computer={16}>
+                <Grid.Column computer={12} mobile={15}>
                     <SegmentWrapper>
                         <Segment>
                             <OperationsCard />
                         </Segment>
                     </SegmentWrapper>
                 </Grid.Column>
-                <Grid.Column computer={16}>
+                <Grid.Column computer={12} mobile={15}>
                     <SegmentWrapper>
                         <Segment>
                             <LogisticsCard />
                         </Segment>
                     </SegmentWrapper>
                 </Grid.Column>
-                <Grid.Column computer={16}>
+                <Grid.Column computer={12} mobile={15}>
                     <SegmentWrapper>
                         <Segment>
                             <MarketingCard />
                         </Segment>
                     </SegmentWrapper>
                 </Grid.Column>
-                <Grid.Column computer={16}>
+                <Grid.Column computer={12} mobile={15}>
                     <SegmentWrapper>
                         <Segment>
                             <GreenwashingCard />

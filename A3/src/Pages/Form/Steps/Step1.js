@@ -17,7 +17,6 @@ import Synthetics from "../../../Assets/FromAssests/Step1/Synthetics.png";
 
 const GameWrapper = styled.div`
     width: 100%;
-    overflow: hidden;
 `;
 
 const InfoWrapper = styled.div`
@@ -27,7 +26,7 @@ const InfoWrapper = styled.div`
     font-size: 2em;
     text-align: left;
     float: left;
-    margin-left: 1em;
+    padding-left: 0.5em;
 `;
 
 const FormWrapper = styled.div`
@@ -38,7 +37,6 @@ const FormWrapper = styled.div`
 const ChoicetextWrapper = styled.div`
     text-align: left;
     float: left;
-    width: 65%;
     vertical-align: middle;
 `;
 
@@ -52,15 +50,16 @@ const ChoiceHeader = styled.label`
 
 const ChoiceHeaderWrapper = styled.div`
     padding-bottom: 1em;
+    text-align: left;
 `;
 const ChoiceInfoWrapper = styled.div`
     padding-bottom: 1em;
+    text-align: left;
 `;
 
 const ChoiceImage = styled.div`
     align-items: right;
     display: inline-block;
-    width: 35%;
 `;
 
 const ButtonWrapper = styled.div`
@@ -75,6 +74,8 @@ const ButtonWrapper = styled.div`
 const SegmentWrapper = styled.div`
     padding: 1vw;
     padding-bottom: 0px;
+    padding-right: 0px;
+    max-width: 99vw;
 `;
 
 const StrongText = styled.b`
@@ -84,6 +85,10 @@ const StrongText = styled.b`
     line-height: 2em;
     word-wrap: break-word;
     text-align: left;
+`;
+
+const Spacer = styled.div`
+    height: 5em;
 `;
 
 const Step1 = () => {
@@ -134,7 +139,6 @@ const Step1 = () => {
 
     const submitChoice = (e) => {
         e.preventDefault();
-        console.log(result);
 
         if (decsion !== "null") {
             setUser((preState) => ({
@@ -151,7 +155,7 @@ const Step1 = () => {
             <FormHeader pageNumber={1} />
             <GameWrapper>
                 <Grid>
-                    <Grid.Column computer={3} mobile={16}>
+                    <Grid.Column computer={3} mobile={16} centered>
                         <InfoWrapper>
                             <GameInfo />
                         </InfoWrapper>
@@ -160,189 +164,267 @@ const Step1 = () => {
                         <FormWrapper>
                             <form>
                                 <Grid>
-                                    <Grid.Column mobile={16} computer={8}>
+                                    <Grid.Column
+                                        mobile={16}
+                                        computer={8}
+                                        centered
+                                    >
                                         <SegmentWrapper>
                                             <Segment>
-                                                <ChoicetextWrapper>
-                                                    <ChoiceHeaderWrapper>
-                                                        <input
-                                                            type="radio"
-                                                            id="Cotton"
-                                                            name="Option"
-                                                            value="Cotton"
-                                                            onChange={
-                                                                updateChoice
-                                                            }
-                                                        />
+                                                <Grid>
+                                                    <Grid.Column computer={12}>
+                                                        <ChoiceHeaderWrapper>
+                                                            <input
+                                                                type="radio"
+                                                                id="Cotton"
+                                                                name="Option"
+                                                                value="Cotton"
+                                                                onChange={
+                                                                    updateChoice
+                                                                }
+                                                            />
 
-                                                        <ChoiceHeader for="Cotton">
-                                                            Cotton
-                                                        </ChoiceHeader>
-                                                    </ChoiceHeaderWrapper>
-                                                    <ChoiceInfoWrapper>
-                                                        <StrongText>
-                                                            <NumberFormat
-                                                                value={
-                                                                    user.cottonValue
-                                                                }
-                                                                displayType={
-                                                                    "text"
-                                                                }
-                                                                thousandSeparator={
-                                                                    true
-                                                                }
-                                                                prefix={"$"}
+                                                            <ChoiceHeader for="Cotton">
+                                                                Cotton
+                                                            </ChoiceHeader>
+                                                        </ChoiceHeaderWrapper>
+                                                        <ChoiceInfoWrapper>
+                                                            <StrongText>
+                                                                <NumberFormat
+                                                                    value={
+                                                                        user.cottonValue
+                                                                    }
+                                                                    displayType={
+                                                                        "text"
+                                                                    }
+                                                                    thousandSeparator={
+                                                                        true
+                                                                    }
+                                                                    prefix={"$"}
+                                                                />
+                                                            </StrongText>
+                                                        </ChoiceInfoWrapper>
+                                                        <ChoicetextWrapper>
+                                                            <ChoiceInfoWrapper>
+                                                                A versatile
+                                                                fabric as itself
+                                                                or blended
+                                                                provides a
+                                                                natural comfort,
+                                                                visual appeal,
+                                                                durability and
+                                                                value.
+                                                            </ChoiceInfoWrapper>
+                                                        </ChoicetextWrapper>
+                                                    </Grid.Column>
+                                                    <Grid.Column computer={4}>
+                                                        <ChoiceImage>
+                                                            <Image
+                                                                src={Cotton}
+                                                                size="big"
                                                             />
-                                                        </StrongText>
-                                                    </ChoiceInfoWrapper>
-                                                    <ChoiceInfoWrapper>
-                                                        A versatile fabric as
-                                                        itself or blended
-                                                        provides a natural
-                                                        comfort, visual appeal,
-                                                        durability and value.
-                                                    </ChoiceInfoWrapper>
-                                                </ChoicetextWrapper>
-                                                <ChoiceImage>
-                                                    <Image src={Cotton} />
-                                                </ChoiceImage>
+                                                        </ChoiceImage>
+                                                    </Grid.Column>
+                                                </Grid>
                                             </Segment>
                                         </SegmentWrapper>
                                     </Grid.Column>
-                                    <Grid.Column mobile={16} computer={8}>
+                                    <Grid.Column
+                                        mobile={16}
+                                        computer={8}
+                                        centered
+                                    >
                                         <SegmentWrapper>
                                             <Segment>
-                                                <ChoicetextWrapper>
-                                                    <ChoiceHeaderWrapper>
-                                                        <input
-                                                            type="radio"
-                                                            id="RPET"
-                                                            name="Option"
-                                                            value="RPET"
-                                                            onChange={
-                                                                updateChoice
-                                                            }
-                                                        />
-                                                        <ChoiceHeader for="RPET">
-                                                            Recycled materials
-                                                        </ChoiceHeader>
-                                                    </ChoiceHeaderWrapper>
-                                                    <ChoiceInfoWrapper>
-                                                        <StrongText>
-                                                            <NumberFormat
-                                                                value={
-                                                                    user.RPETValue
-                                                                }
-                                                                displayType={
-                                                                    "text"
-                                                                }
-                                                                thousandSeparator={
-                                                                    true
-                                                                }
-                                                                prefix={"$"}
+                                                <Grid>
+                                                    <Grid.Column computer={12}>
+                                                        <ChoicetextWrapper>
+                                                            <ChoiceHeaderWrapper>
+                                                                <input
+                                                                    type="radio"
+                                                                    id="RPET"
+                                                                    name="Option"
+                                                                    value="RPET"
+                                                                    onChange={
+                                                                        updateChoice
+                                                                    }
+                                                                />
+                                                                <ChoiceHeader for="RPET">
+                                                                    Recycled
+                                                                    materials
+                                                                </ChoiceHeader>
+                                                            </ChoiceHeaderWrapper>
+                                                            <ChoiceInfoWrapper>
+                                                                <StrongText>
+                                                                    <NumberFormat
+                                                                        value={
+                                                                            user.RPETValue
+                                                                        }
+                                                                        displayType={
+                                                                            "text"
+                                                                        }
+                                                                        thousandSeparator={
+                                                                            true
+                                                                        }
+                                                                        prefix={
+                                                                            "$"
+                                                                        }
+                                                                    />
+                                                                </StrongText>
+                                                            </ChoiceInfoWrapper>
+                                                            <ChoiceInfoWrapper>
+                                                                RPET a recycled
+                                                                fabric created
+                                                                from polyester
+                                                                and can contain
+                                                                either pre or
+                                                                post-consumer
+                                                                waste.
+                                                            </ChoiceInfoWrapper>
+                                                        </ChoicetextWrapper>
+                                                    </Grid.Column>
+                                                    <Grid.Column computer={4}>
+                                                        <ChoiceImage>
+                                                            <Image src={RPET} />
+                                                        </ChoiceImage>
+                                                    </Grid.Column>
+                                                </Grid>
+                                            </Segment>
+                                        </SegmentWrapper>
+                                    </Grid.Column>
+                                    <Grid.Column
+                                        mobile={16}
+                                        computer={8}
+                                        centered
+                                    >
+                                        <SegmentWrapper>
+                                            <Segment>
+                                                <Grid>
+                                                    <Grid.Column computer={12}>
+                                                        <ChoicetextWrapper>
+                                                            <ChoiceHeaderWrapper>
+                                                                <input
+                                                                    type="radio"
+                                                                    id="Animal"
+                                                                    name="Option"
+                                                                    value="Animal"
+                                                                    onChange={
+                                                                        updateChoice
+                                                                    }
+                                                                />
+                                                                <ChoiceHeader for="Animal">
+                                                                    Animal
+                                                                    Products
+                                                                </ChoiceHeader>
+                                                            </ChoiceHeaderWrapper>
+                                                            <ChoiceInfoWrapper>
+                                                                <StrongText>
+                                                                    <NumberFormat
+                                                                        value={
+                                                                            user.animalValue
+                                                                        }
+                                                                        displayType={
+                                                                            "text"
+                                                                        }
+                                                                        thousandSeparator={
+                                                                            true
+                                                                        }
+                                                                        prefix={
+                                                                            "$"
+                                                                        }
+                                                                    />
+                                                                </StrongText>
+                                                            </ChoiceInfoWrapper>
+
+                                                            <ChoiceInfoWrapper>
+                                                                High quality
+                                                                fabric used to
+                                                                produce durable
+                                                                and aesthetic
+                                                                clothing. This
+                                                                are derived from
+                                                                animals such as
+                                                                cows.
+                                                            </ChoiceInfoWrapper>
+                                                        </ChoicetextWrapper>
+                                                    </Grid.Column>
+                                                    <Grid.Column computer={4}>
+                                                        <ChoiceImage>
+                                                            <Image
+                                                                src={Animal}
                                                             />
-                                                        </StrongText>
-                                                    </ChoiceInfoWrapper>
-                                                    <ChoiceInfoWrapper>
-                                                        RPET a recycled fabric
-                                                        created from polyester
-                                                        and can contain either
-                                                        pre or post-consumer
-                                                        waste.
-                                                    </ChoiceInfoWrapper>
-                                                </ChoicetextWrapper>
-                                                <ChoiceImage>
-                                                    <Image src={RPET} />
-                                                </ChoiceImage>
+                                                        </ChoiceImage>
+                                                    </Grid.Column>
+                                                </Grid>
                                             </Segment>
                                         </SegmentWrapper>
                                     </Grid.Column>
-                                    <Grid.Column mobile={16} computer={8}>
+                                    <Grid.Column
+                                        mobile={16}
+                                        computer={8}
+                                        centered
+                                    >
                                         <SegmentWrapper>
                                             <Segment>
-                                                <ChoicetextWrapper>
-                                                    <input
-                                                        type="radio"
-                                                        id="Animal"
-                                                        name="Option"
-                                                        value="Animal"
-                                                        onChange={updateChoice}
-                                                    />
-                                                    <ChoiceHeader for="Animal">
-                                                        Animal Products
-                                                    </ChoiceHeader>
-                                                    <br></br>
-                                                    <br></br>
-                                                    <StrongText>
-                                                        <NumberFormat
-                                                            value={
-                                                                user.animalValue
-                                                            }
-                                                            displayType={"text"}
-                                                            thousandSeparator={
-                                                                true
-                                                            }
-                                                            prefix={"$"}
-                                                        />
-                                                    </StrongText>
-                                                    <br></br>
-                                                    <br></br>
-                                                    <div>
-                                                        High quality fabric used
-                                                        to produce durable and
-                                                        aesthetic clothing. This
-                                                        are derived from animals
-                                                        such as cows.
-                                                    </div>
-                                                </ChoicetextWrapper>
-                                                <ChoiceImage>
-                                                    <Image src={Animal} />
-                                                </ChoiceImage>
+                                                <Grid>
+                                                    <Grid.Column computer={12}>
+                                                        <ChoicetextWrapper>
+                                                            <ChoiceHeaderWrapper>
+                                                                <input
+                                                                    type="radio"
+                                                                    id="Synthetics"
+                                                                    name="Option"
+                                                                    value="Synthetics"
+                                                                    onChange={
+                                                                        updateChoice
+                                                                    }
+                                                                />
+                                                                <ChoiceHeader for="Synthetics">
+                                                                    Synthetics
+                                                                </ChoiceHeader>
+                                                            </ChoiceHeaderWrapper>
+                                                            <ChoiceInfoWrapper>
+                                                                <StrongText>
+                                                                    <NumberFormat
+                                                                        value={
+                                                                            user.syntheticValue
+                                                                        }
+                                                                        displayType={
+                                                                            "text"
+                                                                        }
+                                                                        thousandSeparator={
+                                                                            true
+                                                                        }
+                                                                        prefix={
+                                                                            "$"
+                                                                        }
+                                                                    />
+                                                                </StrongText>
+                                                            </ChoiceInfoWrapper>
+                                                            <ChoiceInfoWrapper>
+                                                                Fabric that is
+                                                                cheap to produce
+                                                                with the
+                                                                downside of not
+                                                                being
+                                                                comfortable or
+                                                                durable.
+                                                            </ChoiceInfoWrapper>
+                                                        </ChoicetextWrapper>
+                                                    </Grid.Column>
+                                                    <Grid.Column computer={4}>
+                                                        <ChoiceImage>
+                                                            <Image
+                                                                src={Synthetics}
+                                                            />
+                                                        </ChoiceImage>
+                                                    </Grid.Column>
+                                                </Grid>
                                             </Segment>
                                         </SegmentWrapper>
                                     </Grid.Column>
-                                    <Grid.Column mobile={16} computer={8}>
-                                        <SegmentWrapper>
-                                            <Segment>
-                                                <ChoicetextWrapper>
-                                                    <input
-                                                        type="radio"
-                                                        id="Synthetics"
-                                                        name="Option"
-                                                        value="Synthetics"
-                                                        onChange={updateChoice}
-                                                    />
-                                                    <ChoiceHeader for="Synthetics">
-                                                        Synthetics
-                                                    </ChoiceHeader>
-                                                    <br></br>
-                                                    <br></br>
-                                                    <StrongText>
-                                                        <NumberFormat
-                                                            value={
-                                                                user.syntheticValue
-                                                            }
-                                                            displayType={"text"}
-                                                            thousandSeparator={
-                                                                true
-                                                            }
-                                                            prefix={"$"}
-                                                        />
-                                                    </StrongText>
-                                                    <br></br>
-                                                    <br></br>
-                                                    <div>
-                                                        Fabric that is cheap to
-                                                        produce with the
-                                                        downside of not being
-                                                        comfortable or durable.
-                                                    </div>
-                                                </ChoicetextWrapper>
-                                                <ChoiceImage>
-                                                    <Image src={Synthetics} />
-                                                </ChoiceImage>
-                                            </Segment>
-                                        </SegmentWrapper>
+                                    <Grid.Column only="mobile" mobile={16}>
+                                        <Spacer />
                                     </Grid.Column>
                                 </Grid>
                             </form>
@@ -350,6 +432,7 @@ const Step1 = () => {
                     </Grid.Column>
                 </Grid>
             </GameWrapper>
+
             <ButtonWrapper>
                 <Button
                     content="Continue to Operations"

@@ -31,7 +31,7 @@ const InfoWrapper = styled.div`
     font-size: 2em;
     text-align: left;
     float: left;
-    margin-left: 1em;
+    padding-left: 0.5em;
 `;
 
 const FormWrapper = styled.div`
@@ -41,7 +41,7 @@ const FormWrapper = styled.div`
 
 const ButtonWrapper = styled.div`
     display: flex;
-    position: absolute;
+    position: fixed;
     bottom: 5em;
     padding-right: 3em;
     width: 100%;
@@ -50,6 +50,10 @@ const ButtonWrapper = styled.div`
 
 const ImageHover = styled.img`
     width: 70%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+
     filter: saturate(0);
     &:hover {
         filter: saturate(1);
@@ -58,6 +62,9 @@ const ImageHover = styled.img`
 
 const SelectedImage = styled.img`
     width: 70%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
 `;
 
 const StrongText = styled.b`
@@ -67,6 +74,14 @@ const StrongText = styled.b`
     line-height: 2em;
     word-wrap: break-word;
     text-align: left;
+`;
+
+const ImageWrapper = styled.div`
+    width: 100%;
+`;
+
+const Spacer = styled.div`
+    height: 7em;
 `;
 
 const Step2 = () => {
@@ -152,7 +167,7 @@ const Step2 = () => {
                     <Grid.Column computer={13} mobile={16}>
                         <FormWrapper>
                             <Grid centered>
-                                <Grid.Column mobile={16} computer={4}>
+                                <Grid.Column mobile={16} computer={4} centered>
                                     {user.step1Spent === 1000000 ? (
                                         <Popup
                                             content="If you picked Europe your choice would result in you not being able to complete yor business model"
@@ -193,19 +208,25 @@ const Step2 = () => {
                                             }
                                             trigger={
                                                 decsion === "europeNA" ? (
-                                                    <SelectedImage
-                                                        src={europeNA}
-                                                        size="small"
-                                                        centered
-                                                    />
+                                                    <ImageWrapper>
+                                                        <SelectedImage
+                                                            src={europeNA}
+                                                            size="small"
+                                                            centered
+                                                        />
+                                                    </ImageWrapper>
                                                 ) : (
-                                                    <ImageHover
-                                                        name="europeNA"
-                                                        src={europeNA}
-                                                        size="small"
-                                                        centered
-                                                        onClick={updateChoice}
-                                                    />
+                                                    <ImageWrapper>
+                                                        <ImageHover
+                                                            name="europeNA"
+                                                            src={europeNA}
+                                                            size="small"
+                                                            centered
+                                                            onClick={
+                                                                updateChoice
+                                                            }
+                                                        />
+                                                    </ImageWrapper>
                                                 )
                                             }
                                         />
@@ -445,6 +466,9 @@ const Step2 = () => {
                                             )
                                         }
                                     />
+                                </Grid.Column>
+                                <Grid.Column only="mobile" mobile={16}>
+                                    <Spacer />
                                 </Grid.Column>
                             </Grid>
                         </FormWrapper>
