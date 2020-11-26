@@ -30,7 +30,7 @@ const InfoText = styled.p`
 `;
 
 const GameInfo = () => {
-    const [user, setUser] = useContext(UserContext);
+    const [user] = useContext(UserContext);
     return (
         <div>
             <ImageWrapper>

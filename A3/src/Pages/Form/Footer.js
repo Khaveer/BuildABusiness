@@ -1,12 +1,12 @@
 import React, { useContext } from "react";
 import styled from "styled-components";
 
-import { Progress, Label, Header } from "semantic-ui-react";
+import { Progress, Label } from "semantic-ui-react";
 
 import { UserContext } from "../components/UserContext";
 
 const FooterPlacer = styled.div`
-    position: absolute;
+    position: fixed;
     bottom: 0;
     width: 100%;
     height: 60px; /* Height of the footer */
@@ -46,7 +46,7 @@ const FooterLabel = styled.p`
 `;
 
 const Footer = () => {
-    const [user, setUser] = useContext(UserContext);
+    const [user] = useContext(UserContext);
 
     const totalCost =
         user.baseCost + user.step1Cost + user.step2Cost + user.step3Cost;

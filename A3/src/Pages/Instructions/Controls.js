@@ -14,7 +14,7 @@ import { UserContext } from "../components/UserContext";
 import { Link } from "react-router-dom";
 
 export default function Controls({ final }) {
-    const [user, setUser] = useContext(UserContext);
+    const [user] = useContext(UserContext);
     let buttons = (
         <>
             <ButtonLast class="ui blue basic button">Skip</ButtonLast>

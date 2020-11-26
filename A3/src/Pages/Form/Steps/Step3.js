@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import { Button, Grid, Segment, Image, Form } from "semantic-ui-react";
+import { Button, Grid, Segment, Image } from "semantic-ui-react";
 
 import styled from "styled-components";
 
@@ -94,6 +94,34 @@ const Step3 = () => {
     const [stepUpdate] = useState(4);
     const [result, setResult] = useState();
 
+    let truckChoice = true;
+    let trainChoice = true;
+    let planeChoice = true;
+    let shipChoice = true;
+    let droneChoice = true;
+    let evChoice = true;
+
+    let amountSpent = user.step1Spent + parseInt(user.step2Spent);
+
+    if (user.maxiumValue - (amountSpent + user.trucksValue) <= 0) {
+        truckChoice = false;
+    }
+    if (user.maxiumValue - (amountSpent + user.trainValue) <= 0) {
+        trainChoice = false;
+    }
+    if (user.maxiumValue - (amountSpent + user.cargoPlaneValue) <= 0) {
+        planeChoice = false;
+    }
+    if (user.maxiumValue - (amountSpent + user.cargoShipValue) <= 0) {
+        shipChoice = false;
+    }
+    if (user.maxiumValue - (amountSpent + user.dronesValue) <= 0) {
+        droneChoice = false;
+    }
+    if (user.maxiumValue - (amountSpent + user.electricValue) <= 0) {
+        evChoice = false;
+    }
+
     const updateChoice = (e) => {
         setDecsion(e.target.value);
 
@@ -131,8 +159,9 @@ const Step3 = () => {
                 addCost = 3;
                 setResult(3);
                 break;
+            default:
+                break;
         }
-        console.log(money);
         setUser((preState) => ({
             ...preState,
             step3Spent: money,
@@ -143,7 +172,7 @@ const Step3 = () => {
     const submitChoice = () => {
         console.log(decsion);
 
-        if (decsion != "null") {
+        if (decsion !== "null") {
             setUser((preState) => ({
                 ...preState,
                 step3: decsion,
@@ -191,184 +220,442 @@ const Step3 = () => {
                                     <SegmentWrapper>
                                         <form>
                                             <ChoiceWrapper>
-                                                <input
-                                                    type="radio"
-                                                    id="train"
-                                                    name="Option"
-                                                    value="train"
-                                                    onChange={updateChoice}
-                                                />
-                                                <ChoiceHeader for="train">
-                                                    Train{" ("}
-                                                    {
-                                                        <NumberFormat
-                                                            value={
-                                                                user.trainValue
-                                                            }
-                                                            displayType={"text"}
-                                                            thousandSeparator={
-                                                                true
-                                                            }
-                                                            prefix={"$"}
+                                                {trainChoice === false ? (
+                                                    <>
+                                                        <input
+                                                            type="radio"
+                                                            id="train"
+                                                            name="Option"
+                                                            value="train"
+                                                            disabled
                                                         />
-                                                    }
-                                                    {")"}
-                                                </ChoiceHeader>
-                                                <DeliveryWrapper>
-                                                    3 Months / Extended Time
-                                                    <br></br>
-                                                    Local delivery
-                                                </DeliveryWrapper>
+                                                        <ChoiceHeader for="train">
+                                                            Train{" ("}
+                                                            {
+                                                                <NumberFormat
+                                                                    value={
+                                                                        user.trainValue
+                                                                    }
+                                                                    displayType={
+                                                                        "text"
+                                                                    }
+                                                                    thousandSeparator={
+                                                                        true
+                                                                    }
+                                                                    prefix={"$"}
+                                                                />
+                                                            }
+                                                            {")"}
+                                                        </ChoiceHeader>
+                                                        <DeliveryWrapper>
+                                                            3 Months / Extended
+                                                            Time
+                                                            <br></br>
+                                                            Local delivery
+                                                        </DeliveryWrapper>
+                                                    </>
+                                                ) : (
+                                                    <>
+                                                        <input
+                                                            type="radio"
+                                                            id="train"
+                                                            name="Option"
+                                                            value="train"
+                                                            onChange={
+                                                                updateChoice
+                                                            }
+                                                        />
+                                                        <ChoiceHeader for="train">
+                                                            Train{" ("}
+                                                            {
+                                                                <NumberFormat
+                                                                    value={
+                                                                        user.trainValue
+                                                                    }
+                                                                    displayType={
+                                                                        "text"
+                                                                    }
+                                                                    thousandSeparator={
+                                                                        true
+                                                                    }
+                                                                    prefix={"$"}
+                                                                />
+                                                            }
+                                                            {")"}
+                                                        </ChoiceHeader>
+                                                        <DeliveryWrapper>
+                                                            3 Months / Extended
+                                                            Time
+                                                            <br></br>
+                                                            Local delivery
+                                                        </DeliveryWrapper>
+                                                    </>
+                                                )}
                                             </ChoiceWrapper>
                                             <ChoiceWrapper>
-                                                <input
-                                                    type="radio"
-                                                    id="cPlanes"
-                                                    name="Option"
-                                                    value="cPlanes"
-                                                    onChange={updateChoice}
-                                                />
-                                                <ChoiceHeader for="cPlanes">
-                                                    Cargo planes{" ("}
-                                                    {
-                                                        <NumberFormat
-                                                            value={
-                                                                user.cargoPlaneValue
-                                                            }
-                                                            displayType={"text"}
-                                                            thousandSeparator={
-                                                                true
-                                                            }
-                                                            prefix={"$"}
+                                                {planeChoice === false ? (
+                                                    <>
+                                                        <input
+                                                            type="radio"
+                                                            id="cPlanes"
+                                                            name="Option"
+                                                            value="cPlanes"
+                                                            disabled
                                                         />
-                                                    }
-                                                    {")"}
-                                                </ChoiceHeader>
-                                                <DeliveryWrapper>
-                                                    2 Weeks / Short Time
-                                                    <br></br>
-                                                    International delivery
-                                                </DeliveryWrapper>
+                                                        <ChoiceHeader for="cPlanes">
+                                                            Cargo planes
+                                                            {" ("}
+                                                            {
+                                                                <NumberFormat
+                                                                    value={
+                                                                        user.cargoPlaneValue
+                                                                    }
+                                                                    displayType={
+                                                                        "text"
+                                                                    }
+                                                                    thousandSeparator={
+                                                                        true
+                                                                    }
+                                                                    prefix={"$"}
+                                                                />
+                                                            }
+                                                            {")"}
+                                                        </ChoiceHeader>
+                                                        <DeliveryWrapper>
+                                                            2 Weeks / Short Time
+                                                            <br></br>
+                                                            International
+                                                            delivery
+                                                        </DeliveryWrapper>
+                                                    </>
+                                                ) : (
+                                                    <>
+                                                        <input
+                                                            type="radio"
+                                                            id="cPlanes"
+                                                            name="Option"
+                                                            value="cPlanes"
+                                                            onChange={
+                                                                updateChoice
+                                                            }
+                                                        />
+                                                        <ChoiceHeader for="cPlanes">
+                                                            Cargo planes
+                                                            {" ("}
+                                                            {
+                                                                <NumberFormat
+                                                                    value={
+                                                                        user.cargoPlaneValue
+                                                                    }
+                                                                    displayType={
+                                                                        "text"
+                                                                    }
+                                                                    thousandSeparator={
+                                                                        true
+                                                                    }
+                                                                    prefix={"$"}
+                                                                />
+                                                            }
+                                                            {")"}
+                                                        </ChoiceHeader>
+                                                        <DeliveryWrapper>
+                                                            2 Weeks / Short Time
+                                                            <br></br>
+                                                            International
+                                                            delivery
+                                                        </DeliveryWrapper>
+                                                    </>
+                                                )}
                                             </ChoiceWrapper>
                                             <ChoiceWrapper>
-                                                <input
-                                                    type="radio"
-                                                    id="cShips"
-                                                    name="Option"
-                                                    value="cShips"
-                                                    onChange={updateChoice}
-                                                />
-                                                <ChoiceHeader for="cShips">
-                                                    Cargo Ships{" ("}
-                                                    {
-                                                        <NumberFormat
-                                                            value={
-                                                                user.cargoShipValue
-                                                            }
-                                                            displayType={"text"}
-                                                            thousandSeparator={
-                                                                true
-                                                            }
-                                                            prefix={"$"}
+                                                {shipChoice === false ? (
+                                                    <>
+                                                        <input
+                                                            type="radio"
+                                                            id="cShips"
+                                                            name="Option"
+                                                            value="cShips"
+                                                            disabled
                                                         />
-                                                    }
-                                                    {")"}
-                                                </ChoiceHeader>
-                                                <DeliveryWrapper>
-                                                    12 Days / Short Time
-                                                    <br></br>
-                                                    International delivery
-                                                </DeliveryWrapper>
+                                                        <ChoiceHeader for="cShips">
+                                                            Cargo Ships
+                                                            {" ("}
+                                                            {
+                                                                <NumberFormat
+                                                                    value={
+                                                                        user.cargoShipValue
+                                                                    }
+                                                                    displayType={
+                                                                        "text"
+                                                                    }
+                                                                    thousandSeparator={
+                                                                        true
+                                                                    }
+                                                                    prefix={"$"}
+                                                                />
+                                                            }
+                                                            {")"}
+                                                        </ChoiceHeader>
+                                                        <DeliveryWrapper>
+                                                            12 Days / Short Time
+                                                            <br></br>
+                                                            International
+                                                            delivery
+                                                        </DeliveryWrapper>
+                                                    </>
+                                                ) : (
+                                                    <>
+                                                        <input
+                                                            type="radio"
+                                                            id="cShips"
+                                                            name="Option"
+                                                            value="cShips"
+                                                            onChange={
+                                                                updateChoice
+                                                            }
+                                                        />
+                                                        <ChoiceHeader for="cShips">
+                                                            Cargo Ships
+                                                            {" ("}
+                                                            {
+                                                                <NumberFormat
+                                                                    value={
+                                                                        user.cargoShipValue
+                                                                    }
+                                                                    displayType={
+                                                                        "text"
+                                                                    }
+                                                                    thousandSeparator={
+                                                                        true
+                                                                    }
+                                                                    prefix={"$"}
+                                                                />
+                                                            }
+                                                            {")"}
+                                                        </ChoiceHeader>
+                                                        <DeliveryWrapper>
+                                                            12 Days / Short Time
+                                                            <br></br>
+                                                            International
+                                                            delivery
+                                                        </DeliveryWrapper>
+                                                    </>
+                                                )}
                                             </ChoiceWrapper>
                                             <ChoiceWrapper>
-                                                <input
-                                                    type="radio"
-                                                    id="drones"
-                                                    name="Option"
-                                                    value="drones"
-                                                    onChange={updateChoice}
-                                                />
-                                                <ChoiceHeader for="drones">
-                                                    Drones{" ("}
-                                                    {
-                                                        <NumberFormat
-                                                            value={
-                                                                user.dronesValue
-                                                            }
-                                                            displayType={"text"}
-                                                            thousandSeparator={
-                                                                true
-                                                            }
-                                                            prefix={"$"}
+                                                {droneChoice === false ? (
+                                                    <>
+                                                        <input
+                                                            type="radio"
+                                                            id="drones"
+                                                            name="Option"
+                                                            value="drones"
+                                                            disabled
                                                         />
-                                                    }
-                                                    {")"}
-                                                </ChoiceHeader>
-                                                <DeliveryWrapper>
-                                                    Unknown Speed
-                                                    <br></br>
-                                                    Local Delivery
-                                                </DeliveryWrapper>
+                                                        <ChoiceHeader for="drones">
+                                                            Drones{" ("}
+                                                            {
+                                                                <NumberFormat
+                                                                    value={
+                                                                        user.dronesValue
+                                                                    }
+                                                                    displayType={
+                                                                        "text"
+                                                                    }
+                                                                    thousandSeparator={
+                                                                        true
+                                                                    }
+                                                                    prefix={"$"}
+                                                                />
+                                                            }
+                                                            {")"}
+                                                        </ChoiceHeader>
+                                                        <DeliveryWrapper>
+                                                            Unknown Speed
+                                                            <br></br>
+                                                            Local Delivery
+                                                        </DeliveryWrapper>
+                                                    </>
+                                                ) : (
+                                                    <>
+                                                        <input
+                                                            type="radio"
+                                                            id="drones"
+                                                            name="Option"
+                                                            value="drones"
+                                                            onChange={
+                                                                updateChoice
+                                                            }
+                                                        />
+                                                        <ChoiceHeader for="drones">
+                                                            Drones{" ("}
+                                                            {
+                                                                <NumberFormat
+                                                                    value={
+                                                                        user.dronesValue
+                                                                    }
+                                                                    displayType={
+                                                                        "text"
+                                                                    }
+                                                                    thousandSeparator={
+                                                                        true
+                                                                    }
+                                                                    prefix={"$"}
+                                                                />
+                                                            }
+                                                            {")"}
+                                                        </ChoiceHeader>
+                                                        <DeliveryWrapper>
+                                                            Unknown Speed
+                                                            <br></br>
+                                                            Local Delivery
+                                                        </DeliveryWrapper>
+                                                    </>
+                                                )}
                                             </ChoiceWrapper>
                                             <ChoiceWrapper>
-                                                <input
-                                                    type="radio"
-                                                    id="electricVehicle"
-                                                    name="Option"
-                                                    value="electricVehicle"
-                                                    onChange={updateChoice}
-                                                />
-                                                <ChoiceHeader for="electricVehicle">
-                                                    Electric Vehicles{" ("}
-                                                    {
-                                                        <NumberFormat
-                                                            value={
-                                                                user.electricValue
-                                                            }
-                                                            displayType={"text"}
-                                                            thousandSeparator={
-                                                                true
-                                                            }
-                                                            prefix={"$"}
+                                                {evChoice === false ? (
+                                                    <>
+                                                        <input
+                                                            type="radio"
+                                                            id="electricVehicle"
+                                                            name="Option"
+                                                            value="electricVehicle"
+                                                            disabled
                                                         />
-                                                    }
-                                                    {")"}
-                                                </ChoiceHeader>
-                                                <DeliveryWrapper>
-                                                    1 Week
-                                                    <br></br>
-                                                    Local Delivery
-                                                </DeliveryWrapper>
+                                                        <ChoiceHeader for="electricVehicle">
+                                                            Electric Vehicles
+                                                            {" ("}
+                                                            {
+                                                                <NumberFormat
+                                                                    value={
+                                                                        user.electricValue
+                                                                    }
+                                                                    displayType={
+                                                                        "text"
+                                                                    }
+                                                                    thousandSeparator={
+                                                                        true
+                                                                    }
+                                                                    prefix={"$"}
+                                                                />
+                                                            }
+                                                            {")"}
+                                                        </ChoiceHeader>
+                                                        <DeliveryWrapper>
+                                                            1 Week
+                                                            <br></br>
+                                                            Local Delivery
+                                                        </DeliveryWrapper>
+                                                    </>
+                                                ) : (
+                                                    <>
+                                                        <input
+                                                            type="radio"
+                                                            id="electricVehicle"
+                                                            name="Option"
+                                                            value="electricVehicle"
+                                                            onChange={
+                                                                updateChoice
+                                                            }
+                                                        />
+                                                        <ChoiceHeader for="electricVehicle">
+                                                            Electric Vehicles
+                                                            {" ("}
+                                                            {
+                                                                <NumberFormat
+                                                                    value={
+                                                                        user.electricValue
+                                                                    }
+                                                                    displayType={
+                                                                        "text"
+                                                                    }
+                                                                    thousandSeparator={
+                                                                        true
+                                                                    }
+                                                                    prefix={"$"}
+                                                                />
+                                                            }
+                                                            {")"}
+                                                        </ChoiceHeader>
+                                                        <DeliveryWrapper>
+                                                            1 Week
+                                                            <br></br>
+                                                            Local Delivery
+                                                        </DeliveryWrapper>
+                                                    </>
+                                                )}
                                             </ChoiceWrapper>
                                             <LastChoiceWrapper>
-                                                <input
-                                                    type="radio"
-                                                    id="truck"
-                                                    name="Option"
-                                                    value="truck"
-                                                    onChange={updateChoice}
-                                                />
-                                                <ChoiceHeader for="truck">
-                                                    Trucks{" ("}
-                                                    {
-                                                        <NumberFormat
-                                                            value={
-                                                                user.trucksValue
-                                                            }
-                                                            displayType={"text"}
-                                                            thousandSeparator={
-                                                                true
-                                                            }
-                                                            prefix={"$"}
+                                                {truckChoice === false ? (
+                                                    <>
+                                                        <input
+                                                            type="radio"
+                                                            id="truck"
+                                                            name="Option"
+                                                            value="truck"
+                                                            disabled
                                                         />
-                                                    }
-                                                    {")"}
-                                                </ChoiceHeader>
-                                                <DeliveryWrapper>
-                                                    1 Week
-                                                    <br></br>
-                                                    Local Delivery
-                                                </DeliveryWrapper>
+                                                        <ChoiceHeader for="truck">
+                                                            Trucks{" ("}
+                                                            {
+                                                                <NumberFormat
+                                                                    value={
+                                                                        user.trucksValue
+                                                                    }
+                                                                    displayType={
+                                                                        "text"
+                                                                    }
+                                                                    thousandSeparator={
+                                                                        true
+                                                                    }
+                                                                    prefix={"$"}
+                                                                />
+                                                            }
+                                                            {")"}
+                                                        </ChoiceHeader>
+                                                        <DeliveryWrapper>
+                                                            1 Week
+                                                            <br></br>
+                                                            Local Delivery
+                                                        </DeliveryWrapper>
+                                                    </>
+                                                ) : (
+                                                    <>
+                                                        <input
+                                                            type="radio"
+                                                            id="truck"
+                                                            name="Option"
+                                                            value="truck"
+                                                            onChange={
+                                                                updateChoice
+                                                            }
+                                                        />
+                                                        <ChoiceHeader for="truck">
+                                                            Trucks{" ("}
+                                                            {
+                                                                <NumberFormat
+                                                                    value={
+                                                                        user.trucksValue
+                                                                    }
+                                                                    displayType={
+                                                                        "text"
+                                                                    }
+                                                                    thousandSeparator={
+                                                                        true
+                                                                    }
+                                                                    prefix={"$"}
+                                                                />
+                                                            }
+                                                            {")"}
+                                                        </ChoiceHeader>
+                                                        <DeliveryWrapper>
+                                                            1 Week
+                                                            <br></br>
+                                                            Local Delivery
+                                                        </DeliveryWrapper>
+                                                    </>
+                                                )}
                                             </LastChoiceWrapper>
                                         </form>
                                     </SegmentWrapper>

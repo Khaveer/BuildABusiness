@@ -1,7 +1,7 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import { UserContext } from "../../components/UserContext";
 
-import { Segment, Grid, Image } from "semantic-ui-react";
+import { Grid, Image } from "semantic-ui-react";
 
 import styled from "styled-components";
 
@@ -42,10 +42,6 @@ const StrongText = styled.b`
     text-align: left;
 `;
 
-const SegmentWrapper = styled.div`
-    padding: 1em;
-`;
-
 const References = styled.div`
     margin-top: 1em;
     text-align: left;
@@ -67,9 +63,7 @@ const ReferenceLinks = styled.a`
 `;
 
 const MarketingCard = () => {
-    const [user, setUser] = useContext(UserContext);
-
-    let GreenWashing = Math.floor(Math.random() * (4 - 1) + 1);
+    const [user] = useContext(UserContext);
 
     let maxValue = Math.max(
         user.tvMoneySpent,

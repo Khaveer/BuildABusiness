@@ -1,7 +1,6 @@
-import React, { useContext, useState } from "react";
-import { UserContext } from "../components/UserContext";
+import React from "react";
 
-import { Segment, Grid, Image } from "semantic-ui-react";
+import { Segment, Grid } from "semantic-ui-react";
 
 import styled from "styled-components";
 
@@ -17,8 +16,6 @@ const SegmentWrapper = styled.div`
 `;
 
 const ResultsInfo = () => {
-    const [user, setUser] = useContext(UserContext);
-
     return (
         <>
             <HeaderButtons resultsInfo={true} />

@@ -1,7 +1,7 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import { UserContext } from "../../components/UserContext";
 
-import { Segment, Grid, Image } from "semantic-ui-react";
+import { Grid, Image } from "semantic-ui-react";
 
 import styled from "styled-components";
 
@@ -62,12 +62,8 @@ const ReferenceLinks = styled.a`
     word-wrap: break-word;
 `;
 
-const SegmentWrapper = styled.div`
-    padding: 1em;
-`;
-
 const LogisticsCard = () => {
-    const [user, setUser] = useContext(UserContext);
+    const [user] = useContext(UserContext);
 
     const imageRandom = Math.floor(Math.random() * (3 - 1) + 1);
 

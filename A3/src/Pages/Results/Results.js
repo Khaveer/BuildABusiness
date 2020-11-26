@@ -1,6 +1,5 @@
 import React, { useContext } from "react";
 import styled from "styled-components";
-import { Grid } from "semantic-ui-react";
 
 import HeaderButtons from "../components/HeaderButtons";
 import ResultsCard from "./components/ResultsCard";
@@ -24,10 +23,6 @@ const ResultsButtonWrapper = styled.div`
     bottom: 0.5em;
     margin: auto;
     width: 100%;
-`;
-
-const ResultSpacer = styled.div`
-    min-height: 10%;
 `;
 
 const Results = () => {

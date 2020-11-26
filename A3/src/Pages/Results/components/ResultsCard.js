@@ -1,8 +1,6 @@
-import React, { useContext } from "react";
+import React from "react";
 
 import styled from "styled-components";
-
-import { UserContext } from "../../components/UserContext";
 
 const CardContainer = styled.div`
     //box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
@@ -40,8 +38,6 @@ const TimerWrapper = styled.div`
 `;
 
 const ResultsCard = () => {
-    const [user] = useContext(UserContext);
-
     //let State = user.resultState1 + user.resultState2 + user.resultState3;
     let State = 7;
     console.log(State);

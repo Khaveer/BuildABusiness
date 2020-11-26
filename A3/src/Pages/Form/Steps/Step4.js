@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useContext } from "react";
 import { Segment, Grid, Button, Image, Label } from "semantic-ui-react";
 
 import { Link } from "react-router-dom";
@@ -89,45 +89,11 @@ const ButtonWrapper = styled.div`
     justify-content: flex-end;
 `;
 
-const PercentWrapper = styled.div`
-    width: 75%;
-    padding: 0px;
-    display: inline-block;
-    vertical-align: middle;
-    float: left;
-`;
-
-const PercentLabelWrapper = styled.div`
-    margin: 0px;
-    display: inline-block;
-    padding-left: 2%;
-    vertical-align: middle;
-    float: left;
-`;
-
-const PercentHeader = styled.h2`
-    font-family: "Montserrat", sans-serif;
-    font-weight: 600;
-    margin-top: 0px;
-    font-size: 1em;
-    padding-left: 1em;
-    text-align: left;
-`;
-
 const SegmentWrapper = styled.div`
     padding: 2em;
 `;
 
-const LastSegmentWrapper = styled.div`
-    padding-bottom: 2em;
-`;
-
 const Step4 = () => {
-    const [TVAmount, setTv] = useState(0);
-    const [OnlineAdsAmount, setAds] = useState(0);
-    const [BannersAmount, setBanners] = useState(0);
-    const [InfluncersAmount, setInfluncers] = useState(0);
-    const [MarkUp, setMarkUp] = useState(0);
     const [user, setUser] = useContext(UserContext);
 
     const updateValues = (e) => {
@@ -273,24 +239,6 @@ const Step4 = () => {
             }
         }
     };
-
-    // const updateTV = (e) => {
-    //     //if new amount spent would equal to 0 or less than dont make change
-    //     let difference = user.maxiumValue - -parseInt(e.target.value);
-    //     console.log(difference);
-    //     if (difference <= 0) {
-    //         alert("noob");
-    //     }
-
-    //     let TVMoney = parseInt(TVAmount);
-    //     setTv(e.target.value);
-    //     // let money = user.tvMoneySpent + TVAmount;
-
-    //     setUser((preState) => ({
-    //         ...preState,
-    //         tvMoneySpent: TVMoney,
-    //     }));
-    // };
 
     const amountSpent = user.step1Spent + user.step2Spent + user.step3Spent;
 

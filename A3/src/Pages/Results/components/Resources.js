@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import { UserContext } from "../../components/UserContext";
 
 import { Grid, Image } from "semantic-ui-react";
@@ -63,7 +63,7 @@ const StrongText = styled.b`
 `;
 
 const ResourceCard = () => {
-    const [user, setUser] = useContext(UserContext);
+    const [user] = useContext(UserContext);
 
     const imageRandom = Math.floor(Math.random() * (3 - 1) + 1);
 

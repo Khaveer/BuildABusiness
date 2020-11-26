@@ -1,7 +1,5 @@
 import React, { useState, useContext } from "react";
-import { Grid, Image, Button, Popup } from "semantic-ui-react";
-
-import { Link } from "react-router-dom";
+import { Grid, Button, Popup } from "semantic-ui-react";
 
 import styled from "styled-components";
 
@@ -22,21 +20,21 @@ import pacfic from "../../../Assets/FromAssests/Step2/Pacific.svg";
 import africa from "../../../Assets/FromAssests/Step2/Sub-SaharanAfrica.svg";
 
 const GameWrapper = styled.div`
-    padding-top: 5em;
+    width: 100%;
+    overflow: hidden;
 `;
 
 const InfoWrapper = styled.div`
-    width: 15%;
+    width: 100%;
     font-family: "Montserrat", sans-serif;
     font-weight: 600;
     font-size: 2em;
     text-align: left;
     float: left;
-    margin-left: 5%;
+    margin-left: 1em;
 `;
 
 const FormWrapper = styled.div`
-    width: 75%;
     display: inline-block;
     margin-top: 2em;
 `;
@@ -82,6 +80,7 @@ const Step2 = () => {
 
         let money;
         let addCost;
+
         switch (e.target.name) {
             case "europeNA":
                 money = user.europeNAValue;
@@ -118,6 +117,8 @@ const Step2 = () => {
                 addCost = 1;
                 setResult(1);
                 break;
+            default:
+                break;
         }
 
         setUser((preState) => ({
@@ -128,7 +129,7 @@ const Step2 = () => {
     };
 
     const submitChoice = () => {
-        if (decsion != "null") {
+        if (decsion !== "null") {
             setUser((preState) => ({
                 ...preState,
                 step2: decsion,
@@ -142,251 +143,313 @@ const Step2 = () => {
         <>
             <FormHeader pageNumber={2} />
             <GameWrapper>
-                <InfoWrapper>
-                    <GameInfo />
-                </InfoWrapper>
-                <FormWrapper>
-                    <Grid centered>
-                        <Grid.Column mobile={16} computer={4}>
-                            <Popup
-                                content="Office in Europe with High standards"
-                                header={
-                                    <>
-                                        <StrongText>
-                                            <NumberFormat
-                                                value={user.europeNAValue}
-                                                displayType={"text"}
-                                                thousandSeparator={true}
-                                                prefix={"$"}
-                                            />
-                                        </StrongText>
-                                    </>
-                                }
-                                trigger={
-                                    decsion === "europeNA" ? (
-                                        <SelectedImage
-                                            src={europeNA}
-                                            size="small"
-                                            centered
+                <Grid>
+                    <Grid.Column computer={3} mobile={16}>
+                        <InfoWrapper>
+                            <GameInfo />
+                        </InfoWrapper>
+                    </Grid.Column>
+                    <Grid.Column computer={13} mobile={16}>
+                        <FormWrapper>
+                            <Grid centered>
+                                <Grid.Column mobile={16} computer={4}>
+                                    {user.step1Spent === 1000000 ? (
+                                        <Popup
+                                            content="If you picked Europe your choice would result in you not being able to complete yor business model"
+                                            header={
+                                                <>
+                                                    <StrongText>
+                                                        Invalid Choice
+                                                    </StrongText>
+                                                </>
+                                            }
+                                            trigger={
+                                                <ImageHover
+                                                    name="europeNA"
+                                                    src={europeNA}
+                                                    size="small"
+                                                    centered
+                                                />
+                                            }
                                         />
                                     ) : (
-                                        <ImageHover
-                                            name="europeNA"
-                                            src={europeNA}
-                                            size="small"
-                                            centered
-                                            onClick={updateChoice}
+                                        <Popup
+                                            content="Office in Europe with High standards"
+                                            header={
+                                                <>
+                                                    <StrongText>
+                                                        <NumberFormat
+                                                            value={
+                                                                user.europeNAValue
+                                                            }
+                                                            displayType={"text"}
+                                                            thousandSeparator={
+                                                                true
+                                                            }
+                                                            prefix={"$"}
+                                                        />
+                                                    </StrongText>
+                                                </>
+                                            }
+                                            trigger={
+                                                decsion === "europeNA" ? (
+                                                    <SelectedImage
+                                                        src={europeNA}
+                                                        size="small"
+                                                        centered
+                                                    />
+                                                ) : (
+                                                    <ImageHover
+                                                        name="europeNA"
+                                                        src={europeNA}
+                                                        size="small"
+                                                        centered
+                                                        onClick={updateChoice}
+                                                    />
+                                                )
+                                            }
                                         />
-                                    )
-                                }
-                            />
-                        </Grid.Column>
-                        <Grid.Column mobile={16} computer={4}>
-                            <Popup
-                                content="Cost effective option located in central or south america"
-                                header={
-                                    <>
-                                        <StrongText>
-                                            <NumberFormat
-                                                value={user.LatinAmericValue}
-                                                displayType={"text"}
-                                                thousandSeparator={true}
-                                                prefix={"$"}
-                                            />
-                                        </StrongText>
-                                    </>
-                                }
-                                trigger={
-                                    decsion === "latinAmerica" ? (
-                                        <SelectedImage
-                                            src={latinAmerica}
-                                            size="small"
-                                            centered
-                                        />
-                                    ) : (
-                                        <ImageHover
-                                            name="latinAmerica"
-                                            src={latinAmerica}
-                                            size="small"
-                                            centered
-                                            onClick={updateChoice}
-                                        />
-                                    )
-                                }
-                            />
-                        </Grid.Column>
-                        <Grid.Column mobile={16} computer={4}>
-                            <Popup
-                                content="Located in Eastern Europe, standards are unknown"
-                                header={
-                                    <>
-                                        <StrongText>
-                                            <NumberFormat
-                                                value={user.eastEuropeValue}
-                                                displayType={"text"}
-                                                thousandSeparator={true}
-                                                prefix={"$"}
-                                            />
-                                        </StrongText>
-                                    </>
-                                }
-                                trigger={
-                                    decsion === "eastEurope" ? (
-                                        <SelectedImage
-                                            src={eastEurope}
-                                            size="small"
-                                            centered
-                                        />
-                                    ) : (
-                                        <ImageHover
-                                            name="eastEurope"
-                                            src={eastEurope}
-                                            size="small"
-                                            centered
-                                            onClick={updateChoice}
-                                        />
-                                    )
-                                }
-                            />
-                        </Grid.Column>
-                        <Grid.Column mobile={16} computer={4}>
-                            <Popup
-                                content="Manufacturing in the Middle East or North Africa. Facility standards are unknown"
-                                header={
-                                    <>
-                                        <StrongText>
-                                            <NumberFormat
-                                                value={user.midEastValue}
-                                                displayType={"text"}
-                                                thousandSeparator={true}
-                                                prefix={"$"}
-                                            />
-                                        </StrongText>
-                                    </>
-                                }
-                                trigger={
-                                    decsion === "midEast" ? (
-                                        <SelectedImage
-                                            src={midEast}
-                                            size="small"
-                                            centered
-                                        />
-                                    ) : (
-                                        <ImageHover
-                                            name="midEast"
-                                            src={midEast}
-                                            size="small"
-                                            centered
-                                            onClick={updateChoice}
-                                        />
-                                    )
-                                }
-                            />
-                        </Grid.Column>
-                        <Grid.Column mobile={16} computer={4}>
-                            <Popup
-                                content="Operations located in Asia. Has a high output but location standards are unknown."
-                                header={
-                                    <>
-                                        <StrongText>
-                                            <NumberFormat
-                                                value={user.asiaValue}
-                                                displayType={"text"}
-                                                thousandSeparator={true}
-                                                prefix={"$"}
-                                            />
-                                        </StrongText>
-                                    </>
-                                }
-                                trigger={
-                                    decsion === "asia" ? (
-                                        <SelectedImage
-                                            src={asia}
-                                            size="small"
-                                            centered
-                                        />
-                                    ) : (
-                                        <ImageHover
-                                            name="asia"
-                                            src={asia}
-                                            size="small"
-                                            centered
-                                            onClick={updateChoice}
-                                        />
-                                    )
-                                }
-                            />
-                        </Grid.Column>
-                        <Grid.Column mobile={16} computer={4}>
-                            <Popup
-                                content="Located in the Pacific. Location holds a high standard. "
-                                header={
-                                    <>
-                                        <StrongText>
-                                            <NumberFormat
-                                                value={user.pacficValue}
-                                                displayType={"text"}
-                                                thousandSeparator={true}
-                                                prefix={"$"}
-                                            />
-                                        </StrongText>
-                                    </>
-                                }
-                                trigger={
-                                    decsion === "pacfic" ? (
-                                        <SelectedImage
-                                            src={pacfic}
-                                            size="small"
-                                            centered
-                                        />
-                                    ) : (
-                                        <ImageHover
-                                            name="pacfic"
-                                            src={pacfic}
-                                            size="small"
-                                            centered
-                                            onClick={updateChoice}
-                                        />
-                                    )
-                                }
-                            />
-                        </Grid.Column>
-                        <Grid.Column mobile={16} computer={4}>
-                            <Popup
-                                content="Facility located in Central or South Africa. Standards are unknown."
-                                header={
-                                    <>
-                                        <StrongText>
-                                            <NumberFormat
-                                                value={user.asiaValue}
-                                                displayType={"text"}
-                                                thousandSeparator={true}
-                                                prefix={"$"}
-                                            />
-                                        </StrongText>
-                                    </>
-                                }
-                                trigger={
-                                    decsion === "africa" ? (
-                                        <SelectedImage
-                                            src={africa}
-                                            size="small"
-                                            centered
+                                    )}
+                                </Grid.Column>
+                                <Grid.Column mobile={16} computer={4}>
+                                    <Popup
+                                        content="Cost effective option located in central or south america"
+                                        header={
+                                            <>
+                                                <StrongText>
+                                                    <NumberFormat
+                                                        value={
+                                                            user.LatinAmericValue
+                                                        }
+                                                        displayType={"text"}
+                                                        thousandSeparator={true}
+                                                        prefix={"$"}
+                                                    />
+                                                </StrongText>
+                                            </>
+                                        }
+                                        trigger={
+                                            decsion === "latinAmerica" ? (
+                                                <SelectedImage
+                                                    src={latinAmerica}
+                                                    size="small"
+                                                    centered
+                                                />
+                                            ) : (
+                                                <ImageHover
+                                                    name="latinAmerica"
+                                                    src={latinAmerica}
+                                                    size="small"
+                                                    centered
+                                                    onClick={updateChoice}
+                                                />
+                                            )
+                                        }
+                                    />
+                                </Grid.Column>
+                                <Grid.Column mobile={16} computer={4}>
+                                    <Popup
+                                        content="Located in Eastern Europe, standards are unknown"
+                                        header={
+                                            <>
+                                                <StrongText>
+                                                    <NumberFormat
+                                                        value={
+                                                            user.eastEuropeValue
+                                                        }
+                                                        displayType={"text"}
+                                                        thousandSeparator={true}
+                                                        prefix={"$"}
+                                                    />
+                                                </StrongText>
+                                            </>
+                                        }
+                                        trigger={
+                                            decsion === "eastEurope" ? (
+                                                <SelectedImage
+                                                    src={eastEurope}
+                                                    size="small"
+                                                    centered
+                                                />
+                                            ) : (
+                                                <ImageHover
+                                                    name="eastEurope"
+                                                    src={eastEurope}
+                                                    size="small"
+                                                    centered
+                                                    onClick={updateChoice}
+                                                />
+                                            )
+                                        }
+                                    />
+                                </Grid.Column>
+                                <Grid.Column mobile={16} computer={4}>
+                                    <Popup
+                                        content="Manufacturing in the Middle East or North Africa. Facility standards are unknown"
+                                        header={
+                                            <>
+                                                <StrongText>
+                                                    <NumberFormat
+                                                        value={
+                                                            user.midEastValue
+                                                        }
+                                                        displayType={"text"}
+                                                        thousandSeparator={true}
+                                                        prefix={"$"}
+                                                    />
+                                                </StrongText>
+                                            </>
+                                        }
+                                        trigger={
+                                            decsion === "midEast" ? (
+                                                <SelectedImage
+                                                    src={midEast}
+                                                    size="small"
+                                                    centered
+                                                />
+                                            ) : (
+                                                <ImageHover
+                                                    name="midEast"
+                                                    src={midEast}
+                                                    size="small"
+                                                    centered
+                                                    onClick={updateChoice}
+                                                />
+                                            )
+                                        }
+                                    />
+                                </Grid.Column>
+                                <Grid.Column mobile={16} computer={4}>
+                                    <Popup
+                                        content="Operations located in Asia. Has a high output but location standards are unknown."
+                                        header={
+                                            <>
+                                                <StrongText>
+                                                    <NumberFormat
+                                                        value={user.asiaValue}
+                                                        displayType={"text"}
+                                                        thousandSeparator={true}
+                                                        prefix={"$"}
+                                                    />
+                                                </StrongText>
+                                            </>
+                                        }
+                                        trigger={
+                                            decsion === "asia" ? (
+                                                <SelectedImage
+                                                    src={asia}
+                                                    size="small"
+                                                    centered
+                                                />
+                                            ) : (
+                                                <ImageHover
+                                                    name="asia"
+                                                    src={asia}
+                                                    size="small"
+                                                    centered
+                                                    onClick={updateChoice}
+                                                />
+                                            )
+                                        }
+                                    />
+                                </Grid.Column>
+                                <Grid.Column mobile={16} computer={4}>
+                                    {user.step1Spent === 1000000 ? (
+                                        <Popup
+                                            content="Choosing the pacific would take your business into bankruptcy!"
+                                            header={
+                                                <>
+                                                    <StrongText>
+                                                        Invalid Choice
+                                                    </StrongText>
+                                                </>
+                                            }
+                                            trigger={
+                                                <ImageHover
+                                                    name="pacfic"
+                                                    src={pacfic}
+                                                    size="small"
+                                                    centered
+                                                />
+                                            }
                                         />
                                     ) : (
-                                        <ImageHover
-                                            name="africa"
-                                            src={africa}
-                                            size="small"
-                                            centered
-                                            onClick={updateChoice}
+                                        <Popup
+                                            content="Located in the Pacific. Location holds a high standard. "
+                                            header={
+                                                <>
+                                                    <StrongText>
+                                                        <NumberFormat
+                                                            value={
+                                                                user.pacficValue
+                                                            }
+                                                            displayType={"text"}
+                                                            thousandSeparator={
+                                                                true
+                                                            }
+                                                            prefix={"$"}
+                                                        />
+                                                    </StrongText>
+                                                </>
+                                            }
+                                            trigger={
+                                                decsion === "pacfic" ? (
+                                                    <SelectedImage
+                                                        src={pacfic}
+                                                        size="small"
+                                                        centered
+                                                    />
+                                                ) : (
+                                                    <ImageHover
+                                                        name="pacfic"
+                                                        src={pacfic}
+                                                        size="small"
+                                                        centered
+                                                        onClick={updateChoice}
+                                                    />
+                                                )
+                                            }
                                         />
-                                    )
-                                }
-                            />
-                        </Grid.Column>
-                    </Grid>
-                </FormWrapper>
+                                    )}
+                                </Grid.Column>
+                                <Grid.Column mobile={16} computer={4}>
+                                    <Popup
+                                        content="Facility located in Central or South Africa. Standards are unknown."
+                                        header={
+                                            <>
+                                                <StrongText>
+                                                    <NumberFormat
+                                                        value={user.asiaValue}
+                                                        displayType={"text"}
+                                                        thousandSeparator={true}
+                                                        prefix={"$"}
+                                                    />
+                                                </StrongText>
+                                            </>
+                                        }
+                                        trigger={
+                                            decsion === "africa" ? (
+                                                <SelectedImage
+                                                    src={africa}
+                                                    size="small"
+                                                    centered
+                                                />
+                                            ) : (
+                                                <ImageHover
+                                                    name="africa"
+                                                    src={africa}
+                                                    size="small"
+                                                    centered
+                                                    onClick={updateChoice}
+                                                />
+                                            )
+                                        }
+                                    />
+                                </Grid.Column>
+                            </Grid>
+                        </FormWrapper>
+                    </Grid.Column>
+                </Grid>
             </GameWrapper>
             <ButtonWrapper>
                 <Button

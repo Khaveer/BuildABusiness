@@ -1,11 +1,8 @@
-import React, { useContext, useState } from "react";
-import { UserContext } from "../../components/UserContext";
+import React from "react";
 
-import { Segment, Grid, Image } from "semantic-ui-react";
+import { Grid } from "semantic-ui-react";
 
 import styled from "styled-components";
-
-import ResultsGraph1 from "../../../Assets/Results/Marketing/Marketing.png";
 
 const InfoHeader = styled.h1`
     font-family: "Montserrat", sans-serif;
@@ -32,15 +29,6 @@ const HeaderInfoText = styled.h1`
     text-align: left;
 `;
 
-const StrongText = styled.b`
-    font-family: "Montserrat", sans-serif;
-    font-weight: 600;
-    font-size: 1em;
-    line-height: 2em;
-    word-wrap: break-word;
-    text-align: left;
-`;
-
 const References = styled.div`
     margin-top: 1em;
     text-align: left;
@@ -61,13 +49,7 @@ const ReferenceLinks = styled.a`
     word-wrap: break-word;
 `;
 
-const SegmentWrapper = styled.div`
-    padding: 1em;
-`;
-
 const LogisticsCard = () => {
-    const [user, setUser] = useContext(UserContext);
-
     const textRandom = Math.floor(Math.random() * 3 + 1);
 
     return (
