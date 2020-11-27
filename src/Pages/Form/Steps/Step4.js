@@ -32,6 +32,7 @@ const InfoWrapper = styled.div`
 
 const FormWrapper = styled.div`
     display: inline-block;
+    padding-top: 0px;
 `;
 
 const ChoicetextWrapper = styled.div`
@@ -87,10 +88,12 @@ const ButtonWrapper = styled.div`
 
 const SegmentWrapper = styled.div`
     padding: 2em;
+    padding-bottom: 0px;
+    padding-top: 0px;
 `;
 
 const Spacer = styled.div`
-    height: 4em;
+    height: 6em;
 `;
 
 const Step4 = () => {

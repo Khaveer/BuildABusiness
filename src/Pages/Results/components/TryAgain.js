@@ -27,6 +27,7 @@ const LinkText = styled.h1`
     font-weight: 600;
     font-size: 1em;
     text-align: center;
+    word-break: break-all;
 `;
 
 class TryAgain extends React.Component {

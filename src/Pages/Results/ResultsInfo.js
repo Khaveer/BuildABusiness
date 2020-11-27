@@ -6,7 +6,7 @@ import styled from "styled-components";
 
 import { UserContext } from "../components/UserContext";
 
-import HeaderButtons from "../components/HeaderButtons";
+import HeaderButtons from "./components/ResultsHeader";
 import ResourceCard from "./components/Resources";
 import OperationsCard from "./components/Operations";
 import LogisticsCard from "./components/Logistics";
@@ -15,11 +15,13 @@ import GreenwashingCard from "./components/Greenwashing";
 import TryAgain from "./components/TryAgain";
 
 const SegmentWrapper = styled.div`
-    padding: 1em;
+    //padding: 1em;
+    width: 90%;
+    margin: auto;
 `;
 
 const TryAgainWrapper = styled.div`
-    width: 50%;
+    width: 70%;
     margin: auto;
 `;
 

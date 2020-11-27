@@ -46,7 +46,7 @@ const ReferenceLinks = styled.a`
     text-align: left;
     float: left;
     color: black;
-    word-wrap: break-word;
+    word-break: break-all;
 `;
 
 const LogisticsCard = () => {

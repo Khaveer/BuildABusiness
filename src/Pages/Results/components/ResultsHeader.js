@@ -8,7 +8,7 @@ const HeaderWrapper = styled.div``;
 const ButtonWrapper = styled.div`
     text-align: left;
     padding: 0.5em;
-    padding-bottom: 0px;
+    padding-bottom: 1em;
 `;
 const ButtonDivider = styled.div`
     width: 0.5em;

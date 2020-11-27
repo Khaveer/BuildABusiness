@@ -34,7 +34,7 @@ const Wrapper = styled.div`
 const ProgressWrapper = styled.div`
     width: 50%;
     margin: auto;
-    margin-top: -10%;
+    margin-top: -15%;
     padding: 0px;
     text-align: center;
 `;
@@ -59,8 +59,9 @@ const ProgressBackground = styled.div`
     display: table;
     background-color: #fe8a60;
     margin: auto;
-    margin-top: 10px;
+    //margin-top: 10px;
     padding: 0px;
+    margin-top: --10px;
 `;
 
 const ProgressStepBackgroundBefore = styled.div`
@@ -70,7 +71,7 @@ const ProgressStepBackgroundBefore = styled.div`
     display: table;
     background-color: rgba(249, 148, 112, 0.6);
     margin: auto;
-    margin-top: 10px;
+    //margin-top: 10px;
     padding: 0px;
 `;
 
@@ -148,33 +149,6 @@ const FromHeader = (props) => {
                             </>
                         )}
                     </Grid.Column>
-                    {/* Resources Mobile*/}
-                    <Grid.Column mobile={3} only="mobile">
-                        {props.pageNumber === 1 && (
-                            <>
-                                <ProgressBackground>
-                                    <Centering>
-                                        <CurrentStepComputer />
-                                    </Centering>
-                                </ProgressBackground>
-                                <CurrentAfterHeader as="h5">
-                                    1
-                                </CurrentAfterHeader>
-                            </>
-                        )}
-                        {props.pageNumber > 1 && (
-                            <>
-                                <ProgressBackground>
-                                    <Centering>
-                                        <Icon inverted name="checkmark" />
-                                    </Centering>
-                                </ProgressBackground>
-                                <CurrentAfterHeader as="h5">
-                                    1
-                                </CurrentAfterHeader>
-                            </>
-                        )}
-                    </Grid.Column>
                     {/* Operations */}
                     <Grid.Column computer={3} only="computer">
                         {props.pageNumber < 2 && (
@@ -210,43 +184,8 @@ const FromHeader = (props) => {
                             </>
                         )}
                     </Grid.Column>
-                    {/* Operations Mobile */}
-                    <Grid.Column Mobile={3} only="mobile">
-                        {props.pageNumber < 2 && (
-                            <>
-                                <ProgressStepBackgroundBefore>
-                                    <Centering>2</Centering>
-                                </ProgressStepBackgroundBefore>
-                                <BeforeHeader as="h5">2</BeforeHeader>
-                            </>
-                        )}
-                        {props.pageNumber === 2 && (
-                            <>
-                                <ProgressBackground>
-                                    <Centering>
-                                        <CurrentStepComputer />
-                                    </Centering>
-                                </ProgressBackground>
-                                <CurrentAfterHeader as="h5">
-                                    2
-                                </CurrentAfterHeader>
-                            </>
-                        )}
-                        {props.pageNumber > 2 && (
-                            <>
-                                <ProgressBackground>
-                                    <Centering>
-                                        <Icon inverted name="checkmark" />
-                                    </Centering>
-                                </ProgressBackground>
-                                <CurrentAfterHeader as="h5">
-                                    2
-                                </CurrentAfterHeader>
-                            </>
-                        )}
-                    </Grid.Column>
                     {/* Progress */}
-                    <Grid.Column computer={4}>
+                    <Grid.Column computer={4} only="computer">
                         <ProgressWrapper>
                             <CircularProgressbarWithChildren
                                 value={leftTospend}
@@ -273,7 +212,7 @@ const FromHeader = (props) => {
                         </ProgressWrapper>
                     </Grid.Column>
                     {/* Logistics */}
-                    <Grid.Column computer={3}>
+                    <Grid.Column computer={3} only="computer">
                         {props.pageNumber < 3 && (
                             <>
                                 <ProgressStepBackgroundBefore>
@@ -307,8 +246,9 @@ const FromHeader = (props) => {
                             </>
                         )}
                     </Grid.Column>
+
                     {/* Marketing */}
-                    <Grid.Column computer={3}>
+                    <Grid.Column computer={3} only="computer">
                         {props.pageNumber < 4 && (
                             <>
                                 <ProgressStepBackgroundBefore>
@@ -338,6 +278,142 @@ const FromHeader = (props) => {
                                 </ProgressBackground>
                                 <CurrentAfterHeader as="h5">
                                     Marketing
+                                </CurrentAfterHeader>
+                            </>
+                        )}
+                    </Grid.Column>
+
+                    {/* Resources Mobile*/}
+                    <Grid.Column mobile={4} only="mobile">
+                        {props.pageNumber === 1 && (
+                            <>
+                                <ProgressBackground>
+                                    <Centering>
+                                        <CurrentStepComputer />
+                                    </Centering>
+                                </ProgressBackground>
+                                <CurrentAfterHeader as="h5">
+                                    1
+                                </CurrentAfterHeader>
+                            </>
+                        )}
+                        {props.pageNumber > 1 && (
+                            <>
+                                <ProgressBackground>
+                                    <Centering>
+                                        <Icon inverted name="checkmark" />
+                                    </Centering>
+                                </ProgressBackground>
+                                <CurrentAfterHeader as="h5">
+                                    1
+                                </CurrentAfterHeader>
+                            </>
+                        )}
+                    </Grid.Column>
+
+                    {/* Operations Mobile */}
+                    <Grid.Column mobile={4} only="mobile">
+                        {props.pageNumber < 2 && (
+                            <>
+                                <ProgressStepBackgroundBefore>
+                                    <Centering>2</Centering>
+                                </ProgressStepBackgroundBefore>
+                                <BeforeHeader as="h5">2</BeforeHeader>
+                            </>
+                        )}
+                        {props.pageNumber === 2 && (
+                            <>
+                                <ProgressBackground>
+                                    <Centering>
+                                        <CurrentStepComputer />
+                                    </Centering>
+                                </ProgressBackground>
+                                <CurrentAfterHeader as="h5">
+                                    2
+                                </CurrentAfterHeader>
+                            </>
+                        )}
+                        {props.pageNumber > 2 && (
+                            <>
+                                <ProgressBackground>
+                                    <Centering>
+                                        <Icon inverted name="checkmark" />
+                                    </Centering>
+                                </ProgressBackground>
+                                <CurrentAfterHeader as="h5">
+                                    2
+                                </CurrentAfterHeader>
+                            </>
+                        )}
+                    </Grid.Column>
+
+                    {/* Logistics Mobile */}
+                    <Grid.Column mobile={4} only="mobile">
+                        {props.pageNumber < 3 && (
+                            <>
+                                <ProgressStepBackgroundBefore>
+                                    <Centering>3</Centering>
+                                </ProgressStepBackgroundBefore>
+                                <BeforeHeader as="h5">3</BeforeHeader>
+                            </>
+                        )}
+                        {props.pageNumber === 3 && (
+                            <>
+                                <ProgressBackground>
+                                    <Centering>
+                                        <CurrentStepComputer />
+                                    </Centering>
+                                </ProgressBackground>
+                                <CurrentAfterHeader as="h5">
+                                    2
+                                </CurrentAfterHeader>
+                            </>
+                        )}
+                        {props.pageNumber > 3 && (
+                            <>
+                                <ProgressBackground>
+                                    <Centering>
+                                        <Icon inverted name="checkmark" />
+                                    </Centering>
+                                </ProgressBackground>
+                                <CurrentAfterHeader as="h5">
+                                    3
+                                </CurrentAfterHeader>
+                            </>
+                        )}
+                    </Grid.Column>
+
+                    {/* Marketing Mobile */}
+                    <Grid.Column mobile={4} only="mobile">
+                        {props.pageNumber < 4 && (
+                            <>
+                                <ProgressStepBackgroundBefore>
+                                    <Centering>4</Centering>
+                                </ProgressStepBackgroundBefore>
+                                <BeforeHeader as="h5">4</BeforeHeader>
+                            </>
+                        )}
+                        {props.pageNumber === 4 && (
+                            <>
+                                <ProgressBackground>
+                                    <Centering>
+                                        <CurrentStepComputer />
+                                    </Centering>
+                                </ProgressBackground>
+                                <CurrentAfterHeader as="h5">
+                                    4
+                                </CurrentAfterHeader>
+                            </>
+                        )}
+                        {props.pageNumber > 4 && (
+                            <>
+                                <ProgressBackground>
+                                    <Centering>
+                                        <Icon inverted name="checkmark" />
+                                    </Centering>
+                                </ProgressBackground>
+                                <CurrentAfterHeader as="h5">
+                                    4
                                 </CurrentAfterHeader>
                             </>
                         )}

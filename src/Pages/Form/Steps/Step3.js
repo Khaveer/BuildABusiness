@@ -38,7 +38,7 @@ const InfoWrapper = styled.div`
 
 const FormWrapper = styled.div`
     display: inline-block;
-    margin-top: 2em;
+    //margin-top: 2em;
     padding-right: 1em;
 `;
 
@@ -70,7 +70,7 @@ const ChoiceHeader = styled.label`
 
 const ChoiceWrapper = styled.div`
     padding-top: -2em;
-    padding-bottom: 2em;
+    padding-bottom: 1em;
 `;
 
 const LastChoiceWrapper = styled.div`
