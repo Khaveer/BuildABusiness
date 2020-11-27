@@ -7,8 +7,8 @@ import { Button, Icon } from "semantic-ui-react";
 const HeaderWrapper = styled.div``;
 const ButtonWrapper = styled.div`
     text-align: left;
-    padding: 0.5em;
-    padding-bottom: 0px;
+    padding: 1em;
+    padding-top: 0.5em;
 `;
 const ButtonDivider = styled.div`
     width: 0.5em;

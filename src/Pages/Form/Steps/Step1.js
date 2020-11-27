@@ -6,7 +6,9 @@ import styled from "styled-components";
 import NumberFormat from "react-number-format";
 
 import GameInfo from "./components/GameInfo";
-import FormHeader from "../../components/Header";
+
+import FormHeader from "../../components/HeaderV2";
+
 import Footer from "../Footer";
 import { UserContext } from "../../components/UserContext";
 
@@ -30,6 +32,7 @@ const InfoWrapper = styled.div`
 `;
 
 const FormWrapper = styled.div`
+    //padding-right: 2em;
     display: inline-block;
     margin-top: 2em;
 `;
@@ -74,7 +77,6 @@ const ButtonWrapper = styled.div`
 const SegmentWrapper = styled.div`
     padding: 1vw;
     padding-bottom: 0px;
-    padding-right: 0px;
     max-width: 99vw;
 `;
 

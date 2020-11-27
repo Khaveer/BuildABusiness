@@ -63,6 +63,11 @@ const ReferenceLinks = styled.a`
     word-break: break-all;
 `;
 
+const SuggestionWrapper = styled.div`
+    padding-top: 0.5em;
+    text-align: center;
+`;
+
 const ResourceCard = () => {
     const [user] = useContext(UserContext);
 
@@ -240,6 +245,12 @@ const ResourceCard = () => {
                             highest country was Costa Rica (67% environmentally
                             friendly) and lowest being Guyana (47%
                             environmentally friendly) [2].
+                            <SuggestionWrapper>
+                                <i>
+                                    Next time try investing in the Pacific or
+                                    Europe and North America
+                                </i>
+                            </SuggestionWrapper>
                             <References>
                                 References:<br></br>
                                 <ReferenceLinks
@@ -316,6 +327,12 @@ const ResourceCard = () => {
                             output, more buying and thus more waste [3]. Until
                             the workers get granted an eu wide minimum wage,
                             this problem will not be solved [4].
+                            <SuggestionWrapper>
+                                <i>
+                                    Next time try investing in the Pacific or
+                                    Europe and North America
+                                </i>
+                            </SuggestionWrapper>
                             <References>
                                 References:<br></br>
                                 <ReferenceLinks
@@ -390,6 +407,12 @@ const ResourceCard = () => {
                             as of 2030 [6]. So not only will your workers be
                             treated less ethically, but when climate change
                             impacts, there will be more deaths.
+                            <SuggestionWrapper>
+                                <i>
+                                    Next time try investing in the Pacific or
+                                    Europe and North America
+                                </i>
+                            </SuggestionWrapper>
                             <References>
                                 References:<br></br>
                                 <ReferenceLinks
@@ -478,6 +501,12 @@ const ResourceCard = () => {
                             <StrongText>250,000 additional deaths</StrongText>{" "}
                             per year, from malnutrition, malaria, diarrhea and
                             heat stress” [5].
+                            <SuggestionWrapper>
+                                <i>
+                                    Next time try investing in the Pacific or
+                                    Europe and North America
+                                </i>
+                            </SuggestionWrapper>
                             <References>
                                 References:<br></br>
                                 <ReferenceLinks
@@ -571,6 +600,12 @@ const ResourceCard = () => {
                             [7] Over all Asia scores very low for environmental
                             friendliness, with the lowest country being Taiwan
                             (27% environmentally friendly) [4]
+                            <SuggestionWrapper>
+                                <i>
+                                    Next time try investing in the Pacific or
+                                    Europe and North America
+                                </i>
+                            </SuggestionWrapper>
                             <References>
                                 References:<br></br>
                                 <ReferenceLinks

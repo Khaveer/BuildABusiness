@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 import GameInfo from "./components/GameInfo";
-import FormHeader from "../../components/Header";
+import FormHeader from "../../components/HeaderV2";
 import Footer from "../Footer";
 
 import { UserContext } from "../../components/UserContext";
@@ -297,6 +297,7 @@ const Step4 = () => {
                                                             <ChoiceImage>
                                                                 <Image
                                                                     src={TV}
+                                                                    size="small"
                                                                 />
                                                             </ChoiceImage>
                                                         </Grid.Column>
@@ -404,6 +405,7 @@ const Step4 = () => {
                                                                     src={
                                                                         OnlineAds
                                                                     }
+                                                                    size="small"
                                                                 />
                                                             </ChoiceImage>
                                                         </Grid.Column>
@@ -514,6 +516,7 @@ const Step4 = () => {
                                                                     src={
                                                                         Banners
                                                                     }
+                                                                    size="small"
                                                                 />
                                                             </ChoiceImage>
                                                         </Grid.Column>
@@ -626,6 +629,7 @@ const Step4 = () => {
                                                                     src={
                                                                         Influncers
                                                                     }
+                                                                    size="small"
                                                                 />
                                                             </ChoiceImage>
                                                         </Grid.Column>

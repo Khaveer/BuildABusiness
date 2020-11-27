@@ -62,6 +62,11 @@ const ReferenceLinks = styled.a`
     word-break: break-all;
 `;
 
+const SuggestionWrapper = styled.div`
+    padding-top: 0.5em;
+    text-align: center;
+`;
+
 const LogisticsCard = () => {
     const [user] = useContext(UserContext);
 
@@ -265,6 +270,13 @@ const LogisticsCard = () => {
                             around $600 for a 30ft container [1] (1.8 tones)
                             [2]. However, shipping using this method is
                             incredibly slow [3].
+                            <SuggestionWrapper>
+                                <i>
+                                    While your method isn't as bad as others,
+                                    next time try investing in trains or even
+                                    electric trucks/cars.
+                                </i>
+                            </SuggestionWrapper>
                             <References>
                                 References:<br></br>
                                 <ReferenceLinks
@@ -322,6 +334,12 @@ const LogisticsCard = () => {
                             [2]. The continual rate for trucks is 15,820,
                             however, this is always dependent on access to roads
                             and conditions [1].
+                            <SuggestionWrapper>
+                                <i>
+                                    Next time try investing in trains or even
+                                    electric trucks/cars.
+                                </i>
+                            </SuggestionWrapper>
                             <References>
                                 References:<br></br>
                                 <ReferenceLinks
@@ -370,6 +388,12 @@ const LogisticsCard = () => {
                             relationship will be challenged, as society has
                             begun a fight shame movement, gaining momentum
                             around the world [4].
+                            <SuggestionWrapper>
+                                <i>
+                                    Next time try investing in trains or even
+                                    electric trucks/cars.
+                                </i>
+                            </SuggestionWrapper>
                             <References>
                                 References:<br></br>
                                 <ReferenceLinks

@@ -62,6 +62,11 @@ const StrongText = styled.b`
     text-align: left;
 `;
 
+const SuggestionWrapper = styled.div`
+    padding-top: 0.5em;
+    text-align: center;
+`;
+
 const ResourceCard = () => {
     const [user] = useContext(UserContext);
 
@@ -143,6 +148,12 @@ const ResourceCard = () => {
                                 labour or forced labour.
                             </StrongText>{" "}
                             [2]
+                            <SuggestionWrapper>
+                                <i>
+                                    Next time try investing in Recycled
+                                    materials
+                                </i>
+                            </SuggestionWrapper>
                             <References>
                                 References:<br></br>
                                 <ReferenceLinks
@@ -199,6 +210,12 @@ const ResourceCard = () => {
                             and expose workers to toxic chemicals that cause
                             neurological damage, cancer and other potentially
                             fatal conditions. [3]
+                            <SuggestionWrapper>
+                                <i>
+                                    Next time try investing in Recycled
+                                    materials
+                                </i>
+                            </SuggestionWrapper>
                             <References>
                                 References:<br></br>
                                 <ReferenceLinks
@@ -253,6 +270,12 @@ const ResourceCard = () => {
                             80 cubic meters of wastewater containing dangerous
                             chemicals like Chromium and other dangerous
                             compounds.
+                            <SuggestionWrapper>
+                                <i>
+                                    Next time try investing in Recycled
+                                    materials
+                                </i>
+                            </SuggestionWrapper>
                             <References>
                                 References:<br></br>
                                 <ReferenceLinks

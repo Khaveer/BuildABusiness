@@ -6,7 +6,7 @@ import styled from "styled-components";
 import NumberFormat from "react-number-format";
 
 import GameInfo from "./components/GameInfo";
-import FormHeader from "../../components/Header";
+import FormHeader from "../../components/HeaderV2";
 import Footer from "../Footer";
 
 import { UserContext } from "../../components/UserContext";
@@ -170,7 +170,7 @@ const Step2 = () => {
                                 <Grid.Column mobile={16} computer={4} centered>
                                     {user.step1Spent === 1000000 ? (
                                         <Popup
-                                            content="If you picked Europe your choice would result in you not being able to complete yor business model"
+                                            content="If you picked Europe your choice would result in you not being able to complete your business model"
                                             header={
                                                 <>
                                                     <StrongText>

@@ -92,6 +92,9 @@ const MarketingCard = () => {
                 {user.influncersMoneySpent === maxValue && (
                     <InfoHeader>Influencer Marketing</InfoHeader>
                 )}
+                {maxValue === null && (
+                    <InfoHeader>Influencer Marketing</InfoHeader>
+                )}
                 {user.bannerMoneySpent === maxValue && (
                     <InfoHeader>Marketing (Banners)</InfoHeader>
                 )}
@@ -100,6 +103,58 @@ const MarketingCard = () => {
                 )}
                 {user.onlineMoneySpent === maxValue && (
                     <InfoHeader>Digital Marketing</InfoHeader>
+                )}
+                {maxValue === null && (
+                    <>
+                        <HeaderInfoText>
+                            Influencers - Profitable, but be careful of who you
+                            choose!
+                        </HeaderInfoText>
+                        <InfoText>
+                            You chose influencers for your marketing. The
+                            influencer market is said to become very profitable
+                            being a{" "}
+                            <StrongText>
+                                “$5-$10 billion market by 2020.”
+                            </StrongText>{" "}
+                            [1]. They are seen as being trusted by their
+                            audience, but you have to ensure you choose the{" "}
+                            <StrongText>right influencer,</StrongText> as if you
+                            choose an influencer with prior controversies that
+                            may reflect badly on your brand. This leads to{" "}
+                            <StrongText>
+                                61% of marketers finding it hard to identify the
+                                right influencers [1].
+                            </StrongText>{" "}
+                            It is an effective form of marketing as “22,000
+                            women surveys 45% said they will buy products
+                            recommended by an influencer “ [1], however{" "}
+                            <StrongText>it can be very expensive</StrongText>{" "}
+                            with one post ranging from 100 to 100,000 [1].
+                            Brands like Fashion Nova and PrettyLittleThing have
+                            high representation from celebrities, models and
+                            influencers - leading them to becoming very popular
+                            brands within the younger demographic [2].
+                            <References>
+                                References:<br></br>
+                                <ReferenceLinks
+                                    href="https://www.lyfemarketing.com/blog/types-of-marketing-strategies/"
+                                    target="_blank"
+                                >
+                                    [1]
+                                    https://www.lyfemarketing.com/blog/types-of-marketing-strategies/
+                                </ReferenceLinks>
+                                <br></br>
+                                <ReferenceLinks
+                                    href="https://www.tribedynamics.com/blog/fast-fashion-brands-and-influencer-marketing-2019"
+                                    target="_blank"
+                                >
+                                    [2]
+                                    https://www.tribedynamics.com/blog/fast-fashion-brands-and-influencer-marketing-2019
+                                </ReferenceLinks>
+                            </References>
+                        </InfoText>
+                    </>
                 )}
                 {user.influncersMoneySpent === maxValue && (
                     <>
