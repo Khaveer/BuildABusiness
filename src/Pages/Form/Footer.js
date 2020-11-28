@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import styled from "styled-components";
 
-import { Progress, Label } from "semantic-ui-react";
+import { Progress, Label, Grid } from "semantic-ui-react";
 
 import { UserContext } from "../components/UserContext";
 
@@ -13,7 +13,13 @@ const FooterPlacer = styled.div`
     background-color: white;
 `;
 
-const FooterWrapper = styled.div``;
+const HeaderWrapper = styled.div`
+    width: 78%;
+    margin: auto;
+    color: white;
+    text-align: left;
+    vertical-align: middle;
+`;
 
 const ProgressWrapper = styled.div`
     width: 70%;
@@ -24,7 +30,7 @@ const ProgressWrapper = styled.div`
 `;
 
 const LabelWrapper = styled.div`
-    margin: 0px;
+    //margin: 0px;
     display: inline-block;
     padding-left: 5%;
     vertical-align: middle;
@@ -52,32 +58,47 @@ const Footer = () => {
     const totalCost =
         user.baseCost + user.step1Cost + user.step2Cost + user.step3Cost;
 
+    const Percent = (totalCost / 24) * 100;
+
     return (
         <FooterPlacer>
             <FooterDivider />
-            <FooterWrapper>
-                <ProgressWrapper>
-                    <FooterLabel>PRODUCT PRICE FOR CONSUMER.</FooterLabel>
-                    <Progress
-                        progress="value"
-                        value={totalCost}
-                        color="orange"
-                        style={{ margin: "0px" }}
-                    />
-                </ProgressWrapper>
-                <LabelWrapper>
-                    {totalCost > 0 && (
-                        <Label as="a" size={"large"} color={"orange"}>
-                            ${totalCost}
-                        </Label>
-                    )}
-                    {totalCost === 0 && (
-                        <Label as="a" size={"large"}>
-                            ${totalCost}
-                        </Label>
-                    )}
-                </LabelWrapper>
-            </FooterWrapper>
+
+            <Grid>
+                <Grid.Column
+                    computer={16}
+                    style={{ padding: "0px", paddingTop: "0.5em" }}
+                >
+                    <HeaderWrapper>
+                        <FooterLabel>PRODUCT PRICE FOR CONSUMER.</FooterLabel>
+                    </HeaderWrapper>
+                </Grid.Column>
+                <Grid.Column
+                    computer={16}
+                    style={{ padding: "0px", paddingRight: "0px" }}
+                >
+                    <ProgressWrapper>
+                        <Progress
+                            //progress="percent"
+                            percent={Percent}
+                            color="orange"
+                            style={{ margin: "0px" }}
+                        />
+                    </ProgressWrapper>
+                    <LabelWrapper>
+                        {totalCost > 0 && (
+                            <Label as="a" size={"large"} color={"orange"}>
+                                ${totalCost}
+                            </Label>
+                        )}
+                        {totalCost === 0 && (
+                            <Label as="a" size={"large"}>
+                                ${totalCost}
+                            </Label>
+                        )}
+                    </LabelWrapper>
+                </Grid.Column>
+            </Grid>
         </FooterPlacer>
     );
 };

@@ -3,10 +3,10 @@
     "version": "0.1.0",
     "private": true,
     "dependencies": {
-        "@testing-library/jest-dom": "^5.11.5",
-        "@testing-library/react": "^11.1.0",
-        "@testing-library/user-event": "^12.1.10",
-        "pure-react-carousel": "^1.27.3",
+        "@testing-library/jest-dom": "^5.11.6",
+        "@testing-library/react": "^11.2.2",
+        "@testing-library/user-event": "^12.2.2",
+        "pure-react-carousel": "^1.27.6",
         "react": "^17.0.1",
         "react-circular-progressbar": "^2.0.3",
         "react-copy-to-clipboard": "^5.0.2",
@@ -16,7 +16,7 @@
         "react-scripts": "4.0.0",
         "semantic-ui-css": "^2.4.1",
         "semantic-ui-react": "^2.0.1",
-        "styled-components": "^5.2.0",
+        "styled-components": "^5.2.1",
         "web-vitals": "^0.2.4"
     },
     "scripts": {

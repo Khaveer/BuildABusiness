@@ -283,6 +283,48 @@ const FromHeader = (props) => {
                         )}
                     </Grid.Column>
 
+                    {/* Progress pie Chart */}
+                    <Grid.Column
+                        mobile={16}
+                        only="mobile"
+                        style={{ paddingTop: "2em", paddingBottom: "0px" }}
+                    >
+                        <ProgressWrapper>
+                            <CircularProgressbarWithChildren
+                                value={leftTospend}
+                                maxValue={user.maxiumValue}
+                                background
+                                styles={buildStyles({
+                                    pathColor: "#F46734",
+                                    backgroundColor: "white",
+                                })}
+                            >
+                                <ProgressText
+                                    style={{
+                                        fontSize: "18px",
+                                    }}
+                                >
+                                    <strong>
+                                        <NumberFormat
+                                            value={leftTospend}
+                                            displayType={"text"}
+                                            thousandSeparator={true}
+                                            prefix={"$"}
+                                        />
+                                    </strong>
+                                    <br></br>
+                                    <ProgressText2
+                                        style={{
+                                            fontSize: "15px",
+                                        }}
+                                    >
+                                        Left to spend
+                                    </ProgressText2>
+                                </ProgressText>
+                            </CircularProgressbarWithChildren>
+                        </ProgressWrapper>
+                    </Grid.Column>
+
                     {/* Resources Mobile*/}
                     <Grid.Column mobile={4} only="mobile">
                         {props.pageNumber === 1 && (
