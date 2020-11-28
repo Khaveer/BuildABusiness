@@ -40,7 +40,7 @@ const instructions = [
                 Your goal as a business is the keep the product price low, not
                 only because consumers love cheap products, but also so your can
                 mark up the cost in order to get more revenue. <br /> <br />
-                To do this in this game, you want to keep your recources,
+                To do this in this game, you want to keep your resources,
                 operations, logistics and marketing cheap (pick the cheapers
                 options). You can mark up your price in the consumer
                 relationship section.{" "}
@@ -52,7 +52,7 @@ const instructions = [
         image: "./image/three.png",
         description: (
             <text>
-                You will be taken though 4 sections: recources (what country
+                You will be taken though 4 sections: resources (what country
                 will you get your materials from),operations (what country will
                 your staff make your products) ,logistics (how will you
                 transport your products) and consumer realtionships (how will
