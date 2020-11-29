@@ -595,7 +595,7 @@ const Step4 = () => {
                                                         >
                                                             <ChoicetextWrapper>
                                                                 <ChoiceHeader>
-                                                                    Influncers
+                                                                    Influencers
                                                                 </ChoiceHeader>
                                                                 <InfoText>
                                                                     Your company
